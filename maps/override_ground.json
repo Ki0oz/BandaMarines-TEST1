@@ -1,0 +1,21 @@
+{
+    "override_map": true,
+    "map_name": "Unknown",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/civilian",
+        "/datum/equipment_preset/survivor/goon"
+    ],
+    "map_item_type": "/obj/item/map/big_red_map",
+    "announce_text": "Мы потеряли связь с исследовательским центром Вейланд-Ютани. ###SHIPNAME### был отправлен на помощь.",
+    "monkey_types": [
+        "neaera"
+    ],
+    "traits": [{ "Ground": true }],
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

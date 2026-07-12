@@ -1,0 +1,69 @@
+{
+	"map_name": "LV-522 Chance's Claim",
+    "short_name": "Chance's Claim",
+	"map_path": "map_files/LV522_Chances_Claim",
+	"map_file": "LV522_Chances_Claim.dmm",
+    "webmap_url": "LV552",
+
+    "weather_holder": "/datum/weather_ss_map_holder/lv522_chances_claim",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/forecon/standard"
+    ],
+	"synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/forecon"
+    ],
+	"CO_survivor_types": [
+        "/datum/equipment_preset/survivor/forecon/major"
+    ],
+    "defcon_triggers": [
+        3300,
+        2100,
+        1450,
+        580,
+        0.0
+    ],
+    "survivor_message": "Вы - морпех разведки КМП с ККС \"Ганьют\", застрявший на этой планете после того, как ваш отряд был уничтожен при расследовании сигнала бедствия. Поскольку ваш пилот погиб вместе с большинством членов вашего отряда, вы и ваша команда вынуждены бежать и стрелять, чтобы выжить... но поскольку припасы на нуле, а еда на исходе, возможно, ваш последний шанс выжить - двигаться на запад к разбитому дропшипу, чтобы найти что-нибудь полезное.",
+    "announce_text": "Пан-Пан. Говорит командир ККС \"Ганьют\", разведки КМП. В настоящее время мы находимся на планете LV-522 в непосредственной близости от \"Земли Шанса\". Мы не можем связаться с \"Ганьютом\". Наши корабли не могут сейчас отправиться для расследования ситуации, поэтому мы запрашиваем помощь у всех близлежащих кораблей; это сообщение будет повторяться каждые 24 часа.",
+    "map_item_type": "/obj/item/map/lv522_map",
+	"co_briefing": {
+        "Hawks": "maps/map_briefings/commanding_officer/chances/CHANCEScpo.html",
+        "Doves": "maps/map_briefings/commanding_officer/chances/CHANCEShmm.html",
+        "Magpies": "maps/map_briefings/commanding_officer/chances/CHANCESmodi.html",
+        "Unaligned": "maps/map_briefings/commanding_officer/chances/CHANCESunaligned.html"
+    },
+    "monkey_types": [
+        "neaera",
+        "stok"
+    ],
+    "environment_traits": { "Fog": true },
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
+    "nightmare_path": "maps/Nightmare/maps/LV522_Chances_Claim/",
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0,
+        "xeno_hive_delta": 0
+    },
+    "camouflage": "classic",
+	"gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

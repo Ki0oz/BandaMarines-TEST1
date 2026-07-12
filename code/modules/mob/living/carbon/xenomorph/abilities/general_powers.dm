@@ -1,0 +1,1271 @@
+//// Powers used by multiple Xenomorphs.
+// In general, powers files hold actual implementations of abilities,
+// and abilities files hold the object declarations for the abilities
+
+// Plant weeds
+/datum/action/xeno_action/onclick/plant_weeds/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!action_cooldown_check())
+		return
+	if(!xeno.check_state())
+		return
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
+		return
+
+	var/turf/turf = xeno.loc
+
+	if(!istype(turf))
+		to_chat(xeno, SPAN_WARNING("Мы не можем сделать это здесь."))
+		return
+
+	if(turf.density)
+		to_chat(xeno, SPAN_WARNING("Мы не можем сделать это здесь."))
+		return
+
+	var/is_weedable = turf.is_weedable
+	if(!is_weedable)
+		to_chat(xeno, SPAN_WARNING("Bad place for a garden!"))
+		return
+	if(!plant_on_semiweedable && is_weedable < FULLY_WEEDABLE)
+		to_chat(xeno, SPAN_WARNING("Bad place for a garden!"))
+		return
+
+	var/obj/effect/alien/weeds/node/node = locate() in turf
+	if(node)
+		if(node.weed_strength > xeno.weed_level)
+			to_chat(xeno, SPAN_WARNING("The node here is too strong to uproot."))
+			return
+
+		if(node.hivenumber != xeno.hivenumber)
+			to_chat(xeno, SPAN_WARNING("The other hive's node resists your attempt to uproot it."))
+			return
+
+		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, node, INTERRUPT_ALL))
+			to_chat(xeno, SPAN_WARNING("There's a pod here already! You decide to not replace it."))
+			return
+		to_chat(xeno, SPAN_NOTICE("We uproot and replace the weed node."))
+		playsound(xeno.loc, "alien_resin_break", 25)
+		qdel(node)
+
+	var/obj/effect/alien/resin/trap/resin_trap = locate() in turf
+	if(resin_trap)
+		to_chat(xeno, SPAN_WARNING("We can't weed on top of a trap!"))
+		return
+
+	var/obj/effect/alien/weeds/weed = node || locate() in turf
+	if(weed && weed.weed_strength >= WEED_LEVEL_HIVE)
+		to_chat(xeno, SPAN_WARNING("These weeds are too strong to plant a node on!"))
+		return
+
+	for(var/obj/structure/struct in turf)
+		if(struct.density && !(struct.flags_atom & ON_BORDER)) // Not sure exactly if we need to test against ON_BORDER though
+			to_chat(xeno, SPAN_WARNING("Мы не можем сделать это здесь."))
+			return
+
+	var/area/area = get_area(turf)
+	if(isnull(area) || !(area.is_resin_allowed))
+		if(!area || area.flags_area & AREA_UNWEEDABLE)
+			to_chat(xeno, SPAN_XENOWARNING("Эта область не подходит для размещения улья!"))
+			return
+		to_chat(xeno, SPAN_XENOWARNING("Ещё слишком рано распространять улей так далеко."))
+		return
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	var/list/to_convert
+	if(node)
+		to_convert = node.children.Copy()
+
+	xeno.visible_message(SPAN_XENONOTICE("[capitalize(xeno.declent_ru(NOMINATIVE))] извергает пульсирующий узел и сажает его в землю!"), // SS220 EDIT ADDICTION
+	SPAN_XENONOTICE("Мы извергаем пульсирующий узел и сажаем его в землю!"), null, 5)
+	var/obj/effect/alien/weeds/node/new_node = new node_type(xeno.loc, src, xeno)
+
+	if(to_convert)
+		for(var/cur_weed in to_convert)
+			var/turf/target_turf = get_turf(cur_weed)
+			if(target_turf && !target_turf.density)
+				new /obj/effect/alien/weeds(target_turf, new_node)
+			qdel(cur_weed)
+
+	playsound(xeno.loc, "alien_resin_build", 25)
+	apply_cooldown()
+	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
+	return ..()
+
+/mob/living/carbon/xenomorph/lay_down()
+	if(!can_heal && !resting)
+		to_chat(src, SPAN_WARNING("No time to rest, must KILL!"))
+		return
+
+	if(fortify)
+		to_chat(src, SPAN_WARNING("We cannot rest while fortified!"))
+		return
+
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		to_chat(src, SPAN_WARNING("We cannot rest while burrowed!"))
+		return
+
+	if(crest_defense)
+		to_chat(src, SPAN_WARNING("We cannot rest while our crest is down!"))
+		return
+
+	return ..()
+
+/mob/living/carbon/xenomorph/set_lying_down()
+	if(selected_ability?.ability_uses_acid_overlay)
+		overlays -= acid_overlay
+
+	return ..()
+
+/mob/living/carbon/xenomorph/get_up()
+	if(selected_ability?.ability_uses_acid_overlay)
+		overlays |= acid_overlay
+
+	return ..()
+
+/datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.lay_down()
+	button.icon_state = xeno.resting ? "template_active" : "template_xeno"
+	return ..()
+
+// Shift spits
+/datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/X = owner
+	if(!X.check_state())
+		return
+	for(var/i in 1 to length(X.caste.spit_types))
+		if(X.ammo == GLOB.ammo_list[X.caste.spit_types[i]])
+			if(i == length(X.caste.spit_types))
+				X.ammo = GLOB.ammo_list[X.caste.spit_types[1]]
+			else
+				X.ammo = GLOB.ammo_list[X.caste.spit_types[i+1]]
+			break
+	to_chat(X, SPAN_NOTICE("We will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
+	return ..()
+
+/datum/action/xeno_action/onclick/release_haul/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/X = owner
+	if(!X.check_state())
+		return
+
+	if(!isturf(X.loc))
+		to_chat(X, SPAN_WARNING("We cannot put them down here."))
+		return
+
+	X.release_haul(TRUE)
+
+	return ..()
+
+/datum/action/xeno_action/onclick/release_haul/can_use_action()
+	return TRUE //we should always be able to do this
+
+/datum/action/xeno_action/onclick/choose_resin/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/X = owner
+	if(!X.check_state())
+		return
+
+	tgui_interact(X)
+	return ..()
+
+/datum/action/xeno_action/onclick/choose_resin/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/spritesheet/choose_resin),
+	)
+
+/datum/action/xeno_action/onclick/choose_resin/ui_static_data(mob/user)
+	var/mob/living/carbon/xenomorph/X = user
+	if(!istype(X))
+		return
+
+	. = list()
+
+	var/list/constructions = list()
+	for(var/type in X.resin_build_order)
+		var/list/entry = list()
+		var/datum/resin_construction/RC = GLOB.resin_constructions_list[type]
+
+		entry["name"] = capitalize(declent_ru_initial(RC.construction_name, NOMINATIVE, RC.name))
+		entry["desc"] = RC.desc
+		entry["image"] = replacetext(RC.construction_name, " ", "-")
+		entry["plasma_cost"] = RC.cost
+		entry["max_per_xeno"] = RC.max_per_xeno
+		entry["id"] = "[type]"
+		constructions += list(entry)
+
+	.["constructions"] = constructions
+
+/datum/action/xeno_action/onclick/choose_resin/ui_data(mob/user)
+	var/mob/living/carbon/xenomorph/X = user
+	if(!istype(X))
+		return
+
+	. = list()
+	.["selected_resin"] = X.selected_resin
+
+
+/datum/action/xeno_action/onclick/choose_resin/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ChooseResin", "Выбор смолы")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/action/xeno_action/onclick/choose_resin/Destroy()
+	SStgui.close_uis(src)
+	return ..()
+
+/datum/action/xeno_action/onclick/choose_resin/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/action/xeno_action/onclick/choose_resin/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/xenomorph/X = usr
+	if(!istype(X))
+		return
+
+	switch(action)
+		if("choose_resin")
+			var/selected_type = text2path(params["type"])
+			if(!(selected_type in X.resin_build_order))
+				return
+			//update the button's overlay with new choice
+			update_button_icon(selected_type, to_chat=TRUE)
+			X.selected_resin = selected_type
+			. = TRUE
+		if("refresh_ui")
+			. = TRUE
+
+/datum/action/xeno_action/onclick/choose_resin/update_button_icon(selected_type, to_chat = FALSE)
+	. = ..()
+	if(!selected_type)
+		return
+	var/datum/resin_construction/resin_construction = GLOB.resin_constructions_list[selected_type]
+	if(to_chat)
+		to_chat(usr, SPAN_NOTICE("Мы теперь будем строить <b>[declent_ru_initial(resin_construction.construction_name, ACCUSATIVE, resin_construction.construction_name)]</b> при выделении смолы."))
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, resin_construction.construction_name)
+
+// Resin
+/datum/action/xeno_action/activable/secrete_resin/use_ability(atom/target)
+	if(!..())
+		return FALSE
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
+	if(isstorage(target.loc))
+		return FALSE
+	if(xeno_owner.contains(target))
+		return FALSE
+	if(istype(target, /atom/movable/screen))
+		return FALSE
+	if(!SSmapping.same_z_map(target.z, xeno_owner.z))
+		to_chat(owner, SPAN_XENOWARNING("Эта область слишком далеко!"))
+		return
+	apply_cooldown()
+	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, build_speed_mod))
+		if(SECRETE_RESIN_INTERRUPT)
+			if(xeno_cooldown || xeno_cooldown_interrupt_penalty)
+				apply_cooldown_override(xeno_cooldown + xeno_cooldown_interrupt_penalty)
+			return FALSE
+		if(SECRETE_RESIN_FAIL)
+			if(xeno_cooldown)
+				apply_cooldown_override(xeno_cooldown_fail)
+			return FALSE
+	return TRUE
+
+// leader Marker
+
+/datum/action/xeno_action/activable/info_marker/use_ability(atom/A, mods)
+	if(!..())
+		return FALSE
+
+	if(mods[CLICK_CATCHER])
+		return
+
+	if(!action_cooldown_check())
+		return
+
+	var/mob/living/carbon/xenomorph/X = owner
+	if(!X.check_state(TRUE))
+		return FALSE
+
+	if(ismob(A)) //anticheese : if they click a mob, it will cancel.
+		to_chat(X, SPAN_XENOWARNING("Мы не можем размещать смоляные метки на живых существах!"))
+		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
+
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen))
+		return FALSE
+	var/turf/target_turf = get_turf(A)
+
+	if(!SSmapping.same_z_map(X.loc.z, target_turf.loc.z))
+		to_chat(X, SPAN_XENOWARNING("Наш разум не может достать так далеко."))
+		return
+
+	if(!X.hive.living_xeno_queen || !SSmapping.same_z_map(X.hive.living_xeno_queen.z, X.z))
+		to_chat(X, SPAN_XENOWARNING("Наша психическая связь с ульем была прервана, либо наша Королева мертва, либо слишком далеко."))
+		return
+
+	var/tally = 0
+
+	for(var/obj/effect/alien/resin/marker/MRK in X.hive.resin_marks)
+		if(MRK.createdby == X.nicknumber)
+			tally++
+	if(tally >= max_markers)
+		to_chat(X, SPAN_XENOWARNING("Мы достигли максимально возможного количества смоляных меток."))
+		var/list/promptlist = list("Да", "Нет")
+		var/obj/effect/alien/resin/marker/Goober = null
+		var/promptuser = null
+		for(var/i=1, i<=length(X.hive.resin_marks))
+			Goober = X.hive.resin_marks[i]
+			if(Goober.createdby == X.nicknumber)
+				promptuser = tgui_input_list(X, "Удалить самую старую метку: '[Goober.mark_meaning.name]!'?", "Достигнут лимит меток.", promptlist, theme="hive_status")
+				break
+			i++
+		if(promptuser == "Нет")
+			return
+		else if(promptuser == "Да")
+			qdel(Goober)
+			if(X.make_marker(target_turf))
+				apply_cooldown()
+				return TRUE
+	else if(X.make_marker(target_turf))
+		apply_cooldown()
+		return TRUE
+
+
+
+// Destructive Acid
+/datum/action/xeno_action/activable/corrosive_acid/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.corrosive_acid(target, acid_type, acid_plasma_cost)
+	for(var/obj/item/explosive/plastic/explosive in target.contents)
+		xeno.corrosive_acid(explosive,acid_type,acid_plasma_cost)
+	return ..()
+
+#define ACID_COST_LEVEL_1 70
+#define ACID_COST_LEVEL_2 100
+#define ACID_COST_LEVEL_3 200
+
+/// Attempt to fill the target trap (called when xeno attacks with an empty hand)
+/// Returns TRUE if the trap was filled
+/mob/living/carbon/xenomorph/proc/try_fill_trap(obj/effect/alien/resin/trap/target)
+	if(!istype(target))
+		return FALSE
+
+	if(!acid_level)
+		to_chat(src, SPAN_XENONOTICE("Вы не можете наполнить [target.declent_ru(ACCUSATIVE)] кислотой.")) // SS220 EDIT ADDICTION
+		return FALSE
+
+	var/trap_acid_level = 0
+	if(target.trap_type >= RESIN_TRAP_ACID1)
+		trap_acid_level = 1 + target.trap_type - RESIN_TRAP_ACID1
+
+	if(trap_acid_level >= acid_level)
+		to_chat(src, SPAN_XENONOTICE("В ловушке уже достаточно кислоты."))
+		return FALSE
+
+	var/acid_cost = ACID_COST_LEVEL_1
+	if(acid_level == 2)
+		acid_cost = ACID_COST_LEVEL_2
+	else if(acid_level == 3)
+		acid_cost = ACID_COST_LEVEL_3
+
+	if(!check_plasma(acid_cost))
+		to_chat(src, SPAN_XENOWARNING("Вам нужно больше плазмы, чтобы сделать это."))
+		return FALSE
+
+	to_chat(src, SPAN_XENONOTICE("Вы начинаете наполнять смоляную ловушку кислотой."))
+	xeno_attack_delay(src)
+	if(!do_after(src, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
+		return FALSE
+
+	if(target.trap_type >= RESIN_TRAP_ACID1)
+		trap_acid_level = 1 + target.trap_type - RESIN_TRAP_ACID1
+
+	if(trap_acid_level >= acid_level)
+		return FALSE
+
+	if(!check_plasma(acid_cost))
+		return FALSE
+
+	use_plasma(acid_cost)
+
+	target.cause_data = create_cause_data("resin acid trap", src)
+	target.setup_tripwires()
+	target.set_state(RESIN_TRAP_ACID1 + acid_level - 1)
+
+	playsound(target, 'sound/effects/refill.ogg', 25, 1)
+	visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] наполняет смоляную ловушку кислотой!"), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Вы наполняете смоляную ловушку кислотой!"), null, 5)
+	return TRUE
+
+#undef ACID_COST_LEVEL_1
+#undef ACID_COST_LEVEL_2
+#undef ACID_COST_LEVEL_3
+
+/datum/action/xeno_action/onclick/emit_pheromones/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
+	xeno.emit_pheromones(emit_cost = plasma_cost)
+	return ..()
+
+/mob/living/carbon/xenomorph/proc/emit_pheromones(pheromone, emit_cost = 30)
+	if(!check_state(TRUE))
+		return
+	if(!(locate(/datum/action/xeno_action/onclick/emit_pheromones) in actions))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем выделять феромоны!"))
+		return
+	// BANDAMARINES EDIT START
+	var/static/list/phero_selections_en_to_ru = list("Help" = "Подсказка", "Frenzy" = "Безумие", "Warding" = "Защита", "Recovery" = "Восстанов.")
+	var/static/list/phero_selections_ru_to_en = list()
+	if(!length(phero_selections_ru_to_en))
+		for(var/key in phero_selections_en_to_ru)
+			phero_selections_ru_to_en[phero_selections_en_to_ru[key]] = key
+	// BANDAMARINES EDIT END
+	if(!pheromone)
+		if(current_aura)
+			current_aura = null
+			visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] перестаёт выделять феромоны."), // SS220 EDIT ADDICTION
+			SPAN_XENOWARNING("Мы перестаём выделять феромоны."), null, 5)
+		else
+			if(!check_plasma(emit_cost))
+				to_chat(src, SPAN_XENOWARNING("У нас недостаточно плазмы!"))
+				return
+			if(client.prefs && client.prefs.no_radials_preference)
+				pheromone = tgui_input_list(src, "Выберите какие феромоны вы хотите выделять", "Феромоны", caste.aura_allowed + "help" + "cancel", theme="hive_status")
+				if(pheromone == "help")
+					to_chat(src, SPAN_NOTICE("<br>Феромоны дают усиления всем ксеноморфам в большом радиусе за счёт запасов плазмы, а именно:<br><b>Безумие (красный)</b> - повышает скорость бега, урон и шанс сбить маски охотников за головами.<br><b>Защита (зелёный)</b> - в критическом состоянии повышает порог отрицательного здоровья и замедляет кровотечение вне травы улья.<br><b>Восстановление (синий)</b> - повышает регенерацию плазмы и здоровья.<br>"))
+					return
+				if(!pheromone || pheromone == "cancel" || current_aura || !check_state(1)) //If they are stacking windows, disable all input
+					return
+			else
+				//BANDAMARINES EDIT START
+				var/static/list/phero_selections = list("Help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "Frenzy" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "Warding" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "Recovery" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
+				var/static/list/phero_selections_ru = list()
+				if(!length(phero_selections_ru))
+					for(var/key in phero_selections)
+						phero_selections_ru[phero_selections_en_to_ru[key] || key] = phero_selections[key]
+				var/pheromone_ru = show_radial_menu(src, src.client?.get_eye(), phero_selections_ru)
+				pheromone = lowertext(phero_selections_ru_to_en[pheromone_ru] || pheromone_ru)
+				// BANDAMARINES EDIT END
+				if(pheromone == "help")
+					to_chat(src, SPAN_XENONOTICE("<br>Феромоны дают усиления всем ксеноморфам в большом радиусе за счёт запасов плазмы, а именно:<br><b>Безумие (красный)</b> - повышает скорость бега, урон и шанс сбить маски охотников за головами.<br><b>Защита (зелёный)</b> - в критическом состоянии повышает порог отрицательного здоровья и замедляет кровотечение вне травы улья.<br><b>Восстановление (синий)</b> - повышает регенерацию плазмы и здоровья.<br>"))
+					return
+				if(!pheromone || current_aura || !check_state(1)) //If they are stacking windows, disable all input
+					return
+	if(pheromone)
+		if(pheromone == current_aura)
+			to_chat(src, SPAN_XENOWARNING("Мы уже выделяем феромоны '[lowertext(phero_selections_en_to_ru[capitalize(pheromone)]) || pheromone]'!")) // SS220 EDIT ADDICTION
+			return
+		if(!check_plasma(emit_cost))
+			to_chat(src, SPAN_XENOWARNING("У нас недостаточно плазмы!"))
+			return
+		use_plasma(emit_cost)
+		current_aura = pheromone
+		visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] начинает выделять феромоны '[lowertext(phero_selections_en_to_ru[capitalize(pheromone)]) || pheromone]'."), // SS220 EDIT ADDICTION
+		SPAN_XENOWARNING("Мы начинаем выделять феромоны '[lowertext(phero_selections_en_to_ru[capitalize(pheromone)]) || pheromone]'."), null, 5) // SS220 EDIT ADDICTION
+		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
+		playsound(loc, "alien_drool", 25)
+
+	if(isqueen(src) && hive && length(hive.xeno_leader_list) && anchored)
+		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
+			L.handle_xeno_leader_pheromones()
+
+/datum/action/xeno_action/activable/pounce/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(!action_cooldown_check())
+		return
+
+	if(!target)
+		return
+
+	while(istype(target, /turf/open_space))
+		target = SSmapping.get_turf_below(target)
+
+	if(target.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
+		return
+
+	if(!isturf(xeno.loc))
+		to_chat(xeno, SPAN_XENOWARNING("Мы не можем осуществить [action_text] отсюда!")) // SS220 EDIT ADDICTION
+		return
+
+	if(!xeno.check_state())
+		return
+
+	if(xeno.legcuffed)
+		to_chat(xeno, SPAN_XENODANGER("Мы не можем [action_text] с этой штукой на ноге!")) // SS220 EDIT ADDICTION
+		return
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	if(xeno.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
+		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(xeno, /datum/action/xeno_action/onclick/xenohide)
+		if(hide)
+			hide.post_attack()
+
+	if(isravager(xeno))
+		xeno.emote("roar")
+
+	if (!tracks_target)
+		target = get_turf(target)
+
+	//everyone gets (extra) timer to pounce up
+	if(target.z != xeno.z)
+		var/maximum_z = max(target.z, xeno.z)
+		var/list/turf/path = get_line(locate(xeno.x, xeno.y, maximum_z), locate(target.x, target.y, maximum_z))
+		for(var/turf/turf_in_path in path)
+			while(istype(turf_in_path, /turf/open_space))
+				turf_in_path = SSmapping.get_turf_below(turf_in_path)
+
+			if(turf_in_path.density && turf_in_path.turf_flags & TURF_HULL)
+				to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
+				return
+
+			for(var/obj/structure/cur_obj in turf_in_path.contents)
+				if(cur_obj.density && cur_obj.unslashable && cur_obj.unacidable)
+					to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
+					return
+
+		if (!do_after(xeno, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			return
+
+	if(target.z != xeno.z && xeno.mob_size >= MOB_SIZE_BIG)
+		if (!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			return
+
+	apply_cooldown()
+
+	if (windup)
+		xeno.set_face_dir(get_cardinal_dir(xeno, target))
+		if (!windup_interruptable)
+			ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+			xeno.anchored = TRUE
+		pre_windup_effects()
+
+		if (!do_after(xeno, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			to_chat(xeno, SPAN_XENODANGER("Мы отменяем [action_text]!")) // SS220 EDIT ADDICTION
+			if (!windup_interruptable)
+				REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+				xeno.anchored = FALSE
+			post_windup_effects(interrupted = TRUE)
+			return
+
+		if (!windup_interruptable)
+			REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+			xeno.anchored = FALSE
+		post_windup_effects()
+
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] в [target]!"), SPAN_XENOWARNING("Мы [action_text] в [target]!")) // SS220 EDIT ADDICTION
+
+	pre_pounce_effects()
+
+	xeno.pounce_distance = get_dist(xeno, target)
+	if(xeno.z != target.z)
+		xeno.pounce_distance += 2
+	xeno.throw_atom(target, distance, throw_speed, xeno, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
+	xeno.update_icons()
+
+	additional_effects_always()
+	..()
+
+	return TRUE
+
+// Massive, customizable spray_acid
+/datum/action/xeno_action/activable/spray_acid/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/X = owner
+
+	if(!action_cooldown_check())
+		return
+
+	if(!A)
+		return
+
+	if(A.layer >= FLY_LAYER)
+		return
+
+	if(!isturf(X.loc))
+		to_chat(X, SPAN_XENOWARNING("Мы не можем осуществить [action_text] отсюда!")) // SS220 EDIT ADDICTION
+		return
+
+	if(!X.check_state() || X.action_busy)
+		return
+
+	if (activation_delay)
+		if(!do_after(X, activation_delay_length, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			to_chat(X, SPAN_XENOWARNING("Мы отменяем кислотное распыление."))
+			end_cooldown()
+			return
+
+	if (!action_cooldown_check())
+		return
+
+	apply_cooldown()
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	playsound(get_turf(X), 'sound/effects/refill.ogg', 25, 1)
+	X.visible_message(SPAN_XENOWARNING("[X] извергает поток кислоты!"), SPAN_XENOWARNING("Мы извергаем поток кислоты!"), null, 5) // SS220 EDIT ADDICTION
+
+	apply_cooldown()
+
+	// Build our list of target turfs based on
+	if (spray_type == ACID_SPRAY_LINE)
+		X.do_acid_spray_line(get_line(X, A, include_start_atom = FALSE), spray_effect_type, spray_distance)
+
+	else if (spray_type == ACID_SPRAY_CONE)
+		X.do_acid_spray_cone(get_turf(A), spray_effect_type, spray_distance)
+
+	return ..()
+
+/datum/action/xeno_action/onclick/xenohide/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state(TRUE))
+		return
+	if(!action_cooldown_check())
+		return
+	if(xeno.action_busy)
+		return
+	if(xeno.layer != XENO_HIDING_LAYER)
+		xeno.layer = XENO_HIDING_LAYER
+		to_chat(xeno, SPAN_NOTICE("We are now hiding."))
+		button.icon_state = "template_active"
+		RegisterSignal(xeno, COMSIG_MOB_STATCHANGE, PROC_REF(unhide_on_stat))
+	else
+		xeno.layer = initial(xeno.layer)
+		to_chat(xeno, SPAN_NOTICE("We have stopped hiding."))
+		button.icon_state = "template_xeno"
+		UnregisterSignal(xeno, COMSIG_MOB_STATCHANGE)
+	xeno.update_wounds()
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/xenohide/proc/unhide_on_stat(mob/living/carbon/xenomorph/source, new_stat, old_stat)
+	SIGNAL_HANDLER
+	if(!QDELETED(source) && (new_stat >= UNCONSCIOUS && old_stat <= UNCONSCIOUS))
+		post_attack()
+
+/datum/action/xeno_action/onclick/place_trap/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state())
+		return
+
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
+		return
+
+	var/turf/turf = get_turf(xeno)
+	if(!istype(turf))
+		to_chat(xeno, SPAN_XENOWARNING("Мы не можем сделать это здесь."))
+		return
+
+	var/area/area = turf.loc
+	if(!area?.is_resin_allowed)
+		if(!area || area.flags_area & AREA_UNWEEDABLE)
+			to_chat(xeno, SPAN_XENOWARNING("We sense this is not a suitable area for creating a resin hole."))
+			return
+		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		return
+	if(istype(area,/area/shuttle/drop1/lz1) || istype(area,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
+		to_chat(xeno, SPAN_WARNING("We sense this is not a suitable area for creating a resin hole."))
+		return
+
+	var/obj/effect/alien/weeds/alien_weeds = turf.check_xeno_trap_placement(xeno)
+	if(!alien_weeds)
+		return
+
+	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
+		to_chat(xeno, SPAN_NOTICE("We start uprooting the node so we can put the resin hole in its place..."))
+		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_ALL))
+			return
+		if(!turf.check_xeno_trap_placement(xeno))
+			return
+		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(turf)
+		the_replacer.hivenumber = xeno.hivenumber
+		the_replacer.linked_hive = xeno.hive
+		set_hive_data(the_replacer, xeno.hivenumber)
+		qdel(alien_weeds)
+
+	if(!xeno.check_plasma(plasma_cost))
+		return
+
+	xeno.use_plasma(plasma_cost)
+	playsound(xeno.loc, "alien_resin_build", 25)
+	new /obj/effect/alien/resin/trap(turf, xeno)
+	to_chat(xeno, SPAN_XENONOTICE("Мы создаём смоляную ловушку на траве, попросите сестру заполнить её кислотой."))
+	return ..()
+
+/turf/proc/check_xeno_trap_placement(mob/living/carbon/xenomorph/xeno)
+	if(is_weedable < FULLY_WEEDABLE || !can_xeno_build(src))
+		to_chat(xeno, SPAN_XENOWARNING("Мы не можем сделать это здесь."))
+		return FALSE
+
+	var/obj/effect/alien/weeds/alien_weeds = locate() in src
+	if(!alien_weeds)
+		to_chat(xeno, SPAN_XENOWARNING("Мы можем строить только на траве!"))
+		return FALSE
+
+	if(alien_weeds.linked_hive.hivenumber != xeno.hivenumber)
+		to_chat(xeno, SPAN_XENOWARNING("Эта трава не принадлежит нашему улью!"))
+		return FALSE
+
+	// This snowflake check exists because stairs specifically are indestructable, tile-covering, and cannot be moved, which allows resin holes to be
+	// planted under them without any possible counterplay. In the future if resin holes stop being able to be hidden under objects, remove this check.
+	if(locate(/obj/structure) in src)
+		if(locate(/obj/structure/stairs) in src)
+			to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку на лестнице!"))
+			return FALSE
+
+		if(locate(/obj/structure/monorail) in src)
+			to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку на рельсе!"))
+			return FALSE
+
+		if(locate(/obj/structure/machinery/conveyor) in src)
+			to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку на конвейере!"))
+			return FALSE
+
+		if(locate(/obj/structure/machinery/colony_floodlight) in src)
+			to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку на лампе!"))
+			return FALSE
+
+		if(locate(/obj/structure/flora/jungle/vines) in src)
+			to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку под лозами!"))
+			return FALSE
+
+	if(!xeno.check_alien_construction(src, check_doors = TRUE))
+		return FALSE
+
+	if(locate(/obj/effect/alien/resin/trap) in orange(1, src)) // obj/effect/alien/resin presence is checked on turf by check_alien_construction, so we just check orange.
+		to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку слишком близко к другой!"))
+		return FALSE
+
+	if(locate(/obj/effect/alien/resin/fruit) in orange(1, src))
+		to_chat(xeno, SPAN_XENOWARNING("Это слишком близко к плоду!"))
+		return FALSE
+
+	for(var/mob/living/body in src)
+		if(body.stat == DEAD)
+			to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку под телом!"))
+			return FALSE
+
+	return alien_weeds
+
+/datum/action/xeno_action/activable/place_construction/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state())
+		return FALSE
+
+	if(isstorage(target.loc) || xeno.contains(target) || istype(target, /atom/movable/screen))
+		return FALSE
+
+	if(!xeno.hive)
+		return FALSE
+
+	if(SSticker?.mode?.hardcore)
+		to_chat(xeno, SPAN_XENOWARNING("The hive is too inexperienced to design constructions."))
+		return FALSE
+
+	//Make sure construction is unrestricted
+	if(IS_NORMAL_XENO(xeno))
+		if(!HAS_FLAG(xeno.hive.hive_flags, XENO_CONSTRUCTION_NORMAL))
+			to_chat(xeno, SPAN_WARNING("Construction by normal sisters is currently restricted!"))
+			return FALSE
+	else if(IS_XENO_LEADER(xeno))
+		if(!HAS_FLAG(xeno.hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
+			to_chat(xeno, SPAN_WARNING("Construction by leader sisters is currently restricted!"))
+			return FALSE
+	else if(isqueen(xeno))
+		if(!HAS_FLAG(xeno.hive.hive_flags, XENO_CONSTRUCTION_QUEEN))
+			to_chat(xeno, SPAN_WARNING("We are currently not allowed to designate construction!"))
+			return FALSE
+	else
+		to_chat(xeno, SPAN_DANGER("Something went wrong!"))
+		CRASH("Something went wrong determining hive_pos during place_construction!")
+
+	var/turf/target_turf = get_turf(target)
+
+	var/area/target_area = get_area(target_turf)
+	if(isnull(target_area) || !(target_area.is_resin_allowed))
+		if(!target_area || target_area.flags_area & AREA_UNWEEDABLE)
+			to_chat(xeno, SPAN_XENOWARNING("Эта область не подходит для размещения улья!"))
+			return
+		to_chat(xeno, SPAN_XENOWARNING("Ещё слишком рано распространять улей так далеко."))
+		return FALSE
+
+	if(target_turf.z != xeno.z)
+		to_chat(xeno, SPAN_XENOWARNING("This area is too far away to affect!"))
+		return FALSE
+
+	if(SSinterior.in_interior(xeno))
+		to_chat(xeno, SPAN_XENOWARNING("It's too tight in here to build."))
+		return FALSE
+
+	if(!xeno.check_alien_construction(target_turf))
+		return FALSE
+
+	var/choice = XENO_STRUCTURE_CORE
+	if(xeno.hive.hivecore_cooldown)
+		to_chat(xeno, SPAN_WARNING("The weeds are still recovering from the death of the hive core, wait until the weeds have recovered!"))
+		return FALSE
+	if(xeno.hive.has_structure(XENO_STRUCTURE_CORE) || !xeno.hive.can_build_structure(XENO_STRUCTURE_CORE))
+		var/static/list/hive_structure_types_en_to_ru = list()
+		for(var/structure_name in xeno.hive.hive_structure_types)
+			if(hive_structure_types_en_to_ru[structure_name])
+				continue
+			hive_structure_types_en_to_ru[structure_name] = capitalize(declent_ru_initial(structure_name, NOMINATIVE, structure_name))
+			hive_structure_types_en_to_ru.Remove("help")
+			hive_structure_types_en_to_ru["help"] = "Подсказка"
+		choice = tgui_input_list(xeno, "Выберите структуру для постройки", "Строительство структур", hive_structure_types_en_to_ru, theme = "hive_status", associative_list = TRUE)
+		if(!choice)
+			return
+		if(choice == "help")
+			var/message = "Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of plasma to construct the following:<br>"
+			for(var/structure_name in xeno.hive.hive_structure_types)
+				var/datum/construction_template/xenomorph/structure_type = xeno.hive.hive_structure_types[structure_name]
+				message += "<b>[capitalize(declent_ru_initial(structure_name, NOMINATIVE, structure_name))]</b> - [initial(structure_type.description)]<br>"
+			to_chat(xeno, SPAN_NOTICE(message))
+			return TRUE
+	if(!xeno.check_state(TRUE) || !xeno.check_plasma(400))
+		return FALSE
+	var/structure_type = xeno.hive.hive_structure_types[choice]
+	var/datum/construction_template/xenomorph/structure_template = new structure_type()
+
+	if(!spacecheck(xeno, target_turf, structure_template))
+		// spacecheck already cleans up the template
+		return FALSE
+
+	if((choice == XENO_STRUCTURE_EGGMORPH) && locate(/obj/structure/flora/grass/tallgrass) in target_turf)
+		to_chat(xeno, SPAN_WARNING("The tallgrass is preventing us from building the egg morpher!"))
+		qdel(structure_template)
+		return FALSE
+
+	if(!do_after(xeno, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		return FALSE
+
+	if(!spacecheck(xeno, target_turf, structure_template)) //doublechecking
+		// spacecheck already cleans up the template
+		return FALSE
+
+	if(choice == XENO_STRUCTURE_CORE && target_area.unoviable_timer)
+		to_chat(xeno, SPAN_WARNING("This area does not feel right for you to build this in."))
+		qdel(structure_template)
+		return FALSE
+
+	if((choice == XENO_STRUCTURE_CORE) && isqueen(xeno) && xeno.hive.has_structure(XENO_STRUCTURE_CORE))
+		if(xeno.hive.hive_location.hardcore || world.time > XENOMORPH_PRE_SETUP_CUTOFF)
+			to_chat(xeno, SPAN_WARNING("We can't rebuild this structure!"))
+			qdel(structure_template)
+			return FALSE
+		if(alert(xeno, "Are we sure that we want to move the hive and destroy the old hive core?", , "Yes", "No") != "Yes")
+			qdel(structure_template)
+			return FALSE
+		qdel(xeno.hive.hive_location)
+	else if(!xeno.hive.can_build_structure(choice))
+		to_chat(xeno, SPAN_WARNING("We can't build any more [choice]s for the hive."))
+		qdel(structure_template)
+		return FALSE
+
+	if(QDELETED(target_turf))
+		to_chat(xeno, SPAN_WARNING("We cannot build here!"))
+		qdel(structure_template)
+		return FALSE
+
+	var/queen_on_zlevel = !xeno.hive.living_xeno_queen || SSmapping.same_z_map(xeno.hive.living_xeno_queen.z, target_turf.z)
+	if(!queen_on_zlevel)
+		to_chat(xeno, SPAN_WARNING("Our link to the Queen is too weak here. She is on another world."))
+		qdel(structure_template)
+		return FALSE
+
+	if(SSinterior.in_interior(xeno))
+		to_chat(xeno, SPAN_WARNING("It's too tight in here to build."))
+		qdel(structure_template)
+		return FALSE
+
+	if(target_turf.is_weedable < FULLY_WEEDABLE)
+		to_chat(xeno, SPAN_WARNING("\The [target_turf] can't support a [structure_template.name]!"))
+		qdel(structure_template)
+		return FALSE
+
+	var/obj/effect/alien/weeds/weeds = locate() in target_turf
+	if(weeds?.block_structures >= BLOCK_SPECIAL_STRUCTURES)
+		to_chat(xeno, SPAN_WARNING("\The [weeds] block the construction of any special structures!"))
+		qdel(structure_template)
+		return FALSE
+
+	xeno.use_plasma(400)
+	xeno.place_construction(target_turf, structure_template)
+
+	return ..()
+
+// XSS Spacecheck
+
+/datum/action/xeno_action/activable/place_construction/proc/spacecheck(mob/living/carbon/xenomorph/X, turf/T, datum/construction_template/xenomorph/tem)
+	if(tem.block_range)
+		for(var/turf/TA in range(tem.block_range, T))
+			if(!X.check_alien_construction(TA, FALSE, TRUE, ignore_nest = TRUE))
+				to_chat(X, SPAN_WARNING("We need more open space to build here."))
+				qdel(tem)
+				return FALSE
+		if(!X.check_alien_construction(T, ignore_nest = TRUE))
+			to_chat(X, SPAN_WARNING("We need more open space to build here."))
+			qdel(tem)
+			return FALSE
+		var/obj/effect/alien/weeds/alien_weeds = locate() in T
+		if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE || alien_weeds.linked_hive.hivenumber != X.hivenumber)
+			to_chat(X, SPAN_WARNING("We can only shape on [lowertext(GLOB.hive_datum[X.hivenumber].prefix)]hive weeds. We must find a hive node or core before we start building!"))
+			qdel(tem)
+			return FALSE
+		if(T.density)
+			qdel(tem)
+			to_chat(X, SPAN_WARNING("We need empty space to build this."))
+			return FALSE
+	return TRUE
+
+/datum/action/xeno_action/activable/xeno_spit/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/spit_target = aim_turf ? get_turf(atom) : atom
+	if(!xeno.check_state())
+		return
+
+	if(spitting)
+		to_chat(src, SPAN_WARNING("We are already preparing a spit!"))
+		return
+
+	if(!isturf(xeno.loc))
+		to_chat(src, SPAN_WARNING("We can't spit from here!"))
+		return
+
+	if(!action_cooldown_check())
+		to_chat(src, SPAN_WARNING("We must wait for our spit glands to refill."))
+		return
+
+	var/turf/current_turf = get_turf(xeno)
+
+	if(!current_turf)
+		return
+
+	if (!check_plasma_owner())
+		return
+
+	if(xeno.ammo.spit_windup)
+		spitting = TRUE
+		if(xeno.ammo.pre_spit_warn)
+			playsound(xeno.loc,"alien_drool", 55, 1)
+		to_chat(xeno, SPAN_WARNING("Мы начинаем готовить большой плевок!"))
+		xeno.visible_message(SPAN_WARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] начинает готовить большой плевок!"),
+		SPAN_WARNING("Мы начинаем выплевывать [xeno.ammo.name]!"))
+		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			to_chat(xeno, SPAN_XENODANGER("Мы отменяем кислотный плевок."))
+			spitting = FALSE
+			return
+	plasma_cost = xeno.ammo.spit_cost
+
+	if(!check_and_use_plasma_owner())
+		spitting = FALSE
+		return
+
+	xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] плюёт в [atom.declent_ru(ACCUSATIVE)]!"), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Мы плюём [xeno.ammo.name] в [atom.declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
+	playsound(xeno.loc, sound_to_play, 25, 1)
+
+	var/obj/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
+	proj.generate_bullet(xeno.ammo)
+	proj.permutated += xeno
+	proj.def_zone = xeno.get_limbzone_target()
+	proj.fire_at(spit_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
+
+	spitting = FALSE
+
+	SEND_SIGNAL(xeno, COMSIG_XENO_POST_SPIT)
+
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/activable/bombard/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if (!istype(xeno) || !xeno.check_state() || !action_cooldown_check() || xeno.action_busy)
+		return FALSE
+
+	var/turf/turf = get_turf(atom)
+
+	if(isnull(turf) || istype(turf, /turf/closed) || !turf.can_bombard(owner))
+		to_chat(xeno, SPAN_XENODANGER("Мы не можем осуществить кислотный плевок в эту область!"))
+		return FALSE
+
+	if (!check_plasma_owner())
+		return FALSE
+
+	if(turf.z != xeno.z)
+		to_chat(xeno, SPAN_WARNING("That target is too far away!"))
+		return FALSE
+
+	var/atom/bombard_source = get_bombard_source()
+	if (!xeno.can_bombard_turf(turf, range, bombard_source))
+		return FALSE
+
+	xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] зарывается на месте!"), SPAN_XENODANGER("Мы зарываемся на месте!")) // SS220 EDIT ADDICTION
+	if (!do_after(xeno, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
+		to_chat(xeno, SPAN_XENODANGER("Мы отменяем дальнобойный плевок."))
+		return FALSE
+
+	if (!xeno.can_bombard_turf(turf, range, bombard_source)) //Second check in case something changed during the do_after.
+		return FALSE
+
+	if (!check_and_use_plasma_owner())
+		return FALSE
+
+	apply_cooldown()
+
+	xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] запускает огромный шар кислоты в [atom.declent_ru(ACCUSATIVE)]!"), SPAN_XENODANGER("Вы запускаете огромный шар кислоты в [atom.declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
+	playsound(get_turf(xeno), 'sound/effects/blobattack.ogg', 25, 1)
+
+	recursive_spread(turf, effect_range, effect_range)
+
+	return ..()
+
+/datum/action/xeno_action/activable/bombard/proc/recursive_spread(turf/T, dist_left, orig_depth)
+	if(!istype(T))
+		return
+	else if(dist_left == 0)
+		return
+	else if(istype(T, /turf/closed) || istype(T, /turf/open/space))
+		return
+	else if(!T.can_bombard(owner))
+		return
+
+	addtimer(CALLBACK(src, PROC_REF(new_effect), T, owner), 2*(orig_depth - dist_left))
+
+	for(var/mob/living/L in T)
+		to_chat(L, SPAN_XENOHIGHDANGER("Вы видите огромный шар кислоты, летящий в вашу сторону!"))
+
+	for(var/dirn in GLOB.alldirs)
+		recursive_spread(get_step(T, dirn), dist_left - 1, orig_depth)
+
+
+/datum/action/xeno_action/activable/bombard/proc/new_effect(turf/T, mob/living/carbon/xenomorph/X)
+	if(!istype(T))
+		return
+
+	for(var/obj/effect/xenomorph/boiler_bombard/BB in T)
+		return
+
+	new effect_type(T, X)
+
+/datum/action/xeno_action/activable/bombard/proc/get_bombard_source()
+	return owner
+
+/turf/proc/can_bombard(mob/bombarder)
+	if(!can_be_dissolved() && density)
+		return FALSE
+	for(var/atom/A in src)
+		if(istype(A, /obj/structure/machinery))
+			continue // Machinery shouldn't block boiler gas (e.g. computers)
+		if(ismob(A))
+			continue // Mobs shouldn't block boiler gas
+
+		if(A && A.unacidable && A.density && !(A.flags_atom & ON_BORDER))
+			return FALSE
+
+	return TRUE
+
+/mob/living/carbon/xenomorph/proc/can_bombard_turf(atom/target, range = 5, atom/bombard_source) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
+	if(!bombard_source || !isturf(bombard_source.loc))
+		to_chat(src, SPAN_XENODANGER("Эта область заблокирована!"))
+		return FALSE
+	var/turf/current = bombard_source.loc
+	var/turf/target_turf = get_turf(target)
+
+	if (get_dist_sqrd(current, target_turf) > (range*range))
+		to_chat(src, SPAN_XENODANGER("Эта область слишком далеко!"))
+		return
+
+	. = TRUE
+	while(current != target_turf)
+		if(!current)
+			. = FALSE
+		if(!current.can_bombard(src))
+			. = FALSE
+		if(current.opacity)
+			. = FALSE
+		if(.)
+			for(var/atom/A in current)
+				if(A.opacity)
+					. = FALSE
+					break
+		if(!.)
+			to_chat(src, SPAN_XENODANGER("Эта область заблокирована!"))
+			return
+
+		current = get_step_towards(current, target_turf)
+
+/datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
+	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
+	if(HAS_TRAIT(targetted_atom, TRAIT_HAULED))
+		return
+
+	if(HAS_TRAIT(stabbing_xeno, TRAIT_ABILITY_BURROWED) || stabbing_xeno.is_ventcrawling)
+		to_chat(stabbing_xeno, SPAN_XENOWARNING("Мы должны быть над землёй, чтобы сделать это."))
+		return
+
+	if(!stabbing_xeno.check_state() || stabbing_xeno.cannot_slash)
+		return FALSE
+
+	var/pre_result = pre_ability_act(stabbing_xeno, targetted_atom)
+
+	if(pre_result)
+		return FALSE
+
+	if(!action_cooldown_check())
+		return FALSE
+
+	if (world.time <= stabbing_xeno.next_move)
+		return FALSE
+
+	if(stabbing_xeno.z != targetted_atom.z)
+		var/turf/xeno_turf = get_turf(stabbing_xeno)
+		var/turf/xeno_turf_above = SSmapping.get_turf_above(xeno_turf)
+		var/turf/xeno_turf_below = SSmapping.get_turf_below(xeno_turf)
+		if(xeno_turf_above?.z != targetted_atom.z && xeno_turf_below?.z != targetted_atom.z)
+			return
+
+	var/distance = get_dist(stabbing_xeno, targetted_atom)
+	if(stabbing_xeno.z != targetted_atom.z)
+		distance++
+	if(distance > stab_range)
+		return FALSE
+
+	var/list/turf/path = get_line(stabbing_xeno, targetted_atom, include_start_atom = FALSE)
+	for(var/turf/path_turf as anything in path)
+		if(path_turf.density)
+			to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
+			return FALSE
+		for(var/obj/path_contents in path_turf.contents)
+			if(path_contents != targetted_atom && path_contents.density && !path_contents.throwpass)
+				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
+				return FALSE
+
+		var/atom/barrier = path_turf.handle_barriers(stabbing_xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
+		if(barrier != path_turf)
+			var/tail_stab_cooldown_multiplier = barrier.handle_tail_stab(stabbing_xeno, blunt_stab)
+			if(!tail_stab_cooldown_multiplier)
+				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
+			else
+				apply_cooldown(cooldown_modifier = tail_stab_cooldown_multiplier)
+				xeno_attack_delay(stabbing_xeno)
+			return FALSE
+
+	var/tail_stab_cooldown_multiplier = targetted_atom.handle_tail_stab(stabbing_xeno, blunt_stab)
+	if(tail_stab_cooldown_multiplier)
+		stabbing_xeno.animation_attack_on(targetted_atom)
+		apply_cooldown(cooldown_modifier = tail_stab_cooldown_multiplier)
+		xeno_attack_delay(stabbing_xeno)
+		return ..()
+
+	if(!isxeno_human(targetted_atom))
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("[capitalize(stabbing_xeno.declent_ru(NOMINATIVE))] размахивает хвостом в воздухе!"), SPAN_XENOWARNING("Мы размахиваем хвостом в воздухе!")) // SS220 EDIT ADDICTION
+		apply_cooldown(cooldown_modifier = 0.1)
+		xeno_attack_delay(stabbing_xeno)
+		playsound(stabbing_xeno, "alien_tail_swipe", 50, TRUE)
+		return FALSE
+
+	if(stabbing_xeno.can_not_harm(targetted_atom))
+		return FALSE
+
+	var/mob/living/carbon/target = targetted_atom
+
+	if(target.stat == DEAD || HAS_TRAIT(target, TRAIT_NESTED))
+		return FALSE
+
+	var/obj/limb/limb = target.get_limb(check_zone(stabbing_xeno.zone_selected))
+	if (ishuman(target) && (!limb || (limb.status & LIMB_DESTROYED)))
+		to_chat(stabbing_xeno, (SPAN_WARNING("Какую [limb.declent_ru(ACCUSATIVE)]?")))
+		return FALSE
+
+	if(!check_and_use_plasma_owner())
+		return FALSE
+
+	var/result = ability_act(stabbing_xeno, target, limb)
+
+	apply_cooldown()
+	xeno_attack_delay(stabbing_xeno)
+	..()
+	return result
+
+/datum/action/xeno_action/activable/tail_stab/proc/pre_ability_act(mob/living/carbon/xenomorph/stabbing_xeno, atom/targetted_atom)
+	return
+
+/// This proc plays a tail stab 'animation' by changing the xenomorph's direction, and resets the xenomorph's direction after a short delay.
+/mob/living/carbon/xenomorph/proc/tail_stab_animation(target, blunt = FALSE)
+	// This is the direction the xenomorph is reset to afterwards.
+	var/last_dir = dir
+	/// Direction var to make the tail stab look cool and immersive.
+	var/stab_direction
+
+	if(blunt)
+		// The xeno smashes the target with their tail, moving it to the side and thus their direction as well.
+		stab_direction = turn(get_dir(src, target), pick(90, -90))
+	else
+		// The xeno flips around for a second to impale the target with their tail. These look awsome.
+		stab_direction = turn(get_dir(src, target), 180)
+
+	if(last_dir != stab_direction)
+		setDir(stab_direction)
+		addtimer(CALLBACK(src, PROC_REF(reset_direction), last_dir, dir), 0.5 SECONDS)
+
+/// Reset the xenomorph's direction after the tail stab 'animation', unless they've moved since then
+/mob/living/carbon/xenomorph/proc/reset_direction(last_dir, new_dir)
+	if(new_dir == dir)
+		setDir(last_dir)
+
+/datum/action/xeno_action/activable/tail_stab/proc/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb, apply_behavior_delagate = TRUE)
+
+	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
+
+	var/stab_overlay
+
+	if(blunt_stab)
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("[capitalize(stabbing_xeno.declent_ru(NOMINATIVE))] бьёт хвостом по [limb ? declent_ru_initial(limb.display_name, DATIVE, limb.display_name) : "груди"] [target.declent_ru(GENITIVE)], сильно повреждая её!"), // SS220 EDIT ADDICTION
+		SPAN_XENOWARNING("Мы бьём хвостом по [limb ? declent_ru_initial(limb.display_name, DATIVE, limb.display_name) : "груди"] [target.declent_ru(GENITIVE)], сильно повреждая её!")) // SS220 EDIT ADDICTION
+		if(prob(1))
+			playsound(target, 'sound/effects/comical_bonk.ogg', 50, TRUE)
+		else
+			playsound(target, "punch", 50, TRUE)
+		stab_overlay = "slam"
+	else
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("[capitalize(stabbing_xeno.declent_ru(NOMINATIVE))] пронзает [limb ? declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name) : "грудь"] [target.declent_ru(GENITIVE)] своим острым, как бритва, хвостом!"), // SS220 EDIT ADDICTION
+		SPAN_XENOWARNING("Мы пронзаем [limb ? declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name) : "грудь"] [target.declent_ru(GENITIVE)] своим острым, как бритва, хвостом!")) // SS220 EDIT ADDICTION
+		playsound(target, "alien_bite", 50, TRUE)
+		stab_overlay = "tail"
+	log_attack("[key_name(stabbing_xeno)] tailstabbed [key_name(target)] at [get_area_name(stabbing_xeno)]")
+	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was tailstabbed by [key_name(stabbing_xeno)]</font>")
+	stabbing_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>tailstabbed [key_name(target)]</font>")
+
+	stabbing_xeno.tail_stab_animation(target, blunt_stab)
+	stabbing_xeno.animation_attack_on(target)
+	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
+
+	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * TAILSTAB_MOB_DAMAGE_MULTIPLIER
+
+	if(stabbing_xeno.behavior_delegate && apply_behavior_delagate)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
+		damage = stabbing_xeno.behavior_delegate.melee_attack_modify_damage(damage, target)
+
+	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
+	if(stabbing_xeno.mob_size >= MOB_SIZE_BIG)
+		target.apply_effect(3, DAZE)
+	else if(stabbing_xeno.mob_size == MOB_SIZE_XENO)
+		target.apply_effect(1, DAZE)
+	shake_camera(target, 2, 1)
+
+	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
+	return target
+

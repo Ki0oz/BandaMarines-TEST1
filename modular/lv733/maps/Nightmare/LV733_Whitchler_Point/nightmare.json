@@ -1,0 +1,37 @@
+[
+	{
+		"type": "map_insert",
+		"landmark": "hvhupplz1",
+		"chance": 1.0,
+		"path": "standalone/landingzone_chance_upp_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhuscmlz2",
+		"chance": 1.0,
+		"path": "standalone/landingzone_chance_uscm_lz2.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "roaf_zone",
+		"chance": 1.0,
+		"path": "standalone/roaf_zone.dmm",
+		"when": { "lvevent": "roaf_zone" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "clfbar",
+		"chance": 1.0,
+		"path": "standalone/clfbar.dmm",
+		"when": { "lvevent": "clfbar" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "isrg_spawn",
+		"chance": 1.0,
+		"path": "standalone/isrg_spawn.dmm",
+		"when": { "lvevent": "isrg_spawn" }
+	}
+]

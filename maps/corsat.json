@@ -1,0 +1,53 @@
+{
+    "map_name": "CORSAT",
+    "map_path": "map_files/CORSAT",
+    "map_file": "Corsat.dmm",
+    "environment_traits": {
+        "Lockdown": true,
+        "COLD": true,
+        "InSpace": true
+    },
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/scientist/corsat",
+        "/datum/equipment_preset/survivor/scientist/corsat",
+        "/datum/equipment_preset/survivor/goon",
+        "/datum/equipment_preset/survivor/doctor/corsat",
+        "/datum/equipment_preset/survivor/security/corsat",
+        "/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/corsat",
+        "/datum/equipment_preset/survivor/engineer/corsat",
+        "/datum/equipment_preset/survivor/civilian"
+    ],
+    "defcon_triggers": [
+        3300,
+        2100,
+        1450,
+        580,
+        0.0
+    ],
+    "survivor_message": "Вы выжили после нарушения изоляции на корпоративной орбитальной исследовательской станции передовых технологий (КОИСПТ). Вы работали или жили на станции, и вам удавалось избегать нападений чужих... до текущего момента.",
+    "map_item_type": "/obj/item/map/corsat",
+    "announce_text": "С орбитальной исследовательской станции передовых технологий корпорации Вейланд-Ютани (КОИСПТ) поступил автоматический сигнал бедствия. Для расследования сложившейся ситуации был отправлен ###SHIPNAME###.",
+    "monkey_types": [
+        "yiren",
+        "farwa",
+        "monkey",
+        "neaera",
+        "stok"
+    ],
+    "traits": [{ "Ground": true }],
+    "nightmare_path": "maps/Nightmare/maps/CORSAT/",
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0,
+        "xeno_hive_delta": 0
+    },
+    "camouflage": "snow",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

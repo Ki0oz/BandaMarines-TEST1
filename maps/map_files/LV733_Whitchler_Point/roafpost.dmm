@@ -1,0 +1,1335 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"af" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/space)
+"aW" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"by" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0;
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/multi_tiles/west,
+/area/space)
+"bD" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	pixel_x = -4
+	},
+/obj/effect/landmark/survivor_spawner/twe/roaf/squad_leader,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"bP" = (
+/obj/item/ammo_casing/bullet{
+	layer = 3.1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"ck" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib6"
+	},
+/obj/item/prop/colony/used_flare,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"dg" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgibleg"
+	},
+/obj/effect/decal/cleanable/blood/xeno{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"dt" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner,
+/turf/open/hybrisa/street/cement3,
+/area/space)
+"dG" = (
+/obj/structure/window/framed/hybrisa/research/reinforced,
+/turf/open/floor/strata/multi_tiles/west,
+/area/space)
+"ej" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 11
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"eu" = (
+/turf/open/hybrisa/street/roadlines4,
+/area/space)
+"ew" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	pixel_x = -4
+	},
+/obj/item/stack/sheet/metal{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"gw" = (
+/turf/open/hybrisa/street/sidewalk/north,
+/area/space)
+"hh" = (
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/space)
+"ia" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -4
+	},
+/obj/item/device/flashlight/flare/on{
+	fuel_rate = 2.5
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"iA" = (
+/obj/structure/fence/slim/dark,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/space)
+"iK" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet{
+	layer = 3.1
+	},
+/obj/item/prop/colony/used_flare,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/space)
+"jo" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	pixel_x = -4
+	},
+/obj/effect/landmark/survivor_spawner/twe/roaf/engi,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"jH" = (
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 25
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/space)
+"jL" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/space)
+"jP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = 1
+	},
+/obj/structure/machinery/power/apc/fully_broken/no_cell/east,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/space)
+"ka" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal6";
+	pixel_y = -4;
+	pixel_x = -4
+	},
+/obj/effect/decal/hybrisa/road/corner,
+/obj/effect/decal/cleanable/blood/xeno{
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"kG" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/space)
+"lr" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/effect/spawner/random/gun/shotgun/lowchance,
+/turf/open/hybrisa/street/sidewalkcenter/east,
+/area/space)
+"lQ" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 8;
+	icon_state = "gib6";
+	layer = 4;
+	pixel_x = 12;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "csplatter1"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"mb" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"me" = (
+/obj/structure/machinery/big_computers/computerblack/computer3{
+	pixel_y = 19;
+	layer = 2.9;
+	icon_state = "blacksensor_comp3_off"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/space)
+"mB" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	pixel_y = 16;
+	layer = 6
+	},
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"mS" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/item/prop/alien/hugger,
+/turf/open/floor/hybrisa/metal/grated/west,
+/area/space)
+"nz" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/clothing/head/beret/lv733/roaf_boonie,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/space)
+"nC" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
+	pixel_y = 16;
+	layer = 4.2
+	},
+/turf/closed/wall/hybrisa/marhsalls,
+/area/space)
+"nZ" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	pixel_y = 16;
+	layer = 6
+	},
+/obj/effect/decal/hybrisa/road/road_edge{
+	pixel_x = -4
+	},
+/obj/item/ammo_magazine/rifle/l23{
+	current_rounds = 0
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"oj" = (
+/turf/closed/wall/hybrisa/marhsalls,
+/area/space)
+"ol" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5";
+	pixel_y = -14
+	},
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/space)
+"om" = (
+/turf/open/hybrisa/street/sidewalkcenter/north,
+/area/space)
+"oO" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5";
+	pixel_y = -14
+	},
+/obj/item/ammo_casing/bullet{
+	layer = 3.1
+	},
+/obj/effect/landmark/survivor_spawner/twe/roaf/signaller,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/space)
+"oZ" = (
+/turf/open/floor/prison/ramptop/east,
+/area/space)
+"pw" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib1"
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/space)
+"qo" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib3"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"qA" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2"
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/space)
+"rn" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/space)
+"rB" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5";
+	pixel_y = -14
+	},
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/space)
+"rQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/space)
+"st" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	pixel_x = -4
+	},
+/obj/effect/decal/cleanable/blood{
+	dir = 8;
+	icon_state = "gib6";
+	layer = 4;
+	pixel_x = 12;
+	pixel_y = 3
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"sD" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5";
+	pixel_y = -14
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/medicalleft,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/space)
+"sP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/tyrargo_mud_corner,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 6;
+	pixel_y = 19
+	},
+/turf/open/hybrisa/street/cement1,
+/area/space)
+"tC" = (
+/obj/item/prop/alien/hugger,
+/obj/item/stack/rods,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"tJ" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/lines5,
+/obj/effect/decal/hybrisa/road/lines5{
+	pixel_y = 5
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"ut" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/closed/wall/hybrisa/colony,
+/area/space)
+"uJ" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/weapon/gun/rifle/l23,
+/turf/open/hybrisa/street/sidewalkcenter/west,
+/area/space)
+"uQ" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	pixel_y = 16;
+	layer = 6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_3_1"
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/space)
+"uW" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/metal/wired,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/space)
+"vk" = (
+/obj/effect/landmark/survivor_spawner/twe/roaf,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"vO" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/space)
+"wb" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	pixel_x = -4
+	},
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_3_1"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"wA" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 4
+	},
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_3_1"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"wD" = (
+/obj/effect/decal/hybrisa/road/corner{
+	dir = 8
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"wV" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/hybrisa/metal/grated/west,
+/area/space)
+"yq" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/sign/poster/safety{
+	pixel_x = 5;
+	pixel_y = 32
+	},
+/obj/structure/sign/poster/kellandmining{
+	pixel_y = 34;
+	pixel_x = 9
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/space)
+"yv" = (
+/obj/structure/prop/hybrisa/misc/firehydrant{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/space)
+"yG" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -4
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"yH" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	pixel_y = 16;
+	layer = 6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet{
+	layer = 3.1
+	},
+/obj/item/ammo_box/magazine/l23/empty,
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/space)
+"zf" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/item/tool/warning_cone{
+	pixel_y = -2;
+	pixel_x = -18
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"zg" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5";
+	pixel_y = -14
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9"
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = -15;
+	pixel_x = -1
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/space)
+"zA" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 4
+	},
+/obj/effect/decal/cleanable/blood/xeno{
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/obj/item/stack/rods,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Aj" = (
+/obj/structure/cargo_container/hybrisa/containersextended/medicalright,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/space)
+"Av" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	pixel_x = -4
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/blood/xeno{
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/obj/item/ammo_casing/bullet{
+	layer = 3.1
+	},
+/obj/item/device/flashlight/flare/on{
+	fuel_rate = 2.5
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"AC" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_3_1"
+	},
+/obj/item/ammo_magazine/rifle/l23{
+	current_rounds = 0
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/space)
+"AF" = (
+/obj/item/ammo_magazine/rifle/l23{
+	current_rounds = 0
+	},
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/space)
+"Bq" = (
+/turf/open/hybrisa/street/sidewalk/south,
+/area/space)
+"BF" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/space)
+"Ct" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -4
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Cv" = (
+/obj/structure/fence/slim/dark,
+/obj/structure/fence/slim/dark,
+/obj/structure/fence/slim/dark,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/space)
+"CH" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_y = 12
+	},
+/obj/item/clothing/gloves/marine/veteran/royal_marine/lv733/hands_roaf,
+/turf/open/hybrisa/street/sidewalkcenter/west,
+/area/space)
+"Dk" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	pixel_x = -4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Dl" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/guns/merc{
+	icon_state = "case_double";
+	name = "supply crate"
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/space)
+"Dr" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner,
+/obj/effect/decal/cleanable/blood/xeno{
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/hybrisa/street/cement1,
+/area/space)
+"Ei" = (
+/turf/open/hybrisa/street/cement1,
+/area/space)
+"Er" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal4";
+	pixel_y = 10
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal5"
+	},
+/obj/item/ammo_magazine/rifle/l23{
+	current_rounds = 0
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"EA" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 11
+	},
+/obj/structure/sign/banners/twe_worn{
+	pixel_y = 28
+	},
+/obj/item/ammo_box/magazine/l23/empty,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Fl" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/hybrisa/street/cement1,
+/area/space)
+"Fn" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal5";
+	pixel_y = -4;
+	pixel_x = 4
+	},
+/obj/effect/decal/hybrisa/road/corner{
+	dir = 1
+	},
+/obj/structure/barricade/plasteel/wired{
+	density = 1;
+	closed = 0
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"FX" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal8";
+	pixel_y = 6;
+	pixel_x = 4
+	},
+/obj/effect/decal/hybrisa/road/corner{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_10_1"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"FY" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/hybrisa/street/cement3,
+/area/space)
+"Gb" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/space)
+"Hu" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 11
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"HZ" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Ih" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 6;
+	pixel_y = 19
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 4
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/space)
+"Ij" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Iz" = (
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/space)
+"IX" = (
+/obj/item/stack/rods,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Jj" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/hybrisa/street/sidewalkcenter/east,
+/area/space)
+"Jp" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/space)
+"Ju" = (
+/obj/item/trash/burger,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl2"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Jw" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 4
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal5"
+	},
+/obj/item/prop/alien/hugger,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"JC" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	pixel_x = -4
+	},
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0;
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Kv" = (
+/obj/effect/landmark/survivor_spawner/twe/roaf/pilot,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"KO" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/item/ammo_casing/bullet{
+	layer = 3.1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"La" = (
+/obj/effect/decal/hybrisa/road/corner,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"LC" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_13";
+	pixel_y = 7
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/space)
+"LM" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl2"
+	},
+/obj/effect/landmark/survivor_spawner/twe/roaf,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Mz" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/space)
+"MQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/window/southleft{
+	color = "#a6aeab"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/darkred2,
+/area/space)
+"Na" = (
+/obj/structure/fence/slim/dark/door,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/space)
+"NP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/space)
+"NR" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	pixel_y = 16;
+	layer = 6
+	},
+/obj/item/stack/sheet/metal{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Of" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/space)
+"OB" = (
+/obj/effect/decal/hybrisa/road/corner{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"OR" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 20
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/space)
+"PS" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/space)
+"QQ" = (
+/obj/structure/machinery/colony_floodlight/traffic{
+	dir = 4;
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/space)
+"QZ" = (
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/space)
+"RC" = (
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/space)
+"RJ" = (
+/turf/closed/wall/hybrisa/colony,
+/area/space)
+"RL" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner,
+/turf/open/hybrisa/street/cement1,
+/area/space)
+"Sd" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 11
+	},
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/landmark/survivor_spawner/twe/roaf/medic,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Sm" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2"
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/space)
+"Sn" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = 9;
+	pixel_y = 42
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/space)
+"Sy" = (
+/turf/open/hybrisa/street/sidewalk/west,
+/area/space)
+"SW" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib6"
+	},
+/turf/open/hybrisa/street/cement1,
+/area/space)
+"SY" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/space)
+"Ui" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib4"
+	},
+/obj/item/ammo_casing/bullet{
+	layer = 3.1
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/space)
+"UM" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2";
+	pixel_x = 4
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 1;
+	density = 1;
+	closed = 0
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"UT" = (
+/obj/structure/window/framed/hybrisa/research/reinforced,
+/turf/open/floor/prison/ramptop/east,
+/area/space)
+"UU" = (
+/obj/effect/decal/hybrisa/road/corner{
+	dir = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"UY" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	pixel_x = -4
+	},
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib1"
+	},
+/obj/item/ammo_casing/bullet{
+	layer = 3.1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Va" = (
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xsplatter4";
+	pixel_x = -11
+	},
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/space)
+"Vo" = (
+/obj/item/ammo_casing/bullet{
+	layer = 3.1
+	},
+/turf/open/hybrisa/street/cement1,
+/area/space)
+"VY" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = 4
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/space)
+"Wc" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 1;
+	density = 1;
+	closed = 0
+	},
+/obj/item/prop/colony/used_flare,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Wf" = (
+/obj/item/storage/box/teabags{
+	pixel_y = 9;
+	pixel_x = 21
+	},
+/turf/open/hybrisa/street/sidewalkcenter/south,
+/area/space)
+"WW" = (
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/space)
+"Xd" = (
+/obj/structure/largecrate/random/mini/med{
+	layer = 3.01;
+	pixel_y = 7;
+	pixel_x = -11
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/space)
+"Yn" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	pixel_x = -4
+	},
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Yo" = (
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/space)
+"YA" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib1"
+	},
+/obj/item/ammo_casing/bullet{
+	layer = 3.1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"YB" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0;
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/space)
+"Zw" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal5";
+	pixel_y = -4;
+	pixel_x = 4
+	},
+/obj/effect/decal/hybrisa/road/corner{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+
+(1,1,1) = {"
+aW
+jL
+SY
+oj
+me
+jP
+MQ
+mS
+wV
+pw
+oj
+Yo
+iK
+RL
+"}
+(2,1,1) = {"
+jL
+oj
+oj
+nC
+oj
+oj
+oj
+by
+YB
+oj
+oj
+oj
+Bq
+Dr
+"}
+(3,1,1) = {"
+yG
+QQ
+NP
+uQ
+LC
+kG
+nz
+OR
+Sn
+uW
+QZ
+qA
+Iz
+SW
+"}
+(4,1,1) = {"
+ka
+UY
+JC
+nZ
+ew
+jo
+Dk
+bD
+wb
+Yn
+st
+Dk
+Av
+eu
+"}
+(5,1,1) = {"
+ae
+tC
+Wc
+NR
+vk
+bP
+ae
+ae
+Ju
+Ij
+lQ
+qo
+Er
+eu
+"}
+(6,1,1) = {"
+Zw
+zA
+UM
+mB
+FX
+OB
+uJ
+CH
+wD
+Fn
+HZ
+wA
+Jw
+eu
+"}
+(7,1,1) = {"
+ia
+af
+Mz
+yH
+ej
+om
+Gb
+jH
+Wf
+Ct
+AF
+Sm
+Va
+Ei
+"}
+(8,1,1) = {"
+YA
+yv
+RJ
+ut
+EA
+La
+Jj
+lr
+UU
+aW
+RJ
+RJ
+yq
+Vo
+"}
+(9,1,1) = {"
+aW
+AC
+RJ
+RJ
+Hu
+LM
+ae
+Kv
+ae
+aW
+RJ
+RJ
+Ih
+sP
+"}
+(10,1,1) = {"
+aW
+gw
+iA
+Bq
+Hu
+IX
+ae
+ae
+ae
+aW
+rQ
+iA
+VY
+RL
+"}
+(11,1,1) = {"
+ck
+vO
+Cv
+Of
+Sd
+zf
+tJ
+KO
+tJ
+mb
+rQ
+Na
+Ui
+FY
+"}
+(12,1,1) = {"
+dg
+vO
+iA
+Dl
+sD
+rB
+ol
+zg
+oO
+RC
+rQ
+iA
+Jp
+Fl
+"}
+(13,1,1) = {"
+aW
+hh
+RJ
+RJ
+Aj
+Xd
+rn
+WW
+Sy
+Sy
+RJ
+RJ
+PS
+dt
+"}
+(14,1,1) = {"
+aW
+BF
+RJ
+RJ
+RJ
+RJ
+RJ
+dG
+dG
+RJ
+RJ
+RJ
+UT
+oZ
+"}
