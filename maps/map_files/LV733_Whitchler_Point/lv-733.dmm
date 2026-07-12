@@ -34756,9 +34756,11 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv733/outdoors/colony_streets/avenue)
 "lGK" = (
-/obj/effect/decal/hybrisa/dirt,
-/turf/closed/wall/r_wall/biodome,
-/area/lv733/indoors/wy_research_complex/mess_hall)
+/obj/effect/landmark/nightmare{
+	insert_tag = "battlefield"
+	},
+/turf/closed/wall/hybrisa/rock,
+/area/lv733/oob)
 "lGX" = (
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv733/outdoors/caves/eastern_caves)
@@ -72189,7 +72191,7 @@ gtD
 gtD
 gtD
 gtD
-gtD
+lGK
 gtD
 gtD
 gtD
@@ -99455,7 +99457,7 @@ jie
 rCs
 vPD
 sEu
-lGK
+mzI
 uXd
 frk
 gtD
