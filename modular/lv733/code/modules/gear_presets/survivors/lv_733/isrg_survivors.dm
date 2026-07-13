@@ -18,6 +18,12 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
 	)
 
 /datum/equipment_preset/survivor/isrg/proc/equip_common_gear(mob/living/carbon/human/new_human, uniform_type, head_type, suit_type, back_type, belt_type, left_pouch_type, right_pouch_type, eyes_type = null, face_type = null)
@@ -117,6 +123,12 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
 	)
 
 /datum/equipment_preset/survivor/isrg/smartgunner/load_gear(mob/living/carbon/human/new_human)
@@ -151,7 +163,15 @@
 
 /datum/equipment_preset/synth_k9/isrg/New()
 	. = ..()
-	access = list(ACCESS_CIVILIAN_PUBLIC)
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
 
 /datum/equipment_preset/synth_k9/isrg/load_race(mob/living/carbon/human/new_human)
 	. = ..()

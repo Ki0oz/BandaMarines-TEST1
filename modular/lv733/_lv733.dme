@@ -1,3 +1,4 @@
+#include "_lv733.dm"
 #include "code/defines.dm"
 #include "code/defines_clf_wy.dm"
 #include "code/defines_isrg.dm"
@@ -16,6 +17,8 @@
 #include "code/game/turfs.dm"
 #include "code/game/objects/effects/landmarks/survivor_spawner.dm"
 #include "code/game/objects/items/devices/flash.dm"
+#include "code/game/objects/items/devices/glowstick.dm"
+#include "code/game/objects/items/devices/isrg_nvg.dm"
 #include "code/game/objects/structures/barricade/isrg_deployable.dm"
 #include "code/game/objects/structures/lifeline_ship.dm"
 #include "code/modules/defenses/planted_flag.dm"
@@ -35,6 +38,7 @@
 // BEGIN_PREFERENCES
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "_lv733.dm"
 #include "code\defines.dm"
 #include "code\defines_clf_wy.dm"
 #include "code\defines_isrg.dm"
@@ -53,6 +57,8 @@
 #include "code\game\gamemodes\lv733_lore_announcement.dm"
 #include "code\game\objects\effects\landmarks\survivor_spawner.dm"
 #include "code\game\objects\items\devices\flash.dm"
+#include "code\game\objects\items\devices\glowstick.dm"
+#include "code\game\objects\items\devices\isrg_nvg.dm"
 #include "code\game\objects\structures\lifeline_ship.dm"
 #include "code\game\objects\structures\barricade\isrg_deployable.dm"
 #include "code\modules\defenses\planted_flag.dm"

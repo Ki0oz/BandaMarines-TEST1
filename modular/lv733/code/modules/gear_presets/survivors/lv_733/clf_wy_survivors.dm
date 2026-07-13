@@ -1,6 +1,3 @@
-/// LV-733 - CLF-WP survivors.
-/// Обувь/пояса/подсумки/рюкзаки подобраны по образцу базового CLF (code/modules/gear_presets/clf.dm).
-
 /datum/equipment_preset/survivor/clf_wy
 	name = "Survivor - CLF-WP Rebel"
 	assignment = "CLF-WP - Rebel"
@@ -18,6 +15,12 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
 	)
 
 /datum/equipment_preset/survivor/clf_wy/proc/equip_common_gear(mob/living/carbon/human/new_human, uniform_type, head_type, suit_type, back_type, belt_type, left_pouch_type, right_pouch_type, eyes_type = null, shoes_type = null)
@@ -50,9 +53,8 @@
 		/obj/item/device/flashlight,
 		/obj/item/storage/pouch/firstaid/ert,
 	)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/rmc_f90(new_human), WEAR_J_STORE)
+	spawn_rebel_rifle(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/clf_wy/engi
 	name = "Survivor - CLF-WP Engineer"
@@ -76,7 +78,7 @@
 		/obj/item/clothing/glasses/welding,
 	)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/rmc_f90(new_human), WEAR_J_STORE)
+	spawn_rebel_rifle(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/survivor/clf_wy/medic
@@ -100,6 +102,7 @@
 		/obj/item/storage/pouch/magazine/large,
 		/obj/item/clothing/glasses/hud/health,
 	)
+	spawn_rebel_rifle(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/survivor/clf_wy/leader
@@ -124,9 +127,8 @@
 		/obj/item/clothing/glasses/sunglasses/aviator/silver,
 		/obj/item/clothing/shoes/combat,
 	)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/rmc_f90(new_human), WEAR_J_STORE)
+	spawn_rebel_rifle(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/synth/survivor/clf_wy_synth
 	name = "Survivor - CLF-WP Synthetic"
@@ -142,6 +144,15 @@
 	role_comm_title = "Синт."
 	idtype = /obj/item/card/id/dogtag
 	flags = EQUIPMENT_PRESET_EXTRA
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
 
 /datum/equipment_preset/synth/survivor/clf_wy_synth/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/clf_wy/regular(new_human), WEAR_BODY)

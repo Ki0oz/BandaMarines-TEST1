@@ -1,10 +1,3 @@
-// ISRG - T3 «Райко» smartgun (реskin M56A2, code/modules/projectiles/guns/smartgun.dm, /obj/item/weapon/gun/smartgun).
-// Значения и функции полностью унаследованы от оригинала, кроме собственных боеприпасов и объёма барабана -
-// у T3 «Райко» только один магазин (обычный), AP-режим переключается штатной способностью смартгана.
-// Иконки оружия/рук/подсумка - готовые заготовки (см. modular/lv733/icons/t3_raiko_smartgun); часть из них
-// (кисти рук, подсумок под жилет) пока используют состояния базового M56 - переименует автор позже.
-// Иконка магазина - временная заглушка (t3_raiko_mag.dmi), автор перерисует отдельно.
-
 /obj/item/weapon/gun/smartgun/isrg
 	name = "\improper T3 «Райко»"
 	desc = "Смартган T3 «Райко», используемый группой ISRG. Облегчённая версия под собственный барабанный магазин."
@@ -23,6 +16,29 @@
 	ammo_secondary_def = /datum/ammo/bullet/smartgun/isrg/armor_piercing
 	ammo_primary_alt = /datum/ammo/bullet/smartgun/isrg/alt
 	ammo_secondary_alt = /datum/ammo/bullet/smartgun/isrg/armor_piercing/alt
+
+/obj/item/weapon/gun/smartgun/isrg/muzzle_flash(angle, mob/user)
+	if(flags_gun_features & GUN_SILENCED || isnull(angle))
+		return
+	if(!istype(user) || !isturf(user.loc))
+		return
+
+	var/prev_light = light_range
+	if(!light_on && (light_range <= muzzle_flash_lum))
+		set_light_range(muzzle_flash_lum)
+		set_light_on(TRUE)
+		set_light_color(COLOR_VIVID_RED)
+		addtimer(CALLBACK(src, PROC_REF(reset_light_range), prev_light), 0.5 SECONDS)
+
+	var/image/I = image('modular/lv733/icons/t3_raiko_smartgun/t3_raiko_muzzle.dmi', user, "t3_raiko_muzzle_flash", user.dir == NORTH ? ABOVE_LYING_MOB_LAYER : FLOAT_LAYER)
+	var/matrix/rotate = matrix()
+	if(iscarbonsizexeno(user))
+		var/mob/living/carbon/xenomorph/xeno = user
+		I.pixel_x = xeno.xeno_inhand_item_offset
+	rotate.Translate(0, 5)
+	rotate.Turn(angle)
+	I.transform = rotate
+	I.flick_overlay(user, 3)
 
 /obj/item/ammo_magazine/smartgun/isrg
 	name = "\improper T3 drum"

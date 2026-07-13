@@ -82,6 +82,9 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	// ПНВ ISRG (modular/lv733/code/game/objects/items/devices/isrg_nvg.dm) - переключается опущено/поднято тем же
+	// действием, что и штатные визоры (Cycle helmet HUD).
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/night_vision/isrg)
 
 // Верхняя одежда
 

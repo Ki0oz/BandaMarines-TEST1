@@ -39,9 +39,6 @@
 	arrival_message = "38-я КВАОГ, аварийная группа. Фиксируем крушение судна на LV-733. Прибываем для оценки угрозы и поиска выживших."
 	objectives = "Прибыть к месту крушения. Оценить угрозу. Обеспечить безопасность периметра. Найти выживших."
 
-// Отдельная выкладка ERT (не переиспользует пресеты обычных ROAF-выживших): у всех один жилет (как у СЛ,
-// IASF light) и одна винтовка с 3 доп. магазинами (2 в жилете + 1 в рюкзаке). Роль влияет только на
-// глаза/R_STORE - чтобы у медика/инженера были нужные для роли предметы.
 /datum/emergency_call/lv733_crash_response/proc/equip_crash_response_member(mob/living/carbon/human/new_human, eyes_type, right_pouch_type)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/royal_marine/lv733/roaf_uniform(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/royal_marine/knife/lv733/shoes_roaf(new_human), WEAR_FEET)
