@@ -30,6 +30,7 @@
 #include "code/modules/projectiles/guns/l86.dm"
 #include "code/modules/projectiles/guns/mirai7.dm"
 #include "code/modules/projectiles/guns/t3_raiko.dm"
+#include "code/modules/vehicles/roaf_apc.dm"
 // BEGIN_INTERNALS
 // END_INTERNALS
 // BEGIN_FILE_DIR
@@ -70,4 +71,5 @@
 #include "code\modules\projectiles\guns\l86.dm"
 #include "code\modules\projectiles\guns\mirai7.dm"
 #include "code\modules\projectiles\guns\t3_raiko.dm"
+#include "code\modules\vehicles\roaf_apc.dm"
 // END_INCLUDE
