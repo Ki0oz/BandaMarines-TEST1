@@ -6,7 +6,9 @@
 #include "code/datums/factions/isrg.dm"
 #include "code/datums/skills/roaf.dm"
 #include "code/datums/skills/clf_wy.dm"
+#include "code/datums/emergency_calls/isrg.dm"
 #include "code/datums/skills/isrg.dm"
+#include "code/datums/species/isrg_synth_k9.dm"
 #include "code/datums/weather/weather_events/lv733_whitchler_point.dm"
 #include "code/datums/weather/weather_map_holders/lv733_whitchler_point.dm"
 #include "code/game/area/LV733.dm"
@@ -22,7 +24,9 @@
 #include "code/modules/gear_presets/survivors/lv_733/clf_wy_survivors.dm"
 #include "code/modules/gear_presets/survivors/lv_733/isrg_survivors.dm"
 #include "code/modules/projectiles/gun_attachables.dm"
+#include "code/modules/projectiles/guns/l86.dm"
 #include "code/modules/projectiles/guns/mirai7.dm"
+#include "code/modules/projectiles/guns/t3_raiko.dm"
 // BEGIN_INTERNALS
 // END_INTERNALS
 // BEGIN_FILE_DIR
@@ -37,9 +41,11 @@
 #include "code\datums\factions\clf_wy.dm"
 #include "code\datums\factions\isrg.dm"
 #include "code\datums\factions\roaf.dm"
+#include "code\datums\emergency_calls\isrg.dm"
 #include "code\datums\skills\clf_wy.dm"
 #include "code\datums\skills\isrg.dm"
 #include "code\datums\skills\roaf.dm"
+#include "code\datums\species\isrg_synth_k9.dm"
 #include "code\datums\weather\weather_events\lv733_whitchler_point.dm"
 #include "code\datums\weather\weather_map_holders\lv733_whitchler_point.dm"
 #include "code\game\turfs.dm"
@@ -55,5 +61,7 @@
 #include "code\modules\gear_presets\survivors\lv_733\isrg_survivors.dm"
 #include "code\modules\gear_presets\survivors\lv_733\roaf_survivors.dm"
 #include "code\modules\projectiles\gun_attachables.dm"
+#include "code\modules\projectiles\guns\l86.dm"
 #include "code\modules\projectiles\guns\mirai7.dm"
+#include "code\modules\projectiles\guns\t3_raiko.dm"
 // END_INCLUDE

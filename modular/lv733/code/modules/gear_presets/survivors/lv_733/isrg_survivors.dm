@@ -51,9 +51,9 @@
 		/obj/item/clothing/glasses/hud/health,
 		/obj/item/clothing/mask/balaclava/isrg,
 	)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/rmc_f90(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/isrg(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap/isrg(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/isrg/rescuer
 	name = "Survivor - ISRG Rescuer"
@@ -75,9 +75,9 @@
 		/obj/item/storage/pouch/survival/full/wy,
 		/obj/item/storage/pouch/firstaid/ert/wy,
 	)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/rmc_f90(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/isrg(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap/isrg(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/isrg/leader
 	name = "Survivor - ISRG Group Leader"
@@ -100,16 +100,44 @@
 		/obj/item/storage/pouch/firstaid/ert/wy,
 		/obj/item/clothing/glasses/sunglasses/aviator/silver,
 	)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/rmc_f90(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m4ra/isrg(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/isrg/ap(new_human), WEAR_IN_JACKET)
 
-// Использует штатный вид/снаряжение Synthetic K9 из ядра игры (species/synth_k9.dm, k9_synth.dm).
+/datum/equipment_preset/survivor/isrg/smartgunner
+	name = "Survivor - ISRG Smartgunner"
+	assignment = "ISRG - Smartgunner"
+	job_title = JOB_ISRG_SMARTGUNNER
+	paygrades = list(PAY_SHORT_ISRGE3 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/survivor/isrg_smartgunner
+	minimap_icon = "rifleman"
+	minimap_background = "leader"
+	role_comm_title = "Опер."
+	idtype = /obj/item/card/id/dogtag
+	flags = EQUIPMENT_PRESET_EXTRA
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+	)
+
+/datum/equipment_preset/survivor/isrg/smartgunner/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/isrg/field(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/isrg/field_helmet(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/isrg(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner/isrg(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/isrg(new_human), WEAR_J_STORE)
+
+
 /datum/equipment_preset/synth_k9/isrg
 	name = "Survivor - ISRG Synthetic K9"
 	assignment = "ISRG - Synthetic K9"
 	job_title = JOB_ISRG_SYNTH
 	paygrades = list(PAY_SHORT_ISRGS1 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/survivor/isrg_synth_k9
 	languages = list(LANGUAGE_TSL, LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_FRENCH, LANGUAGE_SPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH)
 	faction = FACTION_ISRG
 	faction_group = FACTION_LIST_SURVIVOR_ISRG
@@ -119,13 +147,28 @@
 	role_comm_title = "K9"
 	idtype = /obj/item/card/id/dogtag
 	flags = EQUIPMENT_PRESET_EXTRA
-	// /datum/equipment_preset/synth_k9 (ядро) не объявляет survivor_variant, а map_config.dm
-	// читает его через initial() при разборе synth_survivor_types в JSON карты - объявляем сами.
 	var/survivor_variant = CIVILIAN_SURVIVOR
 
 /datum/equipment_preset/synth_k9/isrg/New()
 	. = ..()
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+
+/datum/equipment_preset/synth_k9/isrg/load_race(mob/living/carbon/human/new_human)
+	. = ..()
+	new_human.set_species(SPECIES_ISRG_SYNTH_K9)
+
+/datum/equipment_preset/synth_k9/isrg/load_name(mob/living/carbon/human/new_human, randomise)
+	var/final_name = "Rex"
+	if(new_human.client?.prefs)
+		final_name = new_human.client.prefs.synthetic_name
+		if(!final_name || final_name == "Undefined")
+			final_name = "Rex"
+	new_human.change_real_name(new_human, "K9 - [final_name]")
+
+/datum/equipment_preset/synth_k9/isrg/handle_tts(mob/living/carbon/human/new_human, randomise)
+	if(randomise)
+		return ..()
+	new_human.client.prefs.give_tts_seed(new_human)
 
 /datum/equipment_preset/synth_k9/isrg/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/synth_k9(new_human), WEAR_BODY)

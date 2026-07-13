@@ -1,4 +1,4 @@
-// Событие падения корабля на LV-733 Whitchler Point — срабатывает на 50-й минуте раунда
+// Событие падения корабля на LV-733 Whitchler Point — срабатывает на 5-й минуте раунда (тест)
 
 #define SHIP_CRASH_WARN_DELAY   (2 MINUTES)  // за сколько до удара подсвечивается зона
 #define SHIP_CRASH_ZONE_RADIUS  8            // радиус подсветки (тайлы)
@@ -29,6 +29,7 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	max_medics = 1
+	max_engineers = 1
 	var/max_synths = 0
 	var/synths = 0
 
@@ -37,6 +38,29 @@
 	max_synths = SHIP_CRASH_ERT_SYNTHS
 	arrival_message = "38-я КВАОГ, аварийная группа. Фиксируем крушение судна на LV-733. Прибываем для оценки угрозы и поиска выживших."
 	objectives = "Прибыть к месту крушения. Оценить угрозу. Обеспечить безопасность периметра. Найти выживших."
+
+// Отдельная выкладка ERT (не переиспользует пресеты обычных ROAF-выживших): у всех один жилет (как у СЛ,
+// IASF light) и одна винтовка с 3 доп. магазинами (2 в жилете + 1 в рюкзаке). Роль влияет только на
+// глаза/R_STORE - чтобы у медика/инженера были нужные для роли предметы.
+/datum/emergency_call/lv733_crash_response/proc/equip_crash_response_member(mob/living/carbon/human/new_human, eyes_type, right_pouch_type)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/royal_marine/lv733/roaf_uniform(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/royal_marine/knife/lv733/shoes_roaf(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/royal_marine/lv733/hands_roaf(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/lv733/roaf_beret(new_human), WEAR_HEAD)
+	if(eyes_type)
+		new_human.equip_to_slot_or_del(new eyes_type(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/roaf(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing/iasf(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/general_belt(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new right_pouch_type(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/rmc_f90(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90(new_human.back), WEAR_IN_BACK)
 
 /datum/emergency_call/lv733_crash_response/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -49,18 +73,23 @@
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("Вы командир группы реагирования ROAF!"))
-		arm_equipment(mob, /datum/equipment_preset/survivor/roaf/squad_leader, TRUE, TRUE)
+		equip_crash_response_member(mob, /obj/item/clothing/glasses/sunglasses/aviator/silver, /obj/item/storage/pouch/firstaid/full/alternate)
 	else if(synths < max_synths && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SYNTH) && mob.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("Вы синтетик группы реагирования ROAF!"))
 		arm_equipment(mob, /datum/equipment_preset/synth/survivor/roaf_synth, TRUE, TRUE)
+	else if(engineers < max_engineers && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(mob.client, JOB_SQUAD_ENGI, time_required_for_job))
+		engineers++
+		to_chat(mob, SPAN_ROLE_HEADER("Вы инженер группы реагирования ROAF!"))
+		equip_crash_response_member(mob, /obj/item/clothing/glasses/welding, /obj/item/storage/pouch/firstaid/full/alternate)
+		mob.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(mob.back), WEAR_IN_BACK)
 	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		to_chat(mob, SPAN_ROLE_HEADER("Вы медик группы реагирования ROAF!"))
-		arm_equipment(mob, /datum/equipment_preset/survivor/roaf/medic, TRUE, TRUE)
+		equip_crash_response_member(mob, /obj/item/clothing/glasses/hud/health, /obj/item/storage/pouch/medkit/full_rmc)
 	else
 		to_chat(mob, SPAN_ROLE_HEADER("Вы боец группы реагирования ROAF!"))
-		arm_equipment(mob, /datum/equipment_preset/survivor/roaf, TRUE, TRUE)
+		equip_crash_response_member(mob, null, /obj/item/storage/pouch/firstaid/full/alternate)
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Задача: [objectives]")), 1 SECONDS)
 
@@ -70,7 +99,7 @@
 	name = "LV-733: Падение корабля"
 	typepath = /datum/round_event/lv733_ship_crash
 	weight = 0
-	earliest_start = 50 MINUTES
+	earliest_start = 3 MINUTES
 	max_occurrences = 1
 	alert_observers = TRUE
 
@@ -79,28 +108,22 @@
 		return FALSE
 	return ..()
 
-/// Запускает падение корабля напрямую, минуя случайный выбор (weight = 0 у контрола).
-/// Вызывается из lore_announcement_lv733() синхронно с МЭЙДЭЙ на 55 минуте.
 /proc/trigger_lv733_ship_crash()
 	var/datum/round_event_control/E = locate(/datum/round_event_control/lv733_ship_crash) in SSevents.control
 	if(!E)
 		return
 	E.run_event()
 
-// --- Само событие ---
 
 /datum/round_event/lv733_ship_crash
 	var/turf/crash_turf = null
 	var/list/warning_overlays = list()
 
 /datum/round_event/lv733_ship_crash/setup()
-	// startWhen/endWhen считаются в количестве проходов SSevents.fire(), а не в мировых тиках -
-	// делить нужно на SSevents.wait (интервал подсистемы), а не на world.tick_lag.
 	startWhen = SHIP_CRASH_WARN_DELAY / SSevents.wait
 	endWhen = startWhen + 1
 
 /datum/round_event/lv733_ship_crash/announce()
-	// Выбираем точку падения заранее и сразу подсвечиваем зону
 	var/list/candidate_turfs = list()
 	for(var/area/lv733/outdoors/colony_streets/street_area in GLOB.all_areas)
 		for(var/turf/open/T in street_area)
@@ -112,7 +135,6 @@
 
 	crash_turf = pick(candidate_turfs)
 
-	// Подсветка зоны падения
 	for(var/turf/T in range(SHIP_CRASH_ZONE_RADIUS, crash_turf))
 		if(is_ground_level(T.z))
 			var/obj/effect/lv733/crash_warning_overlay/O = new(T)

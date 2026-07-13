@@ -32,6 +32,27 @@ ISRG - Imperial Search and Recovery Group
 		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
 	)
 
+/datum/skills/survivor/isrg_smartgunner
+	name = "ISRG - Smartgunner"
+	skills = list(
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
+		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
+		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
+		SKILL_SPEC_WEAPONS = SKILL_SPEC_SMARTGUN,
+		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
+	)
+
+// ISRG Synthetic K9 - только медицина (без хирургии), стрельба и CQC на максимуме, остальное не тренировано.
+/datum/skills/survivor/isrg_synth_k9
+	name = "ISRG - Synthetic K9"
+	skills = list(
+		SKILL_MEDICAL = SKILL_MEDICAL_MASTER,
+		SKILL_FIREARMS = SKILL_FIREARMS_MASTER,
+		SKILL_CQC = SKILL_CQC_MASTER,
+	)
+
 /datum/skills/survivor/isrg_leader
 	name = "ISRG - Group Leader"
 	skills = list(

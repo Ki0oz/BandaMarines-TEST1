@@ -21,6 +21,8 @@
 			hud_icon_state = "k9"
 		if(JOB_ISRG_RESCUER)
 			hud_icon_state = "rescuer"
+		if(JOB_ISRG_SMARTGUNNER)
+			hud_icon_state = "smart"
 		if(JOB_ISRG_SYNTH)
 			hud_icon_state = "synth"
 
