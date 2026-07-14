@@ -1,5 +1,6 @@
 #ignore misc BYOND files
 Thumbs.db
+.DS_Store
 *.log
 *.int
 *.rsc
