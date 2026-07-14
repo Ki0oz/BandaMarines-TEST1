@@ -1,4 +1,5 @@
 [
+	{ "type": "map_sprinkle", "path": "sprinkles/" },
 	{
 		"type": "map_insert",
 		"landmark": "hvhupplz1",
@@ -15,9 +16,9 @@
 	},
 	{
 		"type": "map_insert",
-		"landmark": "roaf_zone",
+		"landmark": "roafpost",
 		"chance": 1.0,
-		"path": "standalone/roaf_zone.dmm",
+		"path": "standalone/roafpost.dmm",
 		"when": { "lvevent": "roaf_zone" }
 	},
 	{
@@ -29,9 +30,9 @@
 	},
 	{
 		"type": "map_insert",
-		"landmark": "isrg_spawn",
+		"landmark": "isrg_lz",
 		"chance": 1.0,
-		"path": "standalone/isrg_spawn.dmm",
+		"path": "standalone/isrg_lz.dmm",
 		"when": { "lvevent": "isrg_spawn" }
 	}
 ]

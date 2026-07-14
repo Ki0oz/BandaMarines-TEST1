@@ -6,9 +6,9 @@
 	item_state = "t3_raiko"
 	item_icons = list(
 		WEAR_BACK = 'modular/lv733/icons/t3_raiko_smartgun/t3_raiko_back.dmi',
-		WEAR_J_STORE = 'modular/lv733/icons/t3_raiko_smartgun/m56_suit_store.dmi',
-		WEAR_L_HAND = 'modular/lv733/icons/t3_raiko_smartgun/m56_lefthand.dmi',
-		WEAR_R_HAND = 'modular/lv733/icons/t3_raiko_smartgun/m56_righthand.dmi',
+		WEAR_J_STORE = 'modular/lv733/icons/t3_raiko_smartgun/t3_raiko_suit_store.dmi',
+		WEAR_L_HAND = 'modular/lv733/icons/t3_raiko_smartgun/t3_raiko_lefthand.dmi',
+		WEAR_R_HAND = 'modular/lv733/icons/t3_raiko_smartgun/t3_raiko_righthand.dmi',
 	)
 	gun_faction = FACTION_ISRG
 	current_mag = /obj/item/ammo_magazine/smartgun/isrg
@@ -81,6 +81,8 @@
 	item_icons = list(
 		WEAR_JACKET = 'modular/lv733/icons/t3_raiko_smartgun/isrg_smart_worn.dmi',
 	)
+	light_color = LIGHT_COLOR_HALOGEN
+	lamp_light_color = LIGHT_COLOR_HALOGEN
 
 /obj/item/clothing/suit/storage/marine/smartgunner/isrg/Initialize()
 	. = ..()

@@ -1,13 +1,20 @@
 // Type 16-7/E MCV (ROAF) - тяжёлый БТР с башней от танка. Полная копия /obj/vehicle/multitile/apc
 // (code/modules/vehicles/apc/apc.dm) - тот же корпус/интерьер, только:
-// - у каждого узла (корпус, башня, пушка, броня, колёса) - своя копия штатных иконок под modular/lv733/icons/roaf_apc/
-//   (type16_*.dmi, содержимое идентично оригиналам на момент копирования) - это отдельные от других БТР/танков
-//   файлы, чтобы их можно было перекрасить своей текстурой без влияния на остальные машины;
+// - у каждого видимого узла - основа (корпус), башня, пушка, колёса, двигатель - своя копия штатных иконок под
+//   modular/lv733/icons/roaf_apc/ (type16_*.dmi, содержимое идентично оригиналам на момент копирования) - это
+//   отдельные от других БТР/танков файлы, чтобы их можно было перекрасить своей текстурой без влияния на другие
+//   машины. У пушки/колёс/двигателя - по ДВЕ иконки (у башни и корпуса - по одной, так устроено и в ванильных
+//   tank_turret/apc): "_held" - как деталь в руках/на земле, "_mounted" - как оверлей на самом БТР
+//   (см. disp_icon/disp_icon_state в code/modules/vehicles/hardpoints/hardpoint.dm:get_icon_image()) - это два
+//   разных набора кадров у оригинала, поэтому и разные файлы. У брони своей иконки нет - использует штатную.
+//   У снарядов пушки - одна иконка (type16_shell.dmi), у боеприпасов оверлея на БТР не бывает.
 // - вместо штатных пушек БТР (dualcannon/frontalcannon) - башня танка (/obj/item/hardpoint/holder/tank_turret/roaf,
 //   тонкий подтип - штатной turret.accepted_hardpoints не хватает для нашей пушки, см. комментарий у неё),
 //   поэтому скопирован relaymove()/toggle_gyrostabilizer с танка (code/modules/vehicles/tank/tank.dm) -
 //   иначе наводчик не смог бы поворачивать башню;
-// - разборка (снять броню/пушку/колёса/саму башню) не требует нового кода - это штатный механизм
+// - добавлен двигатель (/obj/item/hardpoint/support/overdrive_enhancer/roaf) - штатный "ускоритель" с танка,
+//   переименован и со своей иконкой, ставится сразу при спавне (см. load_hardpoints ниже);
+// - разборка (снять броню/пушку/колёса/двигатель/саму башню) не требует нового кода - это штатный механизм
 //   hardpoints_allowed (crowbar - обычные детали, powerloader-клешня - башня, она SIZE_MASSIVE),
 //   см. multitile_hardpoints.dm; обратная установка снятой пушки работает благодаря turret/roaf выше;
 // - броня чуть хуже обычного БТР (см. dmg_multipliers ниже и /obj/item/hardpoint/armor/ballistic/roaf),
@@ -15,7 +22,7 @@
 
 /obj/vehicle/multitile/apc_roaf
 	name = "\improper Type 16-7/E MCV"
-	desc = "Маневренная модификация Type 16-7/E с 120 мм пушкой. Из-за веса башни бронирование корпуса ослаблено."
+	desc = "Тренировачный колесный десантный танк Type 16//D-2. Маневренная модификация с 105 мм пушкой и улучшнным двигателем."
 
 	icon = 'modular/lv733/icons/roaf_apc/type16_hull.dmi'
 	icon_state = "apc_base"
@@ -50,6 +57,7 @@
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/holder/tank_turret/roaf,
 		/obj/item/hardpoint/armor/ballistic/roaf,
+		/obj/item/hardpoint/support/overdrive_enhancer/roaf,
 		/obj/item/hardpoint/support/flare_launcher,
 		/obj/item/hardpoint/locomotion/apc_wheels/roaf,
 	)
@@ -175,13 +183,11 @@
 	return TRUE
 
 // Бронеплита - чуть хуже штатной танковой (0.67/0.67/0.9), но всё так же снимается ломом.
-// Своя иконка (см. комментарий в начале файла) - на будущее под отдельную перекраску.
+// Своей иконки у неё нет (не входит в список видимых узлов) - использует штатную танковую.
 /obj/item/hardpoint/armor/ballistic/roaf
 	name = "\improper Облегчённая бронеплита Type 16-7/E"
 	desc = "Упрощённая версия танковой брони, облегчённая под шасси БТР. Хуже держит удар, чем полноценная танковая пластина."
 	type_multipliers = list("bullet" = 0.78, "slash" = 0.78, "all" = 0.95)
-	icon = 'modular/lv733/icons/roaf_apc/type16_armor_item.dmi'
-	disp_icon = 'modular/lv733/icons/roaf_apc/type16_armor.dmi'
 
 // Своя турель - у штатной tank_turret accepted_hardpoints - это ОБЩИЙ на все танки список, куда наш
 // cannon/roaf не входит (сравнение по точному типу, а не istype) - без этого подтипа откреплённую
@@ -208,14 +214,15 @@
 /obj/item/hardpoint/primary/cannon/roaf
 	name = "\improper 120-мм пушка Type 16-7/E"
 	desc = "Модификация танковой LTB-пушки с усиленным зарядом и облегчённым затвором для более частой стрельбы."
-	icon = 'modular/lv733/icons/roaf_apc/type16_cannon_item.dmi'
-	disp_icon = 'modular/lv733/icons/roaf_apc/type16_cannon.dmi'
+	icon = 'modular/lv733/icons/roaf_apc/type16_cannon_held.dmi'
+	disp_icon = 'modular/lv733/icons/roaf_apc/type16_cannon_mounted.dmi'
 	ammo = new /obj/item/ammo_magazine/hardpoint/ltb_cannon/roaf
 	fire_delay = 17 SECONDS
 
 /obj/item/ammo_magazine/hardpoint/ltb_cannon/roaf
 	default_ammo = /datum/ammo/rocket/ltb/roaf
 	gun_type = /obj/item/hardpoint/primary/cannon/roaf
+	icon = 'modular/lv733/icons/roaf_apc/type16_shell.dmi'
 
 /datum/ammo/rocket/ltb/roaf
 	name = "Type 16-7/E cannon round"
@@ -224,8 +231,16 @@
 // Свои колёса - чисто под свою иконку (см. комментарий в начале файла), характеристики те же, что у apc_wheels.
 /obj/item/hardpoint/locomotion/apc_wheels/roaf
 	name = "\improper Колёса Type 16-7/E"
-	icon = 'modular/lv733/icons/roaf_apc/type16_wheels_item.dmi'
-	disp_icon = 'modular/lv733/icons/roaf_apc/type16_wheels.dmi'
+	icon = 'modular/lv733/icons/roaf_apc/type16_wheels_held.dmi'
+	disp_icon = 'modular/lv733/icons/roaf_apc/type16_wheels_mounted.dmi'
+
+// Двигатель - штатный "ускоритель" с танка (даёт +20% скорости, см. apply_buff/remove_buff в
+// code/modules/vehicles/hardpoints/support/overdrive.dm), просто переименован и со своей иконкой.
+// Ставится сразу при спавне (см. load_hardpoints ниже), как и остальные видимые узлы - можно снять ломом.
+/obj/item/hardpoint/support/overdrive_enhancer/roaf
+	name = "\improper Двигатель Type 16-7/E"
+	icon = 'modular/lv733/icons/roaf_apc/type16_engine_held.dmi'
+	disp_icon = 'modular/lv733/icons/roaf_apc/type16_engine_mounted.dmi'
 
 /*
 ** ПРЕСЕТ СПАВНА
@@ -255,6 +270,7 @@
 /obj/effect/vehicle_spawner/apc_roaf/load_hardpoints(obj/vehicle/multitile/apc_roaf/V)
 	V.add_hardpoint(new /obj/item/hardpoint/armor/ballistic/roaf)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels/roaf)
+	V.add_hardpoint(new /obj/item/hardpoint/support/overdrive_enhancer/roaf)
 	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret/roaf)
 	// install() требует живого игрока и do_after() - для спавна используем add_hardpoint() холдера напрямую,
 	// как это делают штатные танковые пресеты (см. /obj/effect/vehicle_spawner/tank/fixed в tank.dm).

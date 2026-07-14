@@ -82,7 +82,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	// ПНВ ISRG (modular/lv733/code/game/objects/items/devices/isrg_nvg.dm) - переключается опущено/поднято тем же
+	// ПНВ ISRG (modular/clothing/code/isrg_nvg.dm) - переключается опущено/поднято тем же
 	// действием, что и штатные визоры (Cycle helmet HUD).
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/night_vision/isrg)
 
@@ -131,6 +131,84 @@
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+
+	light_power = 3
+	light_range = 3
+	light_color = LIGHT_COLOR_HALOGEN
+	light_system = MOVABLE_LIGHT
+	actions_types = list(/datum/action/item_action/toggle/lamp)
+	var/list/armor_overlays = list()
+	var/flags_isrg_lamp = ARMOR_LAMP_OVERLAY
+	var/lamp_icon = "lamp"
+	var/lamp_light_color = LIGHT_COLOR_HALOGEN
+	var/atom/movable/marine_light/light_holder
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/isrg/vest/Initialize(mapload)
+	. = ..()
+	light_holder = new(src)
+	update_icon()
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/isrg/vest/Destroy()
+	QDEL_NULL(light_holder)
+	return ..()
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/isrg/vest/update_icon(mob/user)
+	overlays -= armor_overlays["lamp"]
+	armor_overlays["lamp"] = null
+	if(flags_isrg_lamp & ARMOR_LAMP_OVERLAY)
+		var/image/I
+		if(flags_isrg_lamp & ARMOR_LAMP_ON)
+			I = image('icons/obj/items/clothing/suits/misc_ert.dmi', src, "[lamp_icon]-on")
+		else
+			I = image('icons/obj/items/clothing/suits/misc_ert.dmi', src, "[lamp_icon]-off")
+		armor_overlays["lamp"] = I
+		overlays += I
+	if(user)
+		user.update_inv_wear_suit()
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/isrg/vest/item_action_slot_check(mob/user, slot)
+	if(!ishuman(user))
+		return FALSE
+	if(slot != WEAR_JACKET)
+		return FALSE
+	return TRUE
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/isrg/vest/attack_self(mob/user)
+	..()
+	if(!isturf(user.loc))
+		to_chat(user, SPAN_WARNING("You cannot turn the light [light_on ? "off" : "on"] while in [user.loc].")) //To prevent some lighting anomalies.
+		return
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	if(H.wear_suit != src)
+		return
+	turn_light(user, !light_on)
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/isrg/vest/turn_light(mob/user, toggle_on)
+	. = ..()
+	if(. != CHECKS_PASSED)
+		return
+	set_light_range(initial(light_range))
+	set_light_power(floor(initial(light_power) * 0.5))
+	set_light_color(lamp_light_color)
+	set_light_on(toggle_on)
+	flags_isrg_lamp ^= ARMOR_LAMP_ON
+
+	light_holder.set_light_flags(LIGHT_ATTACHED)
+	light_holder.set_light_range(initial(light_range))
+	light_holder.set_light_power(initial(light_power))
+	light_holder.set_light_color(initial(light_color))
+	light_holder.set_light_on(toggle_on)
+
+	if(!toggle_on)
+		playsound(src, 'sound/handling/click_2.ogg', 50, 1)
+	playsound(src, 'sound/handling/suitlight_on.ogg', 50, 1)
+	update_icon(user)
+
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.update_button_icon()
 
 // Маски
 

@@ -3,9 +3,9 @@
 /obj/item/device/helmet_visor/night_vision/isrg
 	name = "Старый прибор ночного видения"
 	desc = "Старое устройство ночного видения, из-за недавних событий оно временно не работает."
-	icon = 'modular/lv733/icons/isrg_nvg/isrg_nvg_item.dmi'
+	icon = 'modular/clothing/icon/isrg/isrg_nvg_item.dmi'
 	icon_state = "isrg_nvg_sight"
-	helmet_overlay_icon = 'modular/lv733/icons/isrg_nvg/isrg_nvg_worn.dmi'
+	helmet_overlay_icon = 'modular/clothing/onmob/isrg/isrg_nvg_worn.dmi'
 	helmet_overlay = "isrg_nvg_sight_right"
 
 	var/is_working = FALSE

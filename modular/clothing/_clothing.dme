@@ -8,6 +8,7 @@
 #include "code/defines_isrg.dm"
 #include "code/lv733_clf_wy.dm"
 #include "code/lv733_isrg.dm"
+#include "code/isrg_nvg.dm"
 #include "code/cape.dm"
 // BEGIN_INTERNALS
 // END_INTERNALS
@@ -22,6 +23,7 @@
 #include "code\defines_clf_wy.dm"
 #include "code\defines_isrg.dm"
 #include "code\ftl_helmet.dm"
+#include "code\isrg_nvg.dm"
 #include "code\lv733_clf_wy.dm"
 #include "code\lv733_clothing.dm"
 #include "code\lv733_isrg.dm"
