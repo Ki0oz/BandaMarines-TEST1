@@ -1,11 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ae" = (
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "af" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/northwest,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "aW" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -13,7 +13,7 @@
 	pixel_y = -4
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "by" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2";
@@ -23,7 +23,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/multi_tiles/west,
-/area/space)
+/area/lv733/indoors/outpost/main_checkpoint)
 "bD" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -31,13 +31,13 @@
 	},
 /obj/effect/landmark/survivor_spawner/twe/roaf/squad_leader,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "bP" = (
 /obj/item/ammo_casing/bullet{
 	layer = 3.1
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "ck" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -49,7 +49,15 @@
 	},
 /obj/item/prop/colony/used_flare,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
+"cV" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv733/indoors/outpost/main_checkpoint)
 "dg" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -64,15 +72,15 @@
 	pixel_y = 8
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "dt" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner,
 /turf/open/hybrisa/street/cement3,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "dG" = (
 /obj/structure/window/framed/hybrisa/research/reinforced,
 /turf/open/floor/strata/multi_tiles/west,
-/area/space)
+/area/lv733/indoors/main_complex/main_vestibule)
 "ej" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -83,10 +91,10 @@
 	icon_state = "trash_9"
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "eu" = (
 /turf/open/hybrisa/street/roadlines4,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "ew" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -97,17 +105,17 @@
 	pixel_y = -2
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "gw" = (
 /turf/open/hybrisa/street/sidewalk/north,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "hh" = (
 /obj/structure/machinery/colony_floodlight/street{
 	pixel_y = 12
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/north,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "ia" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -118,11 +126,11 @@
 	fuel_rate = 2.5
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "iA" = (
 /obj/structure/fence/slim/dark,
 /turf/open/hybrisa/street/sidewalkfull,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "iK" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/ammo_casing/bullet{
@@ -130,7 +138,7 @@
 	},
 /obj/item/prop/colony/used_flare,
 /turf/open/hybrisa/street/sidewalk/south,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "jo" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -138,17 +146,17 @@
 	},
 /obj/effect/landmark/survivor_spawner/twe/roaf/engi,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "jH" = (
 /obj/structure/machinery/colony_floodlight/street{
 	pixel_y = 25
 	},
 /turf/open/hybrisa/street/sidewalkfull,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "jL" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/space)
+/area/lv733/indoors/outpost/main_checkpoint)
 "jP" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -159,7 +167,7 @@
 	},
 /obj/structure/machinery/power/apc/fully_broken/no_cell/east,
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/space)
+/area/lv733/indoors/outpost/main_checkpoint)
 "ka" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal6";
@@ -172,7 +180,7 @@
 	pixel_y = -4
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "kG" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 4
@@ -180,12 +188,12 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/hybrisa/street/sidewalk/east,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "lr" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/hybrisa/street/sidewalkcenter/east,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "lQ" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 8;
@@ -198,7 +206,7 @@
 	icon_state = "csplatter1"
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "mb" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/lines3,
@@ -207,7 +215,7 @@
 	pixel_y = -4
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "me" = (
 /obj/structure/machinery/big_computers/computerblack/computer3{
 	pixel_y = 19;
@@ -216,7 +224,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/space)
+/area/lv733/indoors/outpost/main_checkpoint)
 "mB" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/structure/roof/hybrisa/lattice_prop/lattice_6{
@@ -228,26 +236,26 @@
 	pixel_x = 4
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "mS" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/item/prop/alien/hugger,
 /turf/open/floor/hybrisa/metal/grated/west,
-/area/space)
+/area/lv733/indoors/outpost/main_checkpoint)
 "nz" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /obj/item/clothing/head/beret/lv733/roaf_boonie,
 /turf/open/hybrisa/street/sidewalk/east,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "nC" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
 	layer = 4.2
 	},
 /turf/closed/wall/hybrisa/marhsalls,
-/area/space)
+/area/lv733/indoors/outpost/main_checkpoint)
 "nZ" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/structure/roof/hybrisa/lattice_prop/lattice_6{
@@ -261,10 +269,10 @@
 	current_rounds = 0
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "oj" = (
 /turf/closed/wall/hybrisa/marhsalls,
-/area/space)
+/area/lv733/indoors/outpost/main_checkpoint)
 "ol" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
@@ -273,10 +281,10 @@
 	},
 /obj/structure/largecrate/random/barrel/black,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "om" = (
 /turf/open/hybrisa/street/sidewalkcenter/north,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "oO" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
@@ -288,10 +296,10 @@
 	},
 /obj/effect/landmark/survivor_spawner/twe/roaf/signaller,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "oZ" = (
 /turf/open/floor/prison/ramptop/east,
-/area/space)
+/area/lv733/indoors/main_complex/main_vestibule)
 "pw" = (
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8;
@@ -302,25 +310,25 @@
 	icon_state = "xgib1"
 	},
 /turf/open/floor/prison/darkred2/north,
-/area/space)
+/area/lv733/indoors/outpost/main_checkpoint)
 "qo" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib3"
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "qA" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_2"
 	},
 /turf/open/hybrisa/street/sidewalk/east,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "rn" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/largecrate/random/barrel/medical,
 /turf/open/hybrisa/street/sidewalk/west,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "rB" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
@@ -329,11 +337,11 @@
 	},
 /obj/structure/largecrate/empty/secure,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "rQ" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/north,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "st" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -347,7 +355,7 @@
 	pixel_y = 3
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "sD" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
@@ -356,7 +364,7 @@
 	},
 /obj/structure/cargo_container/hybrisa/containersextended/medicalleft,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "sP" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner,
@@ -366,12 +374,12 @@
 	pixel_y = 19
 	},
 /turf/open/hybrisa/street/cement1,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "tC" = (
 /obj/item/prop/alien/hugger,
 /obj/item/stack/rods,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "tJ" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/lines5,
@@ -379,19 +387,19 @@
 	pixel_y = 5
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "ut" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_5{
 	pixel_y = 16;
 	layer = 6
 	},
 /turf/closed/wall/hybrisa/colony,
-/area/space)
+/area/lv733/indoors/main_complex/main_vestibule)
 "uJ" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/weapon/gun/rifle/l23,
 /turf/open/hybrisa/street/sidewalkcenter/west,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "uQ" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
@@ -402,20 +410,20 @@
 	icon_state = "cartridge_3_1"
 	},
 /turf/open/hybrisa/street/sidewalk/east,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "uW" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/metal/wired,
 /turf/open/hybrisa/street/sidewalk/east,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "vk" = (
 /obj/effect/landmark/survivor_spawner/twe/roaf,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "vO" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/north,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "wb" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -425,7 +433,7 @@
 	icon_state = "cartridge_3_1"
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "wA" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -436,13 +444,13 @@
 	icon_state = "cartridge_3_1"
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "wD" = (
 /obj/effect/decal/hybrisa/road/corner{
 	dir = 8
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "wV" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/dirt,
@@ -452,7 +460,7 @@
 	},
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/hybrisa/metal/grated/west,
-/area/space)
+/area/lv733/indoors/outpost/main_checkpoint)
 "yq" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -465,14 +473,14 @@
 	pixel_x = 9
 	},
 /turf/open/hybrisa/street/sidewalk/south,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "yv" = (
 /obj/structure/prop/hybrisa/misc/firehydrant{
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/north,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "yG" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -488,7 +496,7 @@
 	icon_state = "stop_decal5"
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "yH" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
@@ -500,7 +508,7 @@
 	},
 /obj/item/ammo_box/magazine/l23/empty,
 /turf/open/hybrisa/street/sidewalk/southwest,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "zf" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/item/tool/warning_cone{
@@ -508,7 +516,7 @@
 	pixel_x = -18
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "zg" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
@@ -524,7 +532,7 @@
 	pixel_x = -1
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "zA" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -537,11 +545,11 @@
 	},
 /obj/item/stack/rods,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Aj" = (
 /obj/structure/cargo_container/hybrisa/containersextended/medicalright,
 /turf/open/hybrisa/street/sidewalk/west,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Av" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -561,7 +569,7 @@
 	fuel_rate = 2.5
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "AC" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/ammo_casing/bullet{
@@ -571,21 +579,21 @@
 	current_rounds = 0
 	},
 /turf/open/hybrisa/street/sidewalk/north,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "AF" = (
 /obj/item/ammo_magazine/rifle/l23{
 	current_rounds = 0
 	},
 /turf/open/hybrisa/street/sidewalk/northwest,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Bq" = (
 /turf/open/hybrisa/street/sidewalk/south,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "BF" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/north,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Ct" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -594,13 +602,13 @@
 	},
 /obj/structure/barricade/metal/wired,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Cv" = (
 /obj/structure/fence/slim/dark,
 /obj/structure/fence/slim/dark,
 /obj/structure/fence/slim/dark,
 /turf/open/hybrisa/street/sidewalkfull,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "CH" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/ammo_magazine/shotgun/slugs{
@@ -614,14 +622,14 @@
 	},
 /obj/item/clothing/gloves/marine/veteran/royal_marine/lv733/hands_roaf,
 /turf/open/hybrisa/street/sidewalkcenter/west,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Dk" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge{
 	pixel_x = -4
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Dl" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/largecrate/guns/merc{
@@ -629,7 +637,7 @@
 	name = "supply crate"
 	},
 /turf/open/hybrisa/street/sidewalk/south,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Dr" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner,
 /obj/effect/decal/cleanable/blood/xeno{
@@ -637,10 +645,10 @@
 	pixel_y = -4
 	},
 /turf/open/hybrisa/street/cement1,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Ei" = (
 /turf/open/hybrisa/street/cement1,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Er" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal4";
@@ -653,7 +661,7 @@
 	current_rounds = 0
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "EA" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -665,14 +673,14 @@
 	},
 /obj/item/ammo_box/magazine/l23/empty,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Fl" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	pixel_x = -2;
 	pixel_y = -4
 	},
 /turf/open/hybrisa/street/cement1,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Fn" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal5";
@@ -687,7 +695,7 @@
 	closed = 0
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "FX" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal8";
@@ -701,15 +709,15 @@
 	icon_state = "cartridge_10_1"
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "FY" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/hybrisa/street/cement3,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Gb" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalkfull,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Hu" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -717,7 +725,7 @@
 	pixel_y = 11
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "HZ" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -725,7 +733,7 @@
 	pixel_x = 4
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Ih" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
@@ -736,7 +744,7 @@
 	pixel_x = 4
 	},
 /turf/open/hybrisa/street/sidewalk/south,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Ij" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2";
@@ -744,31 +752,31 @@
 	closed = 0
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Iz" = (
 /turf/open/hybrisa/street/sidewalk/southeast,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "IX" = (
 /obj/item/stack/rods,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Jj" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/hybrisa/street/sidewalkcenter/east,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Jp" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/south,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Ju" = (
 /obj/item/trash/burger,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl2"
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Jw" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -780,7 +788,7 @@
 	},
 /obj/item/prop/alien/hugger,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "JC" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -793,22 +801,22 @@
 	dir = 1
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Kv" = (
 /obj/effect/landmark/survivor_spawner/twe/roaf/pilot,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "KO" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/item/ammo_casing/bullet{
 	layer = 3.1
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "La" = (
 /obj/effect/decal/hybrisa/road/corner,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "LC" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 4
@@ -819,20 +827,20 @@
 	pixel_y = 7
 	},
 /turf/open/hybrisa/street/sidewalk/east,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "LM" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl2"
 	},
 /obj/effect/landmark/survivor_spawner/twe/roaf,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Mz" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/hybrisa/street/sidewalk/west,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "MQ" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/door/window/southleft{
@@ -842,18 +850,18 @@
 	dir = 4
 	},
 /turf/open/floor/prison/darkred2,
-/area/space)
+/area/lv733/indoors/outpost/main_checkpoint)
 "Na" = (
 /obj/structure/fence/slim/dark/door,
 /turf/open/hybrisa/street/sidewalkfull,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "NP" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/hybrisa/street/sidewalk/east,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "NR" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16;
@@ -864,57 +872,57 @@
 	pixel_y = -2
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Of" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/largecrate/random/barrel/black,
 /turf/open/hybrisa/street/sidewalk/south,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "OB" = (
 /obj/effect/decal/hybrisa/road/corner{
 	dir = 1
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "OR" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_14";
 	pixel_y = 20
 	},
 /turf/open/hybrisa/street/sidewalk/east,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "PS" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/light/double{
 	dir = 1
 	},
 /turf/open/hybrisa/street/sidewalk/south,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "QQ" = (
 /obj/structure/machinery/colony_floodlight/traffic{
 	dir = 4;
 	pixel_y = 12
 	},
 /turf/open/hybrisa/street/sidewalk/northeast,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "QZ" = (
 /obj/structure/machinery/colony_floodlight/street{
 	pixel_y = 12
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/east,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "RC" = (
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "RJ" = (
 /turf/closed/wall/hybrisa/colony,
-/area/space)
+/area/lv733/indoors/main_complex/main_vestibule)
 "RL" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner,
 /turf/open/hybrisa/street/cement1,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Sd" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -924,14 +932,14 @@
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/landmark/survivor_spawner/twe/roaf/medic,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Sm" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_2"
 	},
 /turf/open/hybrisa/street/sidewalk/west,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Sn" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 4
@@ -942,21 +950,21 @@
 	pixel_y = 42
 	},
 /turf/open/hybrisa/street/sidewalk/east,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Sy" = (
 /turf/open/hybrisa/street/sidewalk/west,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "SW" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib6"
 	},
 /turf/open/hybrisa/street/cement1,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "SY" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/space)
+/area/lv733/indoors/outpost/main_checkpoint)
 "Ui" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/blood/xeno{
@@ -966,7 +974,7 @@
 	layer = 3.1
 	},
 /turf/open/hybrisa/street/sidewalk/south,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "UM" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -979,17 +987,17 @@
 	closed = 0
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "UT" = (
 /obj/structure/window/framed/hybrisa/research/reinforced,
 /turf/open/floor/prison/ramptop/east,
-/area/space)
+/area/lv733/indoors/main_complex/main_vestibule)
 "UU" = (
 /obj/effect/decal/hybrisa/road/corner{
 	dir = 4
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "UY" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -1002,7 +1010,7 @@
 	layer = 3.1
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Va" = (
 /obj/item/trash/hybrisa/cuppa_joes/lid,
 /obj/effect/decal/cleanable/blood/xeno{
@@ -1010,13 +1018,13 @@
 	pixel_x = -11
 	},
 /turf/open/hybrisa/street/sidewalk/southwest,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Vo" = (
 /obj/item/ammo_casing/bullet{
 	layer = 3.1
 	},
 /turf/open/hybrisa/street/cement1,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "VY" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/trash/cigbutt{
@@ -1028,7 +1036,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/south,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Wc" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 1;
@@ -1037,18 +1045,18 @@
 	},
 /obj/item/prop/colony/used_flare,
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Wf" = (
 /obj/item/storage/box/teabags{
 	pixel_y = 9;
 	pixel_x = 21
 	},
 /turf/open/hybrisa/street/sidewalkcenter/south,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "WW" = (
 /obj/structure/largecrate/random/barrel/black,
 /turf/open/hybrisa/street/sidewalk/west,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Xd" = (
 /obj/structure/largecrate/random/mini/med{
 	layer = 3.01;
@@ -1058,7 +1066,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/west,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Yn" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -1070,10 +1078,10 @@
 	closed = 0
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "Yo" = (
 /turf/open/auto_turf/snow/brown_base/layer2,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "YA" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -1087,7 +1095,7 @@
 	layer = 3.1
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 "YB" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_2";
@@ -1096,7 +1104,7 @@
 	dir = 8
 	},
 /turf/open/floor/strata/multi_tiles/west,
-/area/space)
+/area/lv733/indoors/outpost/main_checkpoint)
 "Zw" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal5";
@@ -1107,10 +1115,10 @@
 	dir = 1
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/space)
+/area/lv733/outdoors/colony_streets/avenue)
 
 (1,1,1) = {"
-aW
+cV
 jL
 SY
 oj

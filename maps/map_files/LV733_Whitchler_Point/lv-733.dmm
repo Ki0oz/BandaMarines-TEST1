@@ -1535,6 +1535,7 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv733/indoors/base_operations/mess_hall)
 "ayc" = (
@@ -22320,6 +22321,7 @@
 /area/lv733/outdoors/colony_streets/city_streets)
 "hyy" = (
 /obj/structure/surface/table/reinforced/black,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv733/indoors/base_operations/storage_facility)
 "hyH" = (
@@ -34756,11 +34758,14 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv733/outdoors/colony_streets/avenue)
 "lGK" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "battlefield"
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = 16
 	},
-/turf/closed/wall/hybrisa/rock,
-/area/lv733/oob)
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/hybrisa/wood/greywood,
+/area/lv733/indoors/main_eng/rail_transit_dock)
 "lGX" = (
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/lv733/outdoors/caves/eastern_caves)
@@ -39884,6 +39889,7 @@
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/hybrisa/street/cement1,
 /area/lv733/outdoors/colony_streets/roaf_spaceport_south)
 "nAa" = (
@@ -58939,6 +58945,13 @@
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/lv733/indoors/wy_research_complex/central_corridor)
+"tNa" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 1
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/hybrisa/street/cement1,
+/area/lv733/outdoors/colony_streets/roaf_spaceport_south)
 "tNj" = (
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv733/outdoors/landing_zone_1)
@@ -59915,6 +59928,11 @@
 	},
 /turf/open/hybrisa/street/roadlines4,
 /area/lv733/outdoors/colony_streets/avenue)
+"uds" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/lv733/suit_roaf_shooter,
+/turf/open/hybrisa/street/roadlines4,
+/area/lv733/indoors/landing_zone_1/roaf_comms_hub_1)
 "udt" = (
 /turf/open/hybrisa/street/roadlines4,
 /area/lv733/outdoors/colony_streets/roaf_spaceport_south)
@@ -60243,6 +60261,7 @@
 	pixel_y = 9
 	},
 /obj/item/restraint/handcuffs,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv733/indoors/outpost/city_military_police_post)
 "ukO" = (
@@ -64626,6 +64645,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv733/indoors/administration/main_hall)
 "vMW" = (
@@ -66418,7 +66438,7 @@
 "wsQ" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/closed/wall/hybrisa/rock,
-/area/lv733/outdoors)
+/area/lv733/oob)
 "wsU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -72191,7 +72211,7 @@ gtD
 gtD
 gtD
 gtD
-lGK
+gtD
 gtD
 gtD
 gtD
@@ -81803,7 +81823,7 @@ aNa
 xdC
 qhW
 qhW
-riq
+uds
 aSl
 oea
 oea
@@ -84018,7 +84038,7 @@ xwB
 aFf
 xRr
 iIp
-vvf
+tNa
 fXt
 lbn
 alE
@@ -99418,7 +99438,7 @@ hcc
 dhZ
 rJo
 gPT
-gxS
+lGK
 gxS
 gPT
 jKt
