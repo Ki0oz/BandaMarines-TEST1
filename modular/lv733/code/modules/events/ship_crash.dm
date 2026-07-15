@@ -1,7 +1,8 @@
 // Событие падения корабля на LV-733 Whitchler Point — срабатывает на 5-й минуте раунда (тест)
 
 #define SHIP_CRASH_WARN_DELAY   (2 MINUTES)  // за сколько до удара подсвечивается зона
-#define SHIP_CRASH_ZONE_RADIUS  8            // радиус подсветки (тайлы)
+#define SHIP_CRASH_ZONE_WIDTH   24           // ширина подсветки (тайлы, x)
+#define SHIP_CRASH_ZONE_HEIGHT  30           // высота подсветки (тайлы, y)
 #define SHIP_CRASH_ERT_MAX      5            // максимум игроков в ERT
 #define SHIP_CRASH_ERT_SYNTHS   1            // максимум синтетиков в ERT
 #define SHIP_CRASH_LARVA_PER_N  8            // 1 лярва на каждые N людей
@@ -132,10 +133,13 @@
 
 	crash_turf = pick(candidate_turfs)
 
-	for(var/turf/T in range(SHIP_CRASH_ZONE_RADIUS, crash_turf))
-		if(is_ground_level(T.z))
-			var/obj/effect/lv733/crash_warning_overlay/O = new(T)
-			warning_overlays += O
+	var/turf/corner = locate(crash_turf.x - floor(SHIP_CRASH_ZONE_WIDTH/2), crash_turf.y - floor(SHIP_CRASH_ZONE_HEIGHT/2), crash_turf.z)
+	for(var/tx = corner.x to corner.x + SHIP_CRASH_ZONE_WIDTH - 1)
+		for(var/ty = corner.y to corner.y + SHIP_CRASH_ZONE_HEIGHT - 1)
+			var/turf/T = locate(tx, ty, crash_turf.z)
+			if(T && is_ground_level(T.z))
+				var/obj/effect/lv733/crash_warning_overlay/O = new(T)
+				warning_overlays += O
 
 	marine_announcement(
 		"Внимание! Обнаружен неопознанный объект, входящий в атмосферу LV-733. Неконтролируемое падение. Зона поражения обозначена. Немедленно покиньте отмеченный район!",
@@ -153,7 +157,7 @@
 		return
 
 	// Загрузить DMM корабля
-	var/datum/map_template/template = new(file("modular/lv733/maps/standalone/ship_crash.dmm"))
+	var/datum/map_template/template = new(file("maps/map_files/LV733_Whitchler_Point/standalone/ship_crash.dmm"))
 	if(!template.load(crash_turf, centered = TRUE, allow_cropping = TRUE))
 		return
 
@@ -197,7 +201,8 @@
 			to_chat(X, SPAN_XENONOTICE("Улей ощущает новых носителей. [larva_to_add] грудолом[larva_to_add == 1 ? "" : "а"] добавлено в пул."))
 
 #undef SHIP_CRASH_WARN_DELAY
-#undef SHIP_CRASH_ZONE_RADIUS
+#undef SHIP_CRASH_ZONE_WIDTH
+#undef SHIP_CRASH_ZONE_HEIGHT
 #undef SHIP_CRASH_ERT_MAX
 #undef SHIP_CRASH_ERT_SYNTHS
 #undef SHIP_CRASH_LARVA_PER_N
