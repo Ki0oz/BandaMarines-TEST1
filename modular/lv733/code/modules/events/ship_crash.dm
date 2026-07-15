@@ -162,9 +162,7 @@
 	if(!fexists(ship_path))
 		message_admins("[SPAN_DANGER("LV733 ship_crash: fexists() says '[ship_path]' does NOT exist relative to the server's working directory. This is a path/CWD problem, not a parsing problem.")]")
 		return
-	var/raw_text = file2text(ship_path)
-	message_admins("[SPAN_NOTICE("LV733 ship_crash: file2text('[ship_path]') returned [length(raw_text)] characters. First 40: [copytext(raw_text, 1, 41)]")]")
-	var/datum/map_template/template = new(file(ship_path))
+	var/datum/map_template/template = new(ship_path)
 	if(!template.width || !template.height)
 		message_admins("[SPAN_DANGER("LV733 ship_crash: file exists but failed to parse '[ship_path]' (width=[template.width], height=[template.height]). Likely a DMM format/regex issue in the file content.")]")
 		return

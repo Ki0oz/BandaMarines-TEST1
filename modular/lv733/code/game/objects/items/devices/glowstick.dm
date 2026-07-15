@@ -4,29 +4,37 @@
 	w_class = SIZE_TINY
 	show_flame = FALSE
 	fuel = 22 MINUTES
+	item_icons = list(
+		WEAR_L_HAND = 'modular/lv733/icons/glowstick/glowstick_lefthand.dmi',
+		WEAR_R_HAND = 'modular/lv733/icons/glowstick/glowstick_righthand.dmi',
+	)
 
 /obj/item/device/flashlight/flare/glowstick/blue
 	name = "синий химический источник света"
 	icon = 'modular/lv733/icons/glowstick/glowstick_blue.dmi'
 	icon_state = "glowstick_blue"
+	item_state = "glowstick_blue"
 	flame_tint = "#2487ff"
 
 /obj/item/device/flashlight/flare/glowstick/green
 	name = "зелёный химический источник света"
 	icon = 'modular/lv733/icons/glowstick/glowstick_green.dmi'
 	icon_state = "glowstick_green"
+	item_state = "glowstick_green"
 	flame_tint = "#9cff9c"
 
 /obj/item/device/flashlight/flare/glowstick/red
 	name = "красный химический источник света"
 	icon = 'modular/lv733/icons/glowstick/glowstick_red.dmi'
 	icon_state = "glowstick_red"
+	item_state = "glowstick_red"
 	flame_tint = "#ff1f1f"
 
 /obj/item/device/flashlight/flare/glowstick/yellow
 	name = "жёлтый химический источник света"
 	icon = 'modular/lv733/icons/glowstick/glowstick_yellow.dmi'
 	icon_state = "glowstick_yellow"
+	item_state = "glowstick_yellow"
 	flame_tint = "#ffe100"
 
 /obj/item/storage/box/glowstick

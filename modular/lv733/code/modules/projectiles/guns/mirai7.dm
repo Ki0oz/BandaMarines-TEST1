@@ -11,6 +11,7 @@
 		WEAR_R_HAND = 'modular/lv733/icons/mirai7/mirai7_righthand.dmi',
 	)
 	map_specific_decoration = FALSE
+	fire_sound = 'sound/weapons/gun_uzi.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/m39/extended/isrg
 
 /obj/item/ammo_magazine/smg/m39/extended/isrg
