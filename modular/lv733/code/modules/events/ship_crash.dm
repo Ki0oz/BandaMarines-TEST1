@@ -154,11 +154,16 @@
 	warning_overlays.Cut()
 
 	if(!crash_turf)
+		message_admins("[SPAN_DANGER("LV733 ship_crash: start() aborted — crash_turf is null.")]")
 		return
 
 	// Загрузить DMM корабля
 	var/datum/map_template/template = new(file("maps/map_files/LV733_Whitchler_Point/standalone/ship_crash.dmm"))
+	if(!template.width || !template.height)
+		message_admins("[SPAN_DANGER("LV733 ship_crash: failed to parse maps/map_files/LV733_Whitchler_Point/standalone/ship_crash.dmm (width=[template.width], height=[template.height]). Check the file exists and is a valid .dmm.")]")
+		return
 	if(!template.load(crash_turf, centered = TRUE, allow_cropping = TRUE))
+		message_admins("[SPAN_DANGER("LV733 ship_crash: template.load() failed at [ADMIN_VERBOSEJMP(crash_turf)] (template [template.width]x[template.height]). Likely too close to the map edge or a cordon issue.")]")
 		return
 
 	// Взрывы по площади
