@@ -91,6 +91,8 @@
 	stack_id = "folding"
 	display_maptext = FALSE
 	var/singular_type = /obj/item/stack/folding_barricade
+	/// Structure type spawned when this stack is deployed. Override on subtypes with custom barricade sprites.
+	var/deployed_type = /obj/structure/barricade/deployable
 
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
@@ -164,7 +166,7 @@
 	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] has finished deploying [singular_name]."),
 			SPAN_NOTICE("You finish deploying [singular_name]."))
 
-	var/obj/structure/barricade/deployable/cade = new(user.loc)
+	var/obj/structure/barricade/deployable/cade = new deployed_type(user.loc)
 	cade.setDir(user.dir)
 	cade.health = pop(stack_health)
 	cade.maxhealth = maxhealth

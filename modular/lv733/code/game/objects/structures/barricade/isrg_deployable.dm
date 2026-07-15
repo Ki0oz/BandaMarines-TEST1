@@ -27,6 +27,7 @@
 		WEAR_L_HAND = 'modular/lv733/icons/isrg_barricade/isrg_barricade_lhand.dmi',
 		WEAR_R_HAND = 'modular/lv733/icons/isrg_barricade/isrg_barricade_rhand.dmi',
 	)
+	deployed_type = /obj/structure/barricade/deployable/isrg
 
 /obj/item/stack/folding_barricade/isrg/three
 	amount = 3

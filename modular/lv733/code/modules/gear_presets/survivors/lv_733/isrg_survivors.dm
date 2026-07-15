@@ -26,7 +26,7 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/survivor/isrg/proc/equip_common_gear(mob/living/carbon/human/new_human, uniform_type, head_type, suit_type, back_type, belt_type, left_pouch_type, right_pouch_type, eyes_type = null, face_type = null)
+/datum/equipment_preset/survivor/isrg/proc/equip_common_gear(mob/living/carbon/human/new_human, uniform_type, head_type, suit_type, back_type, belt_type, left_pouch_type, right_pouch_type, eyes_type = null, face_type = null, spare_face_type = null)
 	new_human.equip_to_slot_or_del(new uniform_type(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
@@ -38,7 +38,10 @@
 		new_human.equip_to_slot_or_del(new face_type(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/isrg(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new suit_type(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing/black(new_human), WEAR_ACCESSORY)
+	var/obj/item/clothing/accessory/storage/webbing/black/rig = new(new_human)
+	new_human.equip_to_slot_or_del(rig, WEAR_ACCESSORY)
+	if(spare_face_type && rig.hold)
+		rig.hold.handle_item_insertion(new spare_face_type())
 	new_human.equip_to_slot_or_del(new belt_type(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new back_type(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new left_pouch_type(new_human), WEAR_L_STORE)
@@ -56,10 +59,12 @@
 		/obj/item/storage/pouch/firstaid/ert/wy,
 		/obj/item/clothing/glasses/hud/health,
 		/obj/item/clothing/mask/balaclava/isrg,
+		/obj/item/clothing/mask/gas/isrg,
 	)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/isrg(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap/isrg(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended/isrg(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended/isrg(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/isrg/rescuer
 	name = "Survivor - ISRG Rescuer"
@@ -80,10 +85,13 @@
 		/obj/item/storage/belt/medical/isrg/full,
 		/obj/item/storage/pouch/survival/full/wy,
 		/obj/item/storage/pouch/firstaid/ert/wy,
+		null,
+		/obj/item/clothing/mask/gas/isrg,
 	)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/isrg(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap/isrg(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended/isrg(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended/isrg(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/isrg/leader
 	name = "Survivor - ISRG Group Leader"
@@ -105,10 +113,14 @@
 		/obj/item/storage/pouch/survival/full/wy,
 		/obj/item/storage/pouch/firstaid/ert/wy,
 		/obj/item/clothing/glasses/sunglasses/aviator/silver,
+		/obj/item/clothing/mask/balaclava/isrg,
+		/obj/item/clothing/mask/gas/isrg,
 	)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m4ra/isrg(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/isrg/ap(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/isrg(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/isrg(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/isrg/smartgunner
 	name = "Survivor - ISRG Smartgunner"
@@ -136,9 +148,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/isrg/field_helmet(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/isrg(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/isrg(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner/isrg(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/isrg/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/isrg(new_human), WEAR_J_STORE)
@@ -193,7 +206,7 @@
 /datum/equipment_preset/synth_k9/isrg/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/synth_k9(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/isrg(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/k9_synth/medicalpack(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/k9_synth/medicalpack/isrg(new_human), WEAR_BACK)
 	to_chat(new_human, ISRG_K9_SYNTH_NOTICE)
 
 #undef ISRG_K9_SYNTH_NOTICE
@@ -229,9 +242,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/isrg/dress(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/balaclava/isrg(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/isrg(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/rmc/service/isrg/dress(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing/black(new_human), WEAR_ACCESSORY)
+	var/obj/item/clothing/accessory/storage/webbing/black/rig = new(new_human)
+	new_human.equip_to_slot_or_del(rig, WEAR_ACCESSORY)
+	if(rig.hold)
+		rig.hold.handle_item_insertion(new /obj/item/clothing/mask/gas/isrg())
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec/isrg(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)

@@ -86,6 +86,17 @@
 	// действием, что и штатные визоры (Cycle helmet HUD).
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/night_vision/isrg)
 
+/obj/item/clothing/head/helmet/marine/veteran/isrg/field_helmet/equipped(mob/living/carbon/human/mob, slot)
+	if(slot == WEAR_HEAD && !active_visor)
+		for(var/obj/item/device/helmet_visor/night_vision/isrg/nvg in built_in_visors)
+			if(nvg.can_toggle(mob))
+				active_visor = nvg
+				var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in actions
+				if(cycle_action)
+					cycle_action.set_action_overlay(active_visor)
+			break
+	return ..()
+
 // Верхняя одежда
 
 /obj/item/clothing/suit/storage/jacket/marine/rmc/service/isrg/dress
@@ -298,6 +309,27 @@
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
 
+// Пояс смартганнера - пистолет + барабанные магазины Т3 «Райко»
+
+/obj/item/storage/belt/gun/smartgunner/isrg
+	name = "\improper Пояс ISRG"
+	desc = "Тактический пояс поисковой группы ISRG для переноски пистолета и барабанных магазинов Т3 «Райко»."
+	icon = 'modular/clothing/icon/isrg/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'modular/clothing/onmob/isrg/belts.dmi'
+	)
+	icon_state = "isrg_belt"
+	item_state = "isrg_belt"
+	item_state_slots = list(
+		WEAR_WAIST = "isrg_belt"
+	)
+
+/obj/item/storage/belt/gun/smartgunner/isrg/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3())
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/smartgun/isrg(src)
+	new /obj/item/ammo_magazine/smartgun/isrg(src)
+
 // Рюкзак
 
 /obj/item/storage/backpack/satchel/sec/isrg
@@ -312,6 +344,13 @@
 	item_state_slots = list(
 		WEAR_BACK = "isrg_backpack"
 	)
+
+/obj/item/storage/backpack/marine/k9_synth/medicalpack/isrg
+	name = "\improper M210-I portable K9 medical backpack"
+	desc = "Медицинская упряжь K9 поисковой группы ISRG, приспособленная для переноски медикаментов."
+	icon = 'modular/lv733/icons/isrg_k9/isrg_k9_pack.dmi'
+	icon_override = 'modular/lv733/icons/isrg_k9/isrg_k9_pack.dmi'
+	icon_state = "isrg_medicalpack"
 
 // Гарнитура
 
