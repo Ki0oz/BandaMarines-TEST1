@@ -1,5 +1,5 @@
 /datum/equipment_preset/survivor/clf_wy
-	name = "Survivor - CLF-WP Rebel"
+	name = "CLF-WP Rebel"
 	assignment = "CLF-WP - Rebel"
 	job_title = JOB_CLF_WY_REBEL
 	paygrades = list(PAY_SHORT_CLFWYE1 = JOB_PLAYTIME_TIER_0)
@@ -57,7 +57,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/survivor/clf_wy/engi
-	name = "Survivor - CLF-WP Engineer"
+	name = "CLF-WP Engineer"
 	assignment = "CLF-WP - Engineer"
 	job_title = JOB_CLF_WY_ENGI
 	paygrades = list(PAY_SHORT_CLFWYE2 = JOB_PLAYTIME_TIER_0)
@@ -82,7 +82,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/survivor/clf_wy/medic
-	name = "Survivor - CLF-WP Medic"
+	name = "CLF-WP Medic"
 	assignment = "CLF-WP - Medic"
 	job_title = JOB_CLF_WY_MEDIC
 	paygrades = list(PAY_SHORT_CLFWYE2 = JOB_PLAYTIME_TIER_0)
@@ -106,7 +106,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/survivor/clf_wy/leader
-	name = "Survivor - CLF-WP Cell Leader"
+	name = "CLF-WP Cell Leader"
 	assignment = "CLF-WP - Cell Leader"
 	job_title = JOB_CLF_WY_LEADER
 	paygrades = list(PAY_SHORT_CLFWYO1 = JOB_PLAYTIME_TIER_0)
@@ -131,7 +131,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/synth/survivor/clf_wy_synth
-	name = "Survivor - CLF-WP Synthetic"
+	name = "CLF-WP Synthetic"
 	assignment = "CLF-WP - Synthetic"
 	job_title = JOB_CLF_WY_SYNTH
 	paygrades = list(PAY_SHORT_CLFWYS1 = JOB_PLAYTIME_TIER_0)
@@ -173,7 +173,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic(new_human.back), WEAR_IN_JACKET)
 
 /datum/equipment_preset/survivor/whitchler/clf_wy_curator
-	name = "Survivor - CLF-WP Curator"
+	name = "CLF-WP Curator"
 	assignment = "CLF-WP - Curator"
 	job_title = JOB_CLF_WY_CURATOR
 	paygrades = list(PAY_SHORT_CLFWYO2 = JOB_PLAYTIME_TIER_0)

@@ -10,6 +10,7 @@
 		WEAR_L_HAND = 'modular/lv733/icons/l86kai/l86kai_lefthand.dmi',
 		WEAR_R_HAND = 'modular/lv733/icons/l86kai/l86kai_righthand.dmi',
 	)
+	map_specific_decoration = FALSE
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/isrg
 
 /obj/item/weapon/gun/rifle/m4ra/isrg/set_gun_config_values()

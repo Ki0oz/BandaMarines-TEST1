@@ -2,7 +2,7 @@
 // FACTION_CLF_WY / MOB_HUD_FACTION_CLF_WY / CLF_WY_FREQ live in modular/clothing/code/defines_clf_wy.dm
 // since modular/clothing is compiled before modular/lv733.
 
-#define FACTION_LIST_SURVIVOR_CLF_WY list(FACTION_SURVIVOR, FACTION_CLF_WY)
+#define FACTION_LIST_SURVIVOR_CLF_WY list(FACTION_SURVIVOR, FACTION_CLF_WY, FACTION_CLF)
 
 #define JOB_CLF_WY_CURATOR "CLF-WP Curator"
 #define JOB_CLF_WY_LEADER "CLF-WP Leader"

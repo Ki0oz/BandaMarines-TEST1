@@ -10,6 +10,7 @@
 		WEAR_L_HAND = 'modular/lv733/icons/mirai7/mirai7_lefthand.dmi',
 		WEAR_R_HAND = 'modular/lv733/icons/mirai7/mirai7_righthand.dmi',
 	)
+	map_specific_decoration = FALSE
 	current_mag = /obj/item/ammo_magazine/smg/m39/extended/isrg
 
 /obj/item/ammo_magazine/smg/m39/extended/isrg
