@@ -29,7 +29,7 @@
 		new_human.equip_to_slot_or_del(new shoes_type(new_human), WEAR_FEET)
 	else
 		spawn_rebel_shoes(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/clf_wy/hands(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 	if(head_type)
 		new_human.equip_to_slot_or_del(new head_type(new_human), WEAR_HEAD)
 	if(eyes_type)
@@ -48,7 +48,7 @@
 		/obj/item/clothing/under/marine/veteran/clf_wy/regular,
 		/obj/item/clothing/head/helmet/marine/veteran/clf_wy/regular_helmet,
 		/obj/item/clothing/suit/storage/jacket/marine/rmc/service/clf_wy/raincover,
-		/obj/item/storage/backpack/lightpack/clf_wy,
+		/obj/item/storage/backpack/lightpack,
 		/obj/item/storage/belt/shotgun/full/random,
 		/obj/item/device/flashlight,
 		/obj/item/storage/pouch/firstaid/ert,
@@ -96,7 +96,7 @@
 		/obj/item/clothing/under/marine/veteran/clf_wy/support,
 		/obj/item/clothing/head/helmet/marine/veteran/clf_wy/regular_helmet,
 		/obj/item/clothing/suit/storage/jacket/marine/rmc/service/clf_wy/raincover,
-		/obj/item/storage/backpack/lightpack/clf_wy,
+		/obj/item/storage/backpack/lightpack,
 		/obj/item/storage/belt/medical/full/with_defib_and_analyzer,
 		/obj/item/device/flashlight,
 		/obj/item/storage/pouch/magazine/large,
@@ -120,7 +120,7 @@
 		/obj/item/clothing/under/marine/veteran/clf_wy/officer,
 		/obj/item/clothing/head/helmet/marine/veteran/clf_wy/officer_helmet,
 		/obj/item/clothing/suit/storage/jacket/marine/rmc/service/clf_wy/officer_armor,
-		/obj/item/storage/backpack/lightpack/clf_wy,
+		/obj/item/storage/backpack/lightpack,
 		/obj/item/storage/belt/marine,
 		/obj/item/device/flashlight,
 		/obj/item/storage/pouch/firstaid/ert,
@@ -156,15 +156,15 @@
 
 /datum/equipment_preset/synth/survivor/clf_wy_synth/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/clf_wy/regular(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/clf_wy/shoes(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/clf_wy/hands(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/clf_wy/regular_helmet(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/clf_wy(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver(new_human), WEAR_R_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/rmc/service/clf_wy/raincover(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing/black(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/rmc/survivor(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/clf_wy(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/electronics(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_J_STORE)
@@ -199,14 +199,14 @@
 /datum/equipment_preset/survivor/whitchler/clf_wy_curator/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/clf_wy/officer(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/clf_wy/hands(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/clf_wy/officer_helmet(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/clf_wy(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/rmc/service/clf_wy/officer_armor(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing/black(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/dragon_katana/full(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/clf_wy(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
