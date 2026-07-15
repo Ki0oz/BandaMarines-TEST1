@@ -50,22 +50,18 @@
 
 /datum/ammo/bullet/smartgun/isrg
 	name = "T3 smartgun tracer bullet"
-	icon = 'modular/lv733/icons/t3_raiko_smartgun/t3_raiko_bullet.dmi'
-	icon_state = "t3_raiko_bullet"
 	damage = 32
 	accuracy = HIT_ACCURACY_TIER_5
 
 /datum/ammo/bullet/smartgun/isrg/alt
 	name = "T3 smartgun bullet"
-	icon = 'modular/lv733/icons/t3_raiko_smartgun/t3_raiko_bullet.dmi'
-	icon_state = "t3_raiko_bullet_alt"
+	icon_state = "redbullet"
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	effective_range_max = 8
 
 /datum/ammo/bullet/smartgun/isrg/armor_piercing
 	name = "\improper AP T3 smartgun tracer bullet"
-	icon = 'modular/lv733/icons/t3_raiko_smartgun/t3_raiko_bullet.dmi'
-	icon_state = "t3_raiko_bullet_ap"
+	icon_state = "bullet_ap_iff"
 	damage = 24
 	accuracy = HIT_ACCURACY_TIER_3
 	penetration = ARMOR_PENETRATION_TIER_8
@@ -73,8 +69,7 @@
 
 /datum/ammo/bullet/smartgun/isrg/armor_piercing/alt
 	name = "\improper AP T3 smartgun bullet"
-	icon = 'modular/lv733/icons/t3_raiko_smartgun/t3_raiko_bullet.dmi'
-	icon_state = "t3_raiko_bullet_ap_alt"
+	icon_state = "bullet"
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	effective_range_max = 7
 
