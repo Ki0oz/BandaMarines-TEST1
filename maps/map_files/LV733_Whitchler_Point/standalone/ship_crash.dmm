@@ -35,11 +35,6 @@
 /obj/item/weapon/gun/rifle/l42a,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/template_noop)
-"ck" = (
-/turf/closed/shuttle/dropship3/transparent{
-	icon_state = "86"
-	},
-/area/template_noop)
 "cU" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_right_cap,
 /turf/open/floor/plating/platingdmg3,
@@ -68,7 +63,7 @@
 /area/template_noop)
 "ef" = (
 /obj/structure/shuttle/part/dropship3/right_outer_wing_connector,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "em" = (
 /turf/closed/shuttle/dropship3/transparent{
@@ -88,12 +83,7 @@
 /area/template_noop)
 "eB" = (
 /obj/structure/shuttle/part/dropship3/transparent/upper_left_wing,
-/turf/template_noop,
-/area/template_noop)
-"fe" = (
-/turf/closed/shuttle/dropship3{
-	icon_state = "64"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "fi" = (
 /obj/structure/stairs{
@@ -187,7 +177,7 @@
 /area/template_noop)
 "kS" = (
 /obj/structure/shuttle/part/dropship3/left_inner_wing_connector,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "lf" = (
 /obj/structure/shuttle/part/dropship3/transparent/lower_left_wing,
@@ -266,7 +256,7 @@
 /area/template_noop)
 "ng" = (
 /obj/structure/shuttle/part/dropship3/transparent/right_inner_bottom_wing,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "of" = (
 /obj/item/stack/rods,
@@ -283,7 +273,7 @@
 /area/template_noop)
 "pb" = (
 /obj/structure/shuttle/part/dropship3/right_inner_wing_connector,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "pn" = (
 /obj/structure/shuttle/part/dropship3/transparent/outer_right_weapons,
@@ -320,7 +310,7 @@
 /area/template_noop)
 "rD" = (
 /obj/structure/shuttle/part/dropship3/nose_front_right,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "ss" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_left_exhaust,
@@ -376,15 +366,15 @@
 /area/template_noop)
 "uw" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "uH" = (
 /obj/structure/shuttle/part/dropship3/transparent/left_outer_bottom_wing,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "uT" = (
 /obj/structure/shuttle/part/dropship3/bottom_right_wall,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "vn" = (
 /turf/closed/shuttle/dropship3{
@@ -489,15 +479,15 @@
 /area/template_noop)
 "zA" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_left_cap,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "zR" = (
 /obj/structure/shuttle/part/dropship3/transparent/nose_top_right,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "zW" = (
 /obj/structure/shuttle/part/dropship3/nose_front_left,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "zY" = (
 /obj/item/stack/sheet/metal,
@@ -534,11 +524,6 @@
 	icon_state = "68"
 	},
 /area/template_noop)
-"Ct" = (
-/obj/structure/shuttle/part/dropship3/transparent/lower_right_wing,
-/obj/effect/attach_point/weapon/dropship3/right_wing,
-/turf/template_noop,
-/area/template_noop)
 "CW" = (
 /turf/closed/shuttle/dropship3{
 	icon_state = "62"
@@ -571,12 +556,12 @@
 /area/template_noop)
 "Ed" = (
 /obj/structure/shuttle/part/dropship3/bottom_left_wall,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "Et" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_left_exhaust,
 /obj/structure/prop/invuln/fire,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "EF" = (
 /turf/closed/shuttle/dropship3{
@@ -623,7 +608,7 @@
 /area/template_noop)
 "Gc" = (
 /obj/structure/shuttle/part/dropship3/transparent/left_outer_inner_wing,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "Gk" = (
 /turf/closed/shuttle/dropship3{
@@ -677,7 +662,7 @@
 /area/template_noop)
 "HC" = (
 /obj/structure/shuttle/part/dropship3/transparent/nose_top_left,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "HW" = (
 /obj/structure/bed/chair/vehicle{
@@ -691,7 +676,7 @@
 /area/template_noop)
 "IH" = (
 /obj/structure/shuttle/part/dropship3/transparent/right_outer_bottom_wing,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "II" = (
 /obj/item/stack/rods,
@@ -705,10 +690,6 @@
 "Jr" = (
 /obj/structure/bed/chair/dropship/passenger,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/template_noop)
-"JL" = (
-/obj/structure/shuttle/part/dropship3/transparent/engine_right_cap,
-/turf/template_noop,
 /area/template_noop)
 "JS" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -724,7 +705,7 @@
 /area/template_noop)
 "Ks" = (
 /obj/structure/shuttle/part/dropship3/transparent/nose_center,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "KM" = (
 /obj/structure/bed/chair/vehicle{
@@ -830,11 +811,8 @@
 	},
 /area/template_noop)
 "PO" = (
-/obj/structure/shuttle/part/dropship3/transparent/middle_right_wing,
-/obj/structure/machinery/light/dropship/green{
-	dir = 4
-	},
-/turf/template_noop,
+/obj/structure/shuttle/part/dropship3/transparent/engine_left_exhaust,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "Qq" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -861,8 +839,8 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
 /area/template_noop)
 "QZ" = (
-/obj/structure/shuttle/part/dropship3/transparent/upper_right_wing,
-/turf/template_noop,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "Rh" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds3{
@@ -890,12 +868,6 @@
 	icon_state = "31"
 	},
 /area/template_noop)
-"SY" = (
-/obj/structure/machinery/door/airlock/hatch/cockpit/three{
-	dir = 1
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/template_noop)
 "UR" = (
 /turf/closed/shuttle/dropship3{
 	icon_state = "59"
@@ -911,7 +883,7 @@
 /area/template_noop)
 "VE" = (
 /obj/structure/shuttle/part/dropship3/left_outer_wing_connector,
-/turf/template_noop,
+/turf/open/floor/plating/platingdmg3,
 /area/template_noop)
 "VF" = (
 /obj/structure/surface/table/reinforced/black,
@@ -958,9 +930,6 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/template_noop)
 "Yf" = (
-/obj/structure/machinery/door/airlock/hatch/cockpit/three{
-	dir = 1
-	},
 /turf/open/shuttle/dropship/light_grey_top_left,
 /area/template_noop)
 "Yp" = (
@@ -1140,7 +1109,7 @@ hw
 hw
 hw
 hw
-hw
+Yp
 hw
 hw
 hw
@@ -1171,10 +1140,10 @@ hw
 hw
 hw
 hw
+Yp
 hw
-hw
-hw
-hw
+Yp
+Yp
 hw
 hw
 hw
@@ -1196,7 +1165,7 @@ hw
 hw
 hw
 hw
-hw
+Yp
 hw
 hw
 hw
@@ -1207,8 +1176,8 @@ hw
 tT
 hw
 hw
-hw
-hw
+Yp
+Yp
 hw
 hw
 zA
@@ -1216,9 +1185,9 @@ Yq
 sX
 kO
 ss
+Yp
 hw
-hw
-hw
+Yp
 hw
 "}
 (8,1,1) = {"
@@ -1231,8 +1200,8 @@ hw
 vN
 hw
 hw
-hw
-hw
+Yp
+Yp
 hw
 hw
 hw
@@ -1240,18 +1209,18 @@ lK
 LG
 Zn
 hw
+Yp
+Yp
 hw
-hw
-hw
-hw
-hw
-JL
+Yp
+Yp
+cU
 wO
 lk
 em
 uw
-hw
-hw
+Yp
+Yp
 uH
 hw
 "}
@@ -1261,7 +1230,7 @@ hw
 hw
 hw
 vN
-vN
+Zn
 eB
 FF
 FF
@@ -1285,17 +1254,17 @@ tA
 Sy
 vn
 Ed
-hw
+Yp
 Gc
-hw
+Yp
 "}
 (10,1,1) = {"
 hw
 hw
-hw
-hw
-mt
-Pl
+Yp
+Yp
+Yp
+tT
 Wr
 hC
 hC
@@ -1321,15 +1290,15 @@ mJ
 Ln
 kS
 VE
-hw
+Yp
 "}
 (11,1,1) = {"
 hw
 HC
 zW
 EF
-ck
-Bm
+tT
+tT
 wH
 kQ
 fu
@@ -1353,8 +1322,8 @@ Mr
 wB
 hD
 Rh
-hw
-hw
+Yp
+Yp
 hw
 "}
 (12,1,1) = {"
@@ -1363,7 +1332,7 @@ Ks
 oL
 zq
 DS
-SY
+dj
 mJ
 Mr
 Mr
@@ -1387,8 +1356,8 @@ GZ
 tQ
 mJ
 dj
-hw
-hw
+Yp
+Yp
 hw
 "}
 (13,1,1) = {"
@@ -1397,7 +1366,7 @@ zR
 rD
 JX
 qB
-Bm
+tT
 Mj
 kQ
 bT
@@ -1421,22 +1390,22 @@ Qq
 WZ
 WV
 dj
-hw
-hw
-hw
+Yp
+Yp
+Yp
 "}
 (14,1,1) = {"
 hw
 hw
-hw
-hw
-pn
-fL
+Yp
+Yp
+Yp
+Rt
 Gk
 FP
 FP
-fe
-bu
+tT
+Yp
 jQ
 Gt
 ME
@@ -1457,19 +1426,19 @@ mJ
 jy
 pb
 ef
-hw
+Yp
 "}
 (15,1,1) = {"
 hw
 hw
+Yp
 hw
-hw
-hw
-hw
+Zn
+Yp
 QZ
-PO
-PO
-Ct
+Yp
+Yp
+Yp
 pn
 fL
 tq
@@ -1489,31 +1458,31 @@ SD
 yi
 bu
 uT
-hw
+Yp
 ng
-hw
+Yp
 "}
 (16,1,1) = {"
 hw
 hw
 hw
-hw
-hw
-hw
-vN
-hw
-hw
+Yp
+QZ
 hw
 vN
 hw
+Yp
+hw
+vN
+Yp
 zA
 Dl
 Ak
 mF
-ss
-hw
-hw
-hw
+PO
+Yp
+Yp
+Yp
 hw
 hw
 Rt
@@ -1522,10 +1491,10 @@ dH
 lQ
 mF
 Et
-hw
-hw
+Yp
+Yp
 IH
-hw
+Yp
 "}
 (17,1,1) = {"
 hw
@@ -1533,19 +1502,19 @@ hw
 hw
 hw
 hw
-hw
+Yp
 hw
 hw
 vN
 hw
 hw
 hw
-JL
+cU
 Xd
 Rn
 aD
 uw
-hw
+Yp
 hw
 hw
 hw
@@ -1556,10 +1525,10 @@ Xd
 EY
 Wb
 uw
-hw
-hw
-hw
-hw
+Yp
+Yp
+Yp
+Yp
 "}
 (18,1,1) = {"
 hw
@@ -1575,23 +1544,23 @@ hw
 hw
 hw
 hw
+Yp
+Yp
+Yp
+Yp
+Yp
 hw
 hw
-hw
-hw
-hw
-hw
-hw
-hw
+Yp
 hw
 hw
 hw
 Yp
 Zn
 tT
-hw
-hw
-hw
+Yp
+Yp
+Yp
 hw
 hw
 "}
@@ -1617,7 +1586,7 @@ hw
 hw
 hw
 hw
-hw
+Yp
 hw
 hw
 hw
