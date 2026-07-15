@@ -158,9 +158,13 @@
 		return
 
 	// Загрузить DMM корабля
-	var/datum/map_template/template = new(file("maps/map_files/LV733_Whitchler_Point/standalone/ship_crash.dmm"))
+	var/ship_path = "maps/map_files/LV733_Whitchler_Point/standalone/ship_crash.dmm"
+	if(!fexists(ship_path))
+		message_admins("[SPAN_DANGER("LV733 ship_crash: fexists() says '[ship_path]' does NOT exist relative to the server's working directory. This is a path/CWD problem, not a parsing problem.")]")
+		return
+	var/datum/map_template/template = new(file(ship_path))
 	if(!template.width || !template.height)
-		message_admins("[SPAN_DANGER("LV733 ship_crash: failed to parse maps/map_files/LV733_Whitchler_Point/standalone/ship_crash.dmm (width=[template.width], height=[template.height]). Check the file exists and is a valid .dmm.")]")
+		message_admins("[SPAN_DANGER("LV733 ship_crash: file exists but failed to parse '[ship_path]' (width=[template.width], height=[template.height]). Likely a DMM format/regex issue in the file content.")]")
 		return
 	if(!template.load(crash_turf, centered = TRUE, allow_cropping = TRUE))
 		message_admins("[SPAN_DANGER("LV733 ship_crash: template.load() failed at [ADMIN_VERBOSEJMP(crash_turf)] (template [template.width]x[template.height]). Likely too close to the map edge or a cordon issue.")]")
