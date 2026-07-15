@@ -715,9 +715,6 @@
 "hs" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/prop/invuln/dense/lifeline_ship{
-	pixel_x = 7
-	},
 /obj/effect/landmark/survivor_spawner/isrg/rescuer,
 /turf/open/hybrisa/street/roadlines4,
 /area/lv733/outdoors/colony_streets/engineering_street)
@@ -1475,7 +1472,6 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv733/outdoors/colony_streets/engineering_street)
 "qe" = (
@@ -3541,6 +3537,14 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv733/indoors/landing_zone_1/roaf_flight_control_room)
+"Ok" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/invuln/dense/lifeline_ship{
+	pixel_x = -90;
+	pixel_y = -25
+	},
+/turf/open/hybrisa/street/roadlines4,
+/area/lv733/outdoors/colony_streets/engineering_street)
 "Om" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/southeast,
 /area/lv733/indoors/cafeteriakitchen)
@@ -4042,6 +4046,10 @@
 "TX" = (
 /obj/item/stack/rods,
 /turf/open/hybrisa/street/cement1,
+/area/lv733/outdoors/colony_streets/engineering_street)
+"Ua" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv733/outdoors/colony_streets/engineering_street)
 "Uk" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
@@ -5066,7 +5074,7 @@ aA
 CC
 Nj
 Md
-CC
+Ok
 Fe
 xd
 DH
@@ -5127,7 +5135,7 @@ YI
 cx
 Aq
 Md
-gi
+Ua
 Xm
 YI
 yC
