@@ -13864,27 +13864,6 @@
 /obj/structure/machinery/light/double,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/lv733/indoors/wy_research_complex/mess_hall)
-"eEm" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/largecrate/random/barrel{
-	desc = "A green storage barrel.";
-	icon_state = "barrel_green";
-	layer = 4;
-	name = "green barrel";
-	pixel_x = 13;
-	pixel_y = 16
-	},
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_4"
-	},
-/obj/item/reagent_container/food/drinks/cans/souto{
-	icon_state = "6_pack_1_crushed"
-	},
-/obj/effect/decal/strata_decals/tyrargo_mud_corner{
-	dir = 1
-	},
-/turf/open/hybrisa/street/cement1,
-/area/lv733/outdoors/colony_streets/city_streets)
 "eEA" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_5"
@@ -55012,23 +54991,26 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv733/indoors/wy_research_complex/storage)
 "sxE" = (
+/obj/structure/largecrate/random/barrel{
+	desc = "A green storage barrel.";
+	icon_state = "barrel_green";
+	layer = 4;
+	name = "green barrel";
+	pixel_x = 13;
+	pixel_y = 16
+	},
 /obj/item/trash/c_tube{
 	pixel_x = -18
 	},
-/obj/item/hybrisa/misc/trash_bag_full_prop{
-	pixel_x = 2;
-	pixel_y = 20;
-	layer = 4
+/obj/item/reagent_container/food/drinks/cans/souto{
+	icon_state = "6_pack_1_crushed"
 	},
-/obj/structure/largecrate/random/barrel/green{
-	layer = 4;
-	pixel_x = -6
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4"
 	},
-/obj/effect/decal/strata_decals/tyrargo_mud_corner{
-	dir = 1
-	},
+/obj/effect/decal/strata_decals/tyrargo_mud_corner,
 /turf/open/hybrisa/street/cement1,
-/area/lv733/outdoors/colony_streets/city_streets)
+/area/lv733/outdoors/colony_streets/civil_spaceport_south)
 "sxI" = (
 /obj/structure/barricade/handrail/wire,
 /turf/open/floor/prison/ramptop/east,
@@ -60810,6 +60792,16 @@
 /area/lv733/outdoors/colony_streets/engineering_street)
 "utO" = (
 /obj/item/trash/cigbutt,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = 2;
+	pixel_y = 20;
+	layer = 4
+	},
+/obj/structure/largecrate/random/barrel/green{
+	layer = 4;
+	pixel_x = -6
+	},
+/obj/effect/decal/strata_decals/tyrargo_mud_corner,
 /turf/open/hybrisa/street/cement1,
 /area/lv733/outdoors/colony_streets/civil_spaceport_south)
 "uui" = (
@@ -95374,7 +95366,7 @@ eyZ
 eyZ
 eyZ
 eyZ
-eEm
+oDv
 bNQ
 eOx
 eOx
@@ -95576,7 +95568,7 @@ eyZ
 eyZ
 eyZ
 eyZ
-sxE
+hMA
 kro
 aOT
 jYj
@@ -95778,7 +95770,7 @@ byx
 gnA
 byx
 byx
-eeg
+sxE
 pSg
 etp
 etp
@@ -96182,7 +96174,7 @@ byx
 bdN
 cwi
 byx
-eeg
+qOF
 pvY
 cMx
 kCz

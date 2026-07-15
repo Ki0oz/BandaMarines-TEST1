@@ -459,7 +459,7 @@
 /area/lv733/outdoors/colony_streets/engineering_street)
 "mi" = (
 /turf/template_noop,
-/area/space)
+/area/template_noop)
 "mm" = (
 /obj/effect/landmark/survivor_spawner/clf_wy,
 /turf/open/floor/hybrisa/tile/tileblackcheckered,

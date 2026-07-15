@@ -196,7 +196,7 @@
 /area/lv733/outdoors/colony_streets/avenue)
 "dB" = (
 /turf/template_noop,
-/area/space)
+/area/template_noop)
 "dD" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 4
