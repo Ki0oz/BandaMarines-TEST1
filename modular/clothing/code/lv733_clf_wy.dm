@@ -1,5 +1,4 @@
 // CLF-WP - Colonial Liberation Front of WP - survivor
-// Униформа
 
 /obj/item/clothing/under/marine/veteran/clf_wy/officer
 	name = "\improper Форма лидера CLF-WP"

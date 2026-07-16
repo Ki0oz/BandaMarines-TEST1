@@ -1,13 +1,11 @@
-// Событие падения корабля на LV-733 Whitchler Point — срабатывает на 5-й минуте раунда (тест)
+// Слоп ивент падения кораблы на 50й минуте, чтобы не было скучно
 
-#define SHIP_CRASH_WARN_DELAY   (2 MINUTES)  // за сколько до удара подсвечивается зона
-#define SHIP_CRASH_ZONE_WIDTH   24           // ширина подсветки (тайлы, x)
-#define SHIP_CRASH_ZONE_HEIGHT  30           // высота подсветки (тайлы, y)
-#define SHIP_CRASH_ERT_MAX      5            // максимум игроков в ERT
-#define SHIP_CRASH_ERT_SYNTHS   1            // максимум синтетиков в ERT
-#define SHIP_CRASH_LARVA_PER_N  8            // 1 лярва на каждые N людей
-
-// --- Временный эффект подсветки зоны ---
+#define SHIP_CRASH_WARN_DELAY   (2 MINUTES)  // буффер
+#define SHIP_CRASH_ZONE_WIDTH   24
+#define SHIP_CRASH_ZONE_HEIGHT  30
+#define SHIP_CRASH_ERT_MAX      5
+#define SHIP_CRASH_ERT_SYNTHS   1
+#define SHIP_CRASH_LARVA_PER_N  8            // НАДО ТЕСТИТЬ
 
 /obj/effect/lv733/crash_warning_overlay
 	name = "зона падения"
@@ -18,7 +16,7 @@
 	layer = ABOVE_TURF_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-// --- ERT: спасательная группа на место крушения ---
+// ERT
 
 /datum/emergency_call/lv733_crash_response
 	name = "LV-733: Спасательная группа ROAF"
@@ -91,8 +89,6 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Задача: [objectives]")), 1 SECONDS)
 
-// --- Контроль события ---
-
 /datum/round_event_control/lv733_ship_crash
 	name = "LV-733: Падение корабля"
 	typepath = /datum/round_event/lv733_ship_crash
@@ -147,8 +143,10 @@
 		sound('sound/misc/notice2.ogg')
 	)
 
+	// ТЕСТ (Ожидается, что ерт будет вызвано в 51:45 и заспавнено где-то в 52:15 (Падение шипа в 52:00))
+	addtimer(CALLBACK(SSticker.mode, TYPE_PROC_REF(/datum/game_mode, get_specific_call), /datum/emergency_call/lv733_crash_response, FALSE, TRUE), SHIP_CRASH_WARN_DELAY - 15 SECONDS)
+
 /datum/round_event/lv733_ship_crash/start()
-	// Убрать подсветку
 	for(var/obj/effect/lv733/crash_warning_overlay/O in warning_overlays)
 		qdel(O)
 	warning_overlays.Cut()
@@ -157,7 +155,6 @@
 		message_admins("[SPAN_DANGER("LV733 ship_crash: start() aborted — crash_turf is null.")]")
 		return
 
-	// Загрузить DMM корабля
 	var/ship_path = "maps/map_files/LV733_Whitchler_Point/standalone/ship_crash.dmm"
 	if(!fexists(ship_path))
 		message_admins("[SPAN_DANGER("LV733 ship_crash: fexists() says '[ship_path]' does NOT exist relative to the server's working directory. This is a path/CWD problem, not a parsing problem.")]")
@@ -170,7 +167,7 @@
 		message_admins("[SPAN_DANGER("LV733 ship_crash: template.load() failed at [ADMIN_VERBOSEJMP(crash_turf)] (template [template.width]x[template.height]). Likely too close to the map edge or a cordon issue.")]")
 		return
 
-	// Взрывы по площади
+	// Бум
 	var/list/explosion_turfs = list()
 	for(var/turf/ET in range(6, crash_turf))
 		if(is_ground_level(ET.z))
@@ -180,17 +177,12 @@
 		var/turf/exp_turf = pick_n_take(explosion_turfs)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), exp_turf, 1, 2, 3, 4), rand(0, 30))
 
-	// Сообщение о месте падения
 	marine_announcement(
 		"Судно упало на LV-733. Зафиксированы взрывы. Всем подразделениям — повышенная готовность.",
 		"КРУШЕНИЕ ЗАФИКСИРОВАНО",
 		sound('sound/misc/notice2.ogg')
 	)
 
-	// Запустить ERT
-	SSticker.mode.get_specific_call(/datum/emergency_call/lv733_crash_response, FALSE, TRUE)
-
-	// Дать лярвы ксеноморфам
 	_give_xeno_larva()
 
 /datum/round_event/lv733_ship_crash/proc/_give_xeno_larva()
@@ -204,7 +196,6 @@
 	hive.stored_larva += larva_to_add
 	hive.hive_ui.update_burrowed_larva()
 
-	// Сообщение королеве/ксеноморфам
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == XENO_HIVE_NORMAL)
 			to_chat(X, SPAN_XENONOTICE("Улей ощущает новых носителей. [larva_to_add] грудолом[larva_to_add == 1 ? "" : "а"] добавлено в пул."))

@@ -1,7 +1,7 @@
 /datum/faction/clf_wy
 	name = "CLF-WP - Colonial Liberation Front of WP"
 	faction_tag = FACTION_CLF_WY
-	base_icon_file = 'modular/lv733/icons/clf_wy_hud.dmi'
+	base_icon_file = 'icons/mob/hud/factions/clf.dmi'
 
 /datum/faction/clf_wy/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/icon/override_icon_file
@@ -14,17 +14,17 @@
 
 	switch(_role)
 		if(JOB_CLF_WY_CURATOR)
-			hud_icon_state = "curator"
+			hud_icon_state = "cellcom"
 		if(JOB_CLF_WY_LEADER)
-			hud_icon_state = "leader"
+			hud_icon_state = "sl"
 		if(JOB_CLF_WY_ENGI)
-			hud_icon_state = "eng"
+			hud_icon_state = "engi"
 		if(JOB_CLF_WY_MEDIC)
-			hud_icon_state = "medic"
+			hud_icon_state = "med"
 		if(JOB_CLF_WY_REBEL)
-			hud_icon_state = "rebel"
+			hud_icon_state = "spec"
 		if(JOB_CLF_WY_SYNTH)
 			hud_icon_state = "synth"
 
 	if(hud_icon_state)
-		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "clfwy_[hud_icon_state]")
+		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "clf_[hud_icon_state]")

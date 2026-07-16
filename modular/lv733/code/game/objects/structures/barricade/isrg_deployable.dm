@@ -1,5 +1,3 @@
-// ISRG - переносной складной барьер. Копия code/game/objects/structures/barricade/deployable.dm.
-
 /obj/structure/barricade/deployable/isrg
 	name = "\improper Переносной барьер ISRG"
 	desc = "Облегчённый композитный барьер поисковой группы ISRG. Складывается в компактный пакет с помощью двух защёлок. Ремонтируется горелкой."
@@ -12,8 +10,6 @@
 	crusher_resistant = TRUE
 	force_level_absorption = 15
 	source_type = /obj/item/stack/folding_barricade/isrg
-
-// Барьер в руках/рюкзаке
 
 /obj/item/stack/folding_barricade/isrg
 	name = "Складной барьер ISRG"

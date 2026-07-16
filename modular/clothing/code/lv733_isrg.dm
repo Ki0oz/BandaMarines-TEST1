@@ -1,5 +1,4 @@
-// ISRG - Imperial Search and Recovery Group - survivor
-// Униформа
+// ISRG - Imperial Search and Recovery Group
 
 /obj/item/clothing/under/marine/veteran/isrg/dress
 	name = "\improper Парадная форма ISRG"
@@ -264,11 +263,11 @@
 		WEAR_WAIST = "isrg_belt"
 	)
 
-// Пояс рядового состава - 2 магазина M39 (максимум) + медикаменты (база - как у стандартного медицинского пояса)
+// Пояс рядового состава - 2 магазина Mirai-7 (максимум) + медикаменты (база - как у стандартного медицинского пояса)
 
 /obj/item/storage/belt/medical/isrg
 	name = "\improper Пояс ISRG"
-	desc = "Тактический пояс поисковой группы ISRG, совмещающий подсумок под магазины M39 и медицинские принадлежности."
+	desc = "Тактический пояс поисковой группы ISRG, совмещающий подсумок под магазины Mirai-7 и медицинские принадлежности."
 	icon = 'modular/clothing/icon/isrg/belts.dmi'
 	item_icons = list(
 		WEAR_WAIST = 'modular/clothing/onmob/isrg/belts.dmi'
@@ -280,30 +279,30 @@
 	)
 	storage_slots = 6
 	max_storage_space = 16
-	var/max_m39_mags = 2
+	var/max_mirai7_mags = 2
 	can_hold = list(
-		/obj/item/ammo_magazine/smg/m39,
+		/obj/item/ammo_magazine/smg/mirai7,
 		/obj/item/storage/pill_bottle,
 		/obj/item/stack/medical,
 	)
 	bypass_w_limit = list(
-		/obj/item/ammo_magazine/smg/m39,
+		/obj/item/ammo_magazine/smg/mirai7,
 	)
 
 /obj/item/storage/belt/medical/isrg/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
-	if(istype(W, /obj/item/ammo_magazine/smg/m39))
+	if(istype(W, /obj/item/ammo_magazine/smg/mirai7))
 		var/current_mags = 0
-		for(var/obj/item/ammo_magazine/smg/m39/mag in contents)
+		for(var/obj/item/ammo_magazine/smg/mirai7/mag in contents)
 			current_mags++
-		if(current_mags >= max_m39_mags)
+		if(current_mags >= max_mirai7_mags)
 			if(!stop_messages)
 				to_chat(user, SPAN_WARNING("В [declent_ru(PREPOSITIONAL)] уже максимум магазинов."))
 			return FALSE
 	return ..()
 
 /obj/item/storage/belt/medical/isrg/full/fill_preset_inventory()
-	new /obj/item/ammo_magazine/smg/m39(src)
-	new /obj/item/ammo_magazine/smg/m39(src)
+	new /obj/item/ammo_magazine/smg/mirai7(src)
+	new /obj/item/ammo_magazine/smg/mirai7(src)
 	new /obj/item/storage/pill_bottle/bicaridine(src)
 	new /obj/item/storage/pill_bottle/kelotane(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)

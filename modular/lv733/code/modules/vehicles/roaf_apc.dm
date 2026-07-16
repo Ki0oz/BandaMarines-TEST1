@@ -1,24 +1,4 @@
-// Type 16-7/E MCV (ROAF) - тяжёлый БТР с башней от танка. Полная копия /obj/vehicle/multitile/apc
-// (code/modules/vehicles/apc/apc.dm) - тот же корпус/интерьер, только:
-// - у каждого видимого узла - основа (корпус), башня, пушка, колёса, двигатель - своя копия штатных иконок под
-//   modular/lv733/icons/roaf_apc/ (type16_*.dmi, содержимое идентично оригиналам на момент копирования) - это
-//   отдельные от других БТР/танков файлы, чтобы их можно было перекрасить своей текстурой без влияния на другие
-//   машины. У пушки/колёс/двигателя - по ДВЕ иконки (у башни и корпуса - по одной, так устроено и в ванильных
-//   tank_turret/apc): "_held" - как деталь в руках/на земле, "_mounted" - как оверлей на самом БТР
-//   (см. disp_icon/disp_icon_state в code/modules/vehicles/hardpoints/hardpoint.dm:get_icon_image()) - это два
-//   разных набора кадров у оригинала, поэтому и разные файлы. У брони своей иконки нет - использует штатную.
-//   У снарядов пушки - одна иконка (type16_shell.dmi), у боеприпасов оверлея на БТР не бывает.
-// - вместо штатных пушек БТР (dualcannon/frontalcannon) - башня танка (/obj/item/hardpoint/holder/tank_turret/roaf,
-//   тонкий подтип - штатной turret.accepted_hardpoints не хватает для нашей пушки, см. комментарий у неё),
-//   поэтому скопирован relaymove()/toggle_gyrostabilizer с танка (code/modules/vehicles/tank/tank.dm) -
-//   иначе наводчик не смог бы поворачивать башню;
-// - добавлен двигатель (/obj/item/hardpoint/support/overdrive_enhancer/roaf) - штатный "ускоритель" с танка,
-//   переименован и со своей иконкой, ставится сразу при спавне (см. load_hardpoints ниже);
-// - разборка (снять броню/пушку/колёса/двигатель/саму башню) не требует нового кода - это штатный механизм
-//   hardpoints_allowed (crowbar - обычные детали, powerloader-клешня - башня, она SIZE_MASSIVE),
-//   см. multitile_hardpoints.dm; обратная установка снятой пушки работает благодаря turret/roaf выше;
-// - броня чуть хуже обычного БТР (см. dmg_multipliers ниже и /obj/item/hardpoint/armor/ballistic/roaf),
-//   а пушка чуть сильнее танковой (см. /obj/item/hardpoint/primary/cannon/roaf).
+// Планируется
 
 /obj/vehicle/multitile/apc_roaf
 	name = "\improper Type 16-7/E MCV"

@@ -53,7 +53,7 @@
 		/obj/item/device/flashlight,
 		/obj/item/storage/pouch/firstaid/ert,
 	)
-	spawn_rebel_rifle(new_human)
+	spawn_rebel_rifle(new_human, 2)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/survivor/clf_wy/engi
@@ -78,7 +78,7 @@
 		/obj/item/clothing/glasses/welding,
 	)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(new_human.back), WEAR_IN_BACK)
-	spawn_rebel_rifle(new_human)
+	spawn_rebel_rifle(new_human, 2)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/survivor/clf_wy/medic
@@ -102,7 +102,7 @@
 		/obj/item/storage/pouch/magazine/large,
 		/obj/item/clothing/glasses/hud/health,
 	)
-	spawn_rebel_rifle(new_human)
+	spawn_rebel_rifle(new_human, 2)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/survivor/clf_wy/leader
@@ -127,7 +127,7 @@
 		/obj/item/clothing/glasses/sunglasses/aviator/silver,
 		/obj/item/clothing/shoes/combat,
 	)
-	spawn_rebel_rifle(new_human)
+	spawn_rebel_rifle(new_human, 2)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/synth/survivor/clf_wy_synth

@@ -662,6 +662,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ceiling_muffle = FALSE
 	unoviable_timer = FALSE
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/lv733/indoors/wy_research_complex/west_entrance
 	name = "Weyland-Yutani – Research Complex – West Entrance"

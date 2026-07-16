@@ -1,6 +1,4 @@
-/// LV-733 - ISRG survivors.
-
-// Кинолог совмещает обязанности медика группы (см. modular/lv733/code/datums/skills/isrg.dm).
+// Кинолог совмещает обязанности хирурга
 /datum/equipment_preset/survivor/isrg
 	name = "Survivor - ISRG K9 Handler"
 	assignment = "ISRG - K9 Handler"
@@ -61,10 +59,8 @@
 		/obj/item/clothing/mask/balaclava/isrg,
 		/obj/item/clothing/mask/gas/isrg,
 	)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/isrg(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mirai7(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended/isrg(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended/isrg(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/isrg/rescuer
 	name = "Survivor - ISRG Rescuer"
@@ -88,10 +84,8 @@
 		null,
 		/obj/item/clothing/mask/gas/isrg,
 	)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/isrg(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mirai7(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended/isrg(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended/isrg(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/isrg/leader
 	name = "Survivor - ISRG Group Leader"
@@ -116,11 +110,11 @@
 		/obj/item/clothing/mask/balaclava/isrg,
 		/obj/item/clothing/mask/gas/isrg,
 	)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m4ra/isrg(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/l86kai(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/isrg/ap(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/isrg(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/isrg(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/l86kai/ap(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/l86kai(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/l86kai(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/isrg/smartgunner
 	name = "Survivor - ISRG Smartgunner"

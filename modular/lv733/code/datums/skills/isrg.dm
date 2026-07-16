@@ -48,9 +48,10 @@ ISRG - Imperial Search and Recovery Group
 /datum/skills/survivor/isrg_synth_k9
 	name = "ISRG - Synthetic K9"
 	skills = list(
-		SKILL_MEDICAL = SKILL_MEDICAL_MASTER,
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
 		SKILL_FIREARMS = SKILL_FIREARMS_MASTER,
 		SKILL_CQC = SKILL_CQC_MASTER,
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
 	)
 
 /datum/skills/survivor/isrg_leader

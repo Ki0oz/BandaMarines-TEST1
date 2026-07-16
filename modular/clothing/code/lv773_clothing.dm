@@ -1,5 +1,4 @@
 // ROAF - survior
-// Униформа
 
 #define ROAF_FREQ 1217
 #define RADIO_CHANNEL_ROAF "ROAF"

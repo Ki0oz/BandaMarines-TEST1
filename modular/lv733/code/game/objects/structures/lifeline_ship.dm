@@ -1,4 +1,4 @@
-// RS-3 "Lifeline" - разбившийся корабль, статичный декоративный проп для карты (см. modular/lv733/icons/obj/lifeline.dmi)
+// Статичный проп
 
 /obj/structure/prop/invuln/dense/lifeline_ship
 	name = "\improper RS-3 \"Lifeline\""
