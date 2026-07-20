@@ -38,6 +38,42 @@
 #undef ROAF_SURVIVOR_INTRO
 #undef ROAF_SURVIVOR_STORY
 
+#define RAC_SURVIVOR_INTRO list("<h2 style='color:#4A4A3D; font-size:125%;'>Вы — часть Royal Armored Cavalry, проходящие обучение на LV-733 Уитшлер-Пойнт. Танковое звено застряло в городском секторе, топливо и снаряды на исходе, а связь с командованием обрывочна ...</h2>",\
+	"<span class='notice' style='color:#A6A6A6;'>Вы осведомлены о ксеноморфной угрозе.</span>",\
+	"<span class='danger' style='color:#7F2F2B;'>Ваша основная задача — выжить и сохранить бронетехнику боеспособной.</span>")
+
+#define RAC_SURVIVOR_STORY "<p style='font-size:95%; color:#A6A6A6;'>Танковое звено Royal Armored Cavalry было переброшено на LV-733 для прохождения тренировачных сценариев. Средства эвакуации бронетехники нет. Приказ — удерживать звено на ходу и прикрывать отход остальных подразделений TWE.</p>"
+
+/// RAC ///
+
+/obj/effect/landmark/survivor_spawner/twe/rac
+	icon_state = "surv_twe"
+	equipment = /datum/equipment_preset/survivor/rac
+	synth_equipment = /datum/equipment_preset/synth/survivor/rac_synth
+	CO_equipment = /datum/equipment_preset/survivor/whitchler/rac_commander
+	intro_text = RAC_SURVIVOR_INTRO
+	story_text = RAC_SURVIVOR_STORY
+	spawn_priority = SPAWN_PRIORITY_LOW
+
+/obj/effect/landmark/survivor_spawner/twe/rac/driver
+	equipment = /datum/equipment_preset/survivor/rac/driver
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/twe/rac/engi
+	equipment = /datum/equipment_preset/survivor/rac/engi
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/twe/rac/medic
+	equipment = /datum/equipment_preset/survivor/rac/medic
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/twe/rac/squad_leader
+	equipment = /datum/equipment_preset/survivor/rac/squad_leader
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+#undef RAC_SURVIVOR_INTRO
+#undef RAC_SURVIVOR_STORY
+
 #define CLF_WP_SURVIVOR_INTRO list("<h2 style='color:#7F2F2B; font-size:125%;'>Вы — боец Ячейки CLF-WP, скрывающейся на LV-733 Уитшлер-Пойнт. Ваша группа пряталась среди развалин, избегая как ксеноморфов, так и патрулей TWE. Связи с остальными Ячейками нет уже несколько дней ...</h2>",\
 	"<span class='notice' style='color:#A6A6A6;'>Вы осведомлены о ксеноморфной угрозе.</span>",\
 	"<span class='danger' style='color:#7F2F2B;'>Ваша основная задача — выжить и найти выход с колинии.</span>")

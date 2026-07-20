@@ -6,6 +6,7 @@
 #define SHIP_CRASH_ERT_MAX      5
 #define SHIP_CRASH_ERT_SYNTHS   1
 #define SHIP_CRASH_LARVA_PER_N  8            // НАДО ТЕСТИТЬ
+#define SHIP_CRASH_SAFE_RADIUS  20           // минимальная дистанция до хайва и домашней ЛЗ
 
 /obj/effect/lv733/crash_warning_overlay
 	name = "зона падения"
@@ -127,7 +128,29 @@
 	if(!length(candidate_turfs))
 		return
 
-	crash_turf = pick(candidate_turfs)
+	// Точки, от которых корабль обязан упасть не ближе SHIP_CRASH_SAFE_RADIUS: хайв ксеноморфов и домашняя ЛЗ ROAF.
+	var/list/turf/exclusion_points = list()
+	for(var/obj/effect/landmark/queen_spawn/Q in GLOB.queen_spawns)
+		exclusion_points += get_turf(Q)
+	if(!length(exclusion_points))
+		for(var/obj/effect/landmark/xeno_spawn/X in GLOB.xeno_spawns)
+			exclusion_points += get_turf(X)
+	for(var/area/lv733/outdoors/landing_zone_1/LZ in GLOB.all_areas)
+		for(var/turf/T in LZ)
+			exclusion_points += T
+
+	var/list/turf/safe_turfs = list()
+	for(var/turf/candidate as anything in candidate_turfs)
+		var/too_close = FALSE
+		for(var/turf/excluded as anything in exclusion_points)
+			if(get_dist(candidate, excluded) < SHIP_CRASH_SAFE_RADIUS)
+				too_close = TRUE
+				break
+		if(!too_close)
+			safe_turfs += candidate
+
+	// Если внезапно вся карта оказалась в зоне отчуждения - не блокируем ивент, падаем куда есть.
+	crash_turf = pick(length(safe_turfs) ? safe_turfs : candidate_turfs)
 
 	var/turf/corner = locate(crash_turf.x - floor(SHIP_CRASH_ZONE_WIDTH/2), crash_turf.y - floor(SHIP_CRASH_ZONE_HEIGHT/2), crash_turf.z)
 	for(var/tx = corner.x to corner.x + SHIP_CRASH_ZONE_WIDTH - 1)
@@ -163,7 +186,22 @@
 	if(!template.width || !template.height)
 		message_admins("[SPAN_DANGER("LV733 ship_crash: file exists but failed to parse '[ship_path]' (width=[template.width], height=[template.height]). Likely a DMM format/regex issue in the file content.")]")
 		return
-	if(!template.load(crash_turf, centered = TRUE, allow_cropping = TRUE))
+
+	// Раздавить всё живое в зоне посадки корабля ДО загрузки шаблона - иначе тела молча
+	// удалятся вместе с остальным мусором ниже (delete = TRUE), без сообщения о смерти.
+	var/turf/footprint_corner = locate(crash_turf.x - floor(template.width/2), crash_turf.y - floor(template.height/2), crash_turf.z)
+	if(footprint_corner)
+		for(var/tx = footprint_corner.x to footprint_corner.x + template.width - 1)
+			for(var/ty = footprint_corner.y to footprint_corner.y + template.height - 1)
+				var/turf/T = locate(tx, ty, crash_turf.z)
+				if(!T)
+					continue
+				for(var/mob/living/L in T)
+					L.gib(create_cause_data("падение корабля"))
+
+	// delete = TRUE вычищает всё, что осталось на тайлах посадки (предметы, мусор, трупы),
+	// чтобы после загрузки шаблона под кораблём ничего не "просвечивало".
+	if(!template.load(crash_turf, centered = TRUE, allow_cropping = TRUE, delete = TRUE))
 		message_admins("[SPAN_DANGER("LV733 ship_crash: template.load() failed at [ADMIN_VERBOSEJMP(crash_turf)] (template [template.width]x[template.height]). Likely too close to the map edge or a cordon issue.")]")
 		return
 
@@ -206,3 +244,4 @@
 #undef SHIP_CRASH_ERT_MAX
 #undef SHIP_CRASH_ERT_SYNTHS
 #undef SHIP_CRASH_LARVA_PER_N
+#undef SHIP_CRASH_SAFE_RADIUS
