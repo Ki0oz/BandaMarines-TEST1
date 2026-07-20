@@ -1654,10 +1654,8 @@
 	pixel_y = 5;
 	pixel_x = 4
 	},
-/obj/item/weapon/gun/smg/m39/isrg{
-	pixel_x = -6;
-	pixel_y = -8
-	},
+/obj/item/storage/box/glowstick/red,
+/obj/item/storage/box/glowstick/red,
 /turf/open/floor/prison/cell_stripe/east,
 /area/lv733/outdoors/colony_streets/engineering_street)
 "sw" = (

@@ -7370,8 +7370,6 @@
 /obj/structure/platform/metal/strata,
 /turf/open/floor/almayer/silverfull2,
 /area/lv733/outdoors/landing_zone_2)
-"cxP" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced)
 "cyj" = (
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty,
 /obj/structure/prop/hybrisa/supermart/rack/longrack6,
@@ -10436,6 +10434,11 @@
 "dyO" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv733/indoors/main_eng/storage)
+"dyP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/closet/emcloset,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv733/indoors/base_operations/central_corridor)
 "dyV" = (
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/lv733/outdoors/colony_streets/city_streets)
@@ -34471,6 +34474,7 @@
 	pixel_x = -7;
 	pixel_y = 5
 	},
+/obj/item/storage/box/glowstick/green,
 /turf/open/floor/corsat/officetiles,
 /area/lv733/indoors/motel)
 "lCJ" = (
@@ -34831,6 +34835,10 @@
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv733/indoors/landing_cargo)
+"lIF" = (
+/obj/item/storage/box/glowstick/red,
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/lv733/indoors/administration/communications_relay_buffer)
 "lIH" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_y = 16;
@@ -39323,6 +39331,12 @@
 /obj/structure/prop/ice_colony/dense/planter_box,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv733/indoors/main_complex/main_vestibule)
+"nqz" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "roaf_trainstation"
+	},
+/turf/closed/wall/hybrisa/rock,
+/area/lv733/oob)
 "nqH" = (
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 4;
@@ -45447,6 +45461,10 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/lv733/outdoors/colony_streets/avenue)
+"pwz" = (
+/obj/item/storage/box/glowstick,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv733/outdoors/colony_streets/roaf_spaceport_south)
 "pwR" = (
 /obj/effect/decal/hybrisa/gold/line2,
 /obj/effect/decal/hybrisa/dirt,
@@ -48803,6 +48821,9 @@
 /area/lv733/outdoors/colony_streets/wy_complex_streets)
 "qCF" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/nightmare{
+	insert_tag = "lab_xeno"
+	},
 /turf/open/floor/almayer/silver2smooth2/north,
 /area/lv733/indoors/main_complex/central_corridor)
 "qCJ" = (
@@ -59407,14 +59428,12 @@
 /turf/open/floor/almayer/silverfull2,
 /area/lv733/indoors/main_complex/reception)
 "tVm" = (
-/obj/effect/decal/hybrisa/road/lines3,
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = -4
+/obj/structure/surface/rack{
+	color = "#848484";
+	pixel_y = 10
 	},
-/obj/effect/alien/egg/kseries,
-/turf/open/hybrisa/street/asphalt,
-/area/lv733/outdoors/colony_streets/civil_spaceport_south)
+/turf/open/hybrisa/street/sidewalk,
+/area/lv733/outdoors/colony_streets/military_complex_streets)
 "tVU" = (
 /turf/open/floor/almayer/black2/east,
 /area/lv733/indoors/wy_research_complex/security_office)
@@ -67892,6 +67911,19 @@
 	},
 /turf/open/floor/almayer/silverfull2,
 /area/lv733/indoors/main_complex/main_vestibule)
+"wTv" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4;
+	layer = 2.5
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -10
+	},
+/obj/item/storage/box/glowstick/red,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv733/indoors/administration/communications_relay_buffer)
 "wTD" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/surface/table/reinforced/prison{
@@ -69000,6 +69032,12 @@
 "xlY" = (
 /turf/closed/wall/hybrisa/colony,
 /area/lv733/indoors/wy_research_complex/security_office)
+"xmg" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lab_xeno"
+	},
+/turf/open/floor/almayer/silverfull2,
+/area/lv733/indoors/main_complex/main_vestibule)
 "xmj" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/dirt,
@@ -72410,7 +72448,7 @@ gtD
 gtD
 gtD
 gtD
-gtD
+nqz
 gtD
 gtD
 gtD
@@ -72745,7 +72783,7 @@ ndX
 acY
 ejp
 mwv
-cxP
+kdI
 qqz
 smA
 lVN
@@ -72947,7 +72985,7 @@ qWP
 kpL
 wPE
 mwv
-cxP
+kdI
 rrJ
 pDs
 pDs
@@ -73149,7 +73187,7 @@ mwv
 mwv
 mwv
 mwv
-cxP
+kdI
 bEl
 ron
 pDs
@@ -73351,7 +73389,7 @@ mwv
 mwv
 mwv
 mwv
-cxP
+kdI
 fWU
 pDs
 vor
@@ -73558,7 +73596,7 @@ nsT
 qZF
 nuc
 ctQ
-pDs
+pwz
 keA
 pDs
 xRr
@@ -75602,7 +75640,7 @@ hmM
 mxE
 kdl
 mMZ
-uLl
+tVm
 giO
 rJR
 fEq
@@ -78419,7 +78457,7 @@ rfQ
 aHP
 rfQ
 rfQ
-rfQ
+lIF
 gRu
 tFN
 cNn
@@ -78822,7 +78860,7 @@ low
 epm
 oeX
 epm
-oeX
+wTv
 kiO
 gRu
 dgc
@@ -80671,7 +80709,7 @@ ftp
 ftp
 jLK
 cfl
-awa
+dyP
 ubp
 kAd
 xgn
@@ -89536,7 +89574,7 @@ sZC
 sZC
 sZC
 sZC
-sZC
+xmg
 sZC
 nkR
 btp
@@ -98398,7 +98436,7 @@ cgn
 krj
 oGu
 soJ
-tVm
+cMx
 gbA
 efe
 eeg
@@ -99154,7 +99192,7 @@ esN
 (137,1,1) = {"
 esN
 eTC
-nnY
+eTC
 eTC
 tbv
 dkO
@@ -99355,7 +99393,7 @@ esN
 "}
 (138,1,1) = {"
 esN
-nnY
+eTC
 eTC
 eTC
 bAc

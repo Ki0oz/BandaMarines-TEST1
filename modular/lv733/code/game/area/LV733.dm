@@ -97,7 +97,7 @@
 	linked_lz = DROPSHIP_LZ1
 
 /area/lv733/indoors/landing_zone_1/lz1_console
-	name = "Whitchler Point ROAF - Landing Zone One - Dropship Alamo Console"
+	name = "Whitchler Point ROAF - Landing Zone One"
 	icon_state = "hybrisa"
 	requires_power = FALSE
 	ceiling = CEILING_METAL
@@ -137,7 +137,7 @@
 	linked_lz = DROPSHIP_LZ2
 
 /area/lv733/indoors/landing_zone_2/whitchler_civ_spaceport/lz2_console
-	name = "Whitchler Civilian Spaceport - Dropship Normandy Console"
+	name = "Whitchler Civilian Spaceport - Landing Zone Two"
 	icon_state = "hybrisa"
 	requires_power = FALSE
 	ceiling = CEILING_METAL
@@ -368,6 +368,15 @@
 
 /area/lv733/indoors/base_operations/armory
 	name = "ROAF Base Operations - Armory#1"
+
+/area/lv733/indoors/base_operations/main_trainstation
+	name = "ROAF Base Operations - Main Train Station"
+
+/area/lv733/indoors/base_operations/trainstation_west_corridor
+	name = "ROAF Base Operations - Train Station Corridor"
+
+/area/lv733/indoors/base_operations/trainstation_maintenance_garage
+	name = "ROAF Base Operations - Train Station Maintenance Garage"
 
 
 // Engineering Sector
